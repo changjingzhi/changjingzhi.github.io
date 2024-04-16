@@ -8,7 +8,7 @@
     <link href="/2024/04/16/deeplearn1/"/>
     <url>/2024/04/16/deeplearn1/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="为什么要开这个坑"><a href="#为什么要开这个坑" class="headerlink" title="为什么要开这个坑"></a>为什么要开这个坑</h1><ol><li>因为我是人工智能专业的学生</li><li>在学习的过程中起到记录和反思的作用</li></ol><h1 id="开这个坑，打算怎么填坑"><a href="#开这个坑，打算怎么填坑" class="headerlink" title="开这个坑，打算怎么填坑"></a>开这个坑，打算怎么填坑</h1><p>慢慢填呗，图难于其易，为大于其细。天下难事必作于易，天下大事必作于细。是以圣人终不为大，故能成其大。</p><h1 id="这个坑的流程是什么？"><a href="#这个坑的流程是什么？" class="headerlink" title="这个坑的流程是什么？"></a>这个坑的流程是什么？</h1><ol><li>先讲pytorch</li><li>基于pytorch实现一些经典网络，完成一些案例</li><li>看论文，介绍一些经典的论文，比如AlexNet，VGG，CNN，GoolgeNet，shuffleNet</li><li>开始跑yolo，更改网络模块。</li></ol><p>注： 这里只是一个流程，在开始后会有更多的坑需要去填的。</p>]]></content>
     
     
     
@@ -204,7 +204,7 @@
     
     <tags>
       
-      <tag>句子。</tag>
+      <tag>句子</tag>
       
     </tags>
     
