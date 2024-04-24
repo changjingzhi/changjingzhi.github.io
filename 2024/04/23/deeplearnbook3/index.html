@@ -16,24 +16,32 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题1，卷积是什么？作用什么？卷积（Convolution）是一种数学运算，常用于信号处理和图像处理领域。在信号处理中，卷积用于将输入信号与卷积核（也称为滤波器）进行运算，产生输出信号。卷积的作用有以下几个方面：  信号滤波：卷积可以用于信号滤波，通过将输入信号与合适的卷积核进行卷积运算，可以实现对信号的滤波操作。滤波可以用于去除信号中的噪声、平滑信号、强调信号中的某些频率成分等。 特征提取：在图">
+    <meta name="description" content="基本知识在深度学习中，图像数据通常以多维数组（在Python中通常使用Numpy数组）的形式表示，这个数组的形状（shape）取决于图像的维度和颜色通道数。灰度图像：对于灰度图像（也就是黑白图像），shape通常是两维的，表示图像的高度和宽度。例如，一个256x256像素的灰度图像的shape将是(256, 256)。灰度图像的像素值通常在0到255之间，其中0表示黑色，255表示白色，中间的值表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="填坑——经典网络结构——AlexNet">
-<meta property="og:url" content="https://chenlidbk.xyz/2024/04/23/tiankeng2/index.html">
+<meta property="og:title" content="图像处理">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/04/23/deeplearnbook3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="问题1，卷积是什么？作用什么？卷积（Convolution）是一种数学运算，常用于信号处理和图像处理领域。在信号处理中，卷积用于将输入信号与卷积核（也称为滤波器）进行运算，产生输出信号。卷积的作用有以下几个方面：  信号滤波：卷积可以用于信号滤波，通过将输入信号与合适的卷积核进行卷积运算，可以实现对信号的滤波操作。滤波可以用于去除信号中的噪声、平滑信号、强调信号中的某些频率成分等。 特征提取：在图">
+<meta property="og:description" content="基本知识在深度学习中，图像数据通常以多维数组（在Python中通常使用Numpy数组）的形式表示，这个数组的形状（shape）取决于图像的维度和颜色通道数。灰度图像：对于灰度图像（也就是黑白图像），shape通常是两维的，表示图像的高度和宽度。例如，一个256x256像素的灰度图像的shape将是(256, 256)。灰度图像的像素值通常在0到255之间，其中0表示黑色，255表示白色，中间的值表">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-23T02:48:00.000Z">
-<meta property="article:modified_time" content="2024-04-23T03:05:12.288Z">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/e1.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/binary_image.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/binary_inv_image.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/trunc_image.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tozero_inv_image.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tozero_image.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/adaptive_image.jpg">
+<meta property="article:published_time" content="2024-04-23T08:07:19.000Z">
+<meta property="article:modified_time" content="2024-04-24T05:35:14.645Z">
 <meta property="article:author" content="chenli">
-<meta property="article:tag" content="填坑">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chenlidbk.xyz/pic/e1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>填坑——经典网络结构——AlexNet - Hexo</title>
+  <title>图像处理 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="填坑——经典网络结构——AlexNet"></span>
+            <span id="subtitle" data-typed-text="图像处理"></span>
           
         </div>
 
@@ -213,8 +221,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-23 10:48" pubdate>
-          2024年4月23日 上午
+        <time datetime="2024-04-23 16:07" pubdate>
+          2024年4月23日 下午
         </time>
       </span>
     
@@ -225,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          1.4k 字
         
       </span>
     
@@ -236,7 +244,7 @@
         
         
         
-          18 分钟
+          12 分钟
         
       </span>
     
@@ -281,41 +289,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">填坑——经典网络结构——AlexNet</h1>
+            <h1 id="seo-header">图像处理</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="问题1，卷积是什么？作用什么？"><a href="#问题1，卷积是什么？作用什么？" class="headerlink" title="问题1，卷积是什么？作用什么？"></a>问题1，卷积是什么？作用什么？</h2><p>卷积（Convolution）是一种数学运算，常用于信号处理和图像处理领域。在信号处理中，卷积用于将输入信号与卷积核（也称为滤波器）进行运算，产生输出信号。<br>卷积的作用有以下几个方面：</p>
-<ol>
-<li>信号滤波：卷积可以用于信号滤波，通过将输入信号与合适的卷积核进行卷积运算，可以实现对信号的滤波操作。滤波可以用于去除信号中的噪声、平滑信号、强调信号中的某些频率成分等。</li>
-<li>特征提取：在图像处理中，卷积可以用于特征提取。通过将图像与不同的卷积核进行卷积运算，可以提取出图像中的不同特征，例如边缘、纹理、角点等。这些特征可以用于图像识别、目标检测和图像处理中的其他任务。</li>
-<li>信号压缩：卷积可以用于信号压缩。通过将输入信号与适当的卷积核进行卷积运算，可以将信号表示转换为另一种表示形式，通常具有更紧凑的表示。这种表示形式可以用于信号压缩和数据压缩。</li>
-<li>卷积神经网络：卷积神经网络（Convolutional Neural Network，CNN）是一种基于卷积运算的深度学习模型，广泛应用于图像识别、计算机视觉和自然语言处理等领域。卷积在 CNN 中用于提取图像或文本的特征，并通过多层卷积和池化操作来实现对输入数据的高级表示和分类。如果输入数据为图片，那么卷积层的作用就是提取图片中的信息，这些信息被称为图像特征，这些特征是由图像中的每个像素通过组合或者独立的方式所体现，比如图片的纹理特征、颜色特征、空间特征。</li>
+                <h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><p>在深度学习中，图像数据通常以多维数组（在Python中通常使用Numpy数组）的形式表示，这个数组的形状（shape）取决于图像的维度和颜色通道数。<br>灰度图像：对于灰度图像（也就是黑白图像），shape通常是两维的，表示图像的高度和宽度。例如，一个256x256像素的灰度图像的shape将是(256, 256)。灰度图像的像素值通常在0到255之间，其中0表示黑色，255表示白色，中间的值表示不同的灰度级别。这是因为每个像素通常由8位（一个字节）表示，所以可以有256（即$2^8$）个不同的可能值。然而，这并不是唯一的表示方式。有时，为了方便计算，我们可能会将像素值归一化到0到1之间。在这种情况下，0仍然表示黑色，1表示白色，中间的值表示不同的灰度级别。<br>彩色图像：对于彩色图像，通常使用RGB（红，绿，蓝）三个颜色通道，所以shape是三维的。例如，一个256x256像素的RGB彩色图像的shape将是(256, 256, 3)。这里的3代表三个颜色通道。彩色图像通常由三个颜色通道组成：红色（R），绿色（G）和蓝色（B）。每个通道的像素值通常在0到255之间，其中0表示该颜色的完全缺失，255表示该颜色的最大强度。所以，一个RGB颜色图像的像素值范围在理论上是0到255的三维空间，即(0,0,0)到(255,255,255)。同样，有时我们也会将每个颜色通道的像素值归一化到0到1之间。在这种情况下，(0,0,0)表示黑色，(1,1,1)表示白色，其他值表示不同的颜色。需要注意的是，虽然RGB是最常用的颜色空间，但也有其他的颜色空间，如HSV（色相，饱和度，亮度）或者CMYK（青色，品红，黄色，黑色），它们的取值范围可能会有所不同。<br>图像批量：在深度学习中，我们通常会一次处理多个图像，这就是所谓的批量（batch）。在这种情况下，图像数据的shape将是四维的：(批量大小, 高度, 宽度, 颜色通道数)。例如，如果我们有32个256x256像素的RGB图像，那么这个批量的shape将是(32, 256, 256, 3)。</p>
+<h2 id="显示彩色图像"><a href="#显示彩色图像" class="headerlink" title="显示彩色图像"></a>显示彩色图像</h2><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">import</span> cv2 # opencv中按BGR排布，蓝绿红<br><span class="hljs-attribute">import</span> numpy as np<br><br><span class="hljs-attribute">img</span> = np.zeros((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>),dtype=np.uint8)<br><br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>),<span class="hljs-number">255</span>) <br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>),<span class="hljs-number">255</span>) #中间的白色区块。 <br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,<span class="hljs-number">0</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>),<span class="hljs-number">255</span>)<br><span class="hljs-attribute">img</span>.itemset((<span class="hljs-number">4</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>),<span class="hljs-number">255</span>)<br><br><span class="hljs-attribute">cv2</span>.namedWindow(&#x27;img&#x27;,cv2.WINDOW_NORMAL)<br><span class="hljs-attribute">cv2</span>.resizeWindow(&#x27;img&#x27;,<span class="hljs-number">500</span>,<span class="hljs-number">500</span>)<br><span class="hljs-attribute">cv2</span>.imshow(&#x27;img&#x27;,img)<br><span class="hljs-attribute">cv2</span>.waitKey()<br><span class="hljs-attribute">cv2</span>.destroyAllWindows()<br></code></pre></td></tr></table></figure>
+<h2 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h2><ol>
+<li>二值化处理：这是最基本的阈值处理方法。对于每个像素，我们选择一个阈值。如果像素值大于阈值，我们将其设置为一个值（通常是白色），如果像素值小于或等于阈值，我们将其设置为另一个值（通常是黑色）。这样我们就得到了一个二值图像。</li>
+<li>反二值化处理：这是二值化处理的反向操作。如果像素值大于阈值，我们将其设置为一个值（通常是黑色），如果像素值小于或等于阈值，我们将其设置为另一个值（通常是白色）。</li>
+<li>截断阈值处理：对于每个像素，如果其值大于阈值，我们将其设置为阈值。如果像素值小于或等于阈值，我们保持其原值不变。</li>
+<li>超阈值零处理：对于每个像素，如果其值大于阈值，我们保持其原值不变。如果像素值小于或等于阈值，我们将其设置为零。</li>
+<li>低阈值零处理：这是超阈值零处理的反向操作。如果像素值大于阈值，我们将其设置为零。如果像素值小于或等于阈值，我们保持其原值不变。</li>
+<li>自适应阈值处理：这是一种更复杂的方法，它不使用固定的阈值。相反，它根据像素周围的小区域计算阈值。因此，对于同一张图片上的不同区域，我们可以有不同的阈值。这对于当图像的光照条件变化很大时，例如，一半是明亮的，一半是暗淡的图像，非常有用。</li>
 </ol>
-<p>关于卷积其实还有很多问题，比如说输入一张（3x255x255）的图片，输入后经过卷积后输出的特征图大小为什么shape。1x1卷积为什么可以实现升维和降维。）</p>
-<h2 id="问题2，池化是什么？作用是什么？"><a href="#问题2，池化是什么？作用是什么？" class="headerlink" title="问题2，池化是什么？作用是什么？"></a>问题2，池化是什么？作用是什么？</h2><p>池化（Pooling）是一种常用的操作，通常与卷积神经网络（CNN）结合使用。池化操作通过对输入数据的局部区域进行聚合或采样来减小数据的空间尺寸，从而减少参数数量、降低计算量，并提取出输入数据的重要特征。</p>
-<p>池化的作用有以下几个方面</p>
-<ol>
-<li>降采样：池化操作可以减小输入数据的空间尺寸，从而降低后续层的计算复杂度。通过降低数据的维度，池化可以在保留重要特征的同时减少冗余信息，提高计算效率。</li>
-<li>平移不变性：池化操作具有一定的平移不变性。在图像处理中，通过对局部区域进行池化操作，可以使得输入图像在平移、旋转和缩放等变换下具有一定的不变性。这对于图像识别和目标检测等任务是有益的。</li>
-<li>特征提取：池化操作可以提取输入数据的重要特征。通过对局部区域进行池化，池化操作会选择区域中的最大值（最大池化）或平均值（平均池化）作为输出值，从而提取出输入数据的显著特征。这有助于减少数据的维度，并保留重要的特征信息。</li>
-<li>减少过拟合：池化操作可以在一定程度上减少过拟合。通过减小数据的空间尺寸，池化操作可以降低模型的参数数量，从而减少过拟合的风险。此外，池化操作还可以通过丢弃一些冗余信息来提高模型的泛化能力。</li>
-</ol>
-<p>池化的种类</p>
-<ol>
-<li>最大池化（Max Pooling）：最大池化是一种常见的池化操作。在最大池化中，输入数据的局部区域被分割成不重叠的块，然后在每个块中选择最大值作为输出。最大池化可以提取出输入数据的显著特征，同时减小数据的空间尺寸。</li>
-<li>平均池化（Average Pooling）：平均池化是另一种常见的池化操作。在平均池化中，输入数据的局部区域被分割成不重叠的块，然后计算每个块中元素的平均值作为输出。平均池化可以平滑输入数据并减小数据的空间尺寸。</li>
-<li>自适应池化（Adaptive Pooling）：自适应池化是一种具有灵活性的池化操作。与最大池化和平均池化不同，自适应池化不需要指定池化窗口的大小，而是根据输入数据的尺寸自动调整池化窗口的大小。这使得自适应池化可以适应不同尺寸的输入数据。</li>
-<li>全局池化（Global Pooling）：全局池化是一种特殊的池化操作，它将整个输入数据的空间尺寸缩减为一个单一的值或向量。全局池化可以通过对输入数据的所有位置进行池化操作，从而提取出输入数据的全局特征。常见的全局池化有全局平均池化（Global Average Pooling）和全局最大池化（Global Max Pooling）。</li>
-</ol>
-<h2 id="问题3，全连接是什么？作用是什么？"><a href="#问题3，全连接是什么？作用是什么？" class="headerlink" title="问题3，全连接是什么？作用是什么？"></a>问题3，全连接是什么？作用是什么？</h2><h2 id="问题4，AlexNet论文使用的loss函数是什么？"><a href="#问题4，AlexNet论文使用的loss函数是什么？" class="headerlink" title="问题4，AlexNet论文使用的loss函数是什么？"></a>问题4，AlexNet论文使用的loss函数是什么？</h2><h2 id="问题5，AlexNet论文中使用的梯度优化方式是什么，梯度怎么实现下降？"><a href="#问题5，AlexNet论文中使用的梯度优化方式是什么，梯度怎么实现下降？" class="headerlink" title="问题5，AlexNet论文中使用的梯度优化方式是什么，梯度怎么实现下降？"></a>问题5，AlexNet论文中使用的梯度优化方式是什么，梯度怎么实现下降？</h2><h2 id="问题6，AlexNet论文中使用的评价指标是什么？"><a href="#问题6，AlexNet论文中使用的评价指标是什么？" class="headerlink" title="问题6，AlexNet论文中使用的评价指标是什么？"></a>问题6，AlexNet论文中使用的评价指标是什么？</h2><h2 id="问题7，AlexNet中的创新点是什么？"><a href="#问题7，AlexNet中的创新点是什么？" class="headerlink" title="问题7，AlexNet中的创新点是什么？"></a>问题7，AlexNet中的创新点是什么？</h2><ol>
-<li>ReLU激活函数的引入，采样非线性单元（ReLU）的深度卷积神经网络训练时间要比tanh单元要快几倍。而时间开销是进行模型训练过程中的很重要的因数。同时ReLU有效的防止了过拟合的现象。</li>
-<li>层叠池化操作，以往池化的大小PoolingSize与步长stride一般是相等的，例如：图像大小为256*256，PoolingSize&#x3D;2×2，stride&#x3D;2，这样可以使图像或是FeatureMap大小缩小一倍变为128，此时池化过程没有发生层叠。但是AlexNet采用了层叠池化操作，即PoolingSize &gt; stride。这种操作非常像卷积操作，可以使相邻像素间产生信息交互和保留必要的联系。论文中也证明，此操作可以有效防止过拟合的发生。</li>
-<li>Dropout操作， Dropout操作会将概率小于0.5的每个隐层神经元的输出设为0，即去掉了一些神经节点，达到防止过拟合。那些“失活的”神经元不再进行前向传播并且不参与反向传播。这个技术减少了复杂的神经元之间的相互影响。在论文中，也验证了此方法的有效性。</li>
-<li>网络层数更深，与原始的LeNet相比，AlexNet网络结构更深，LeNet为5层，AlexNet为8层。在随后的神经网络发展过程中，AlexNet逐渐让研究人员认识到网络深度对性能的巨大影响。当然，这种思考的重要节点出现在VGG网络（下一篇博文VGG论文中将会讲到）。</li>
-</ol>
-<h2 id="问题8，优化函数的具体实现是什么？"><a href="#问题8，优化函数的具体实现是什么？" class="headerlink" title="问题8，优化函数的具体实现是什么？"></a>问题8，优化函数的具体实现是什么？</h2><h2 id="问题9，关于卷积后特征图应该怎么计算？"><a href="#问题9，关于卷积后特征图应该怎么计算？" class="headerlink" title="问题9，关于卷积后特征图应该怎么计算？"></a>问题9，关于卷积后特征图应该怎么计算？</h2><h2 id="问题10，什么是过拟合合和欠拟合？"><a href="#问题10，什么是过拟合合和欠拟合？" class="headerlink" title="问题10，什么是过拟合合和欠拟合？"></a>问题10，什么是过拟合合和欠拟合？</h2><h2 id="问题11，论文中怎么证明，层叠池化可以有效防止过拟合的发生？"><a href="#问题11，论文中怎么证明，层叠池化可以有效防止过拟合的发生？" class="headerlink" title="问题11，论文中怎么证明，层叠池化可以有效防止过拟合的发生？"></a>问题11，论文中怎么证明，层叠池化可以有效防止过拟合的发生？</h2><h2 id="问题12，-神经元数量和参数量的计算方法是什么？"><a href="#问题12，-神经元数量和参数量的计算方法是什么？" class="headerlink" title="问题12， 神经元数量和参数量的计算方法是什么？"></a>问题12， 神经元数量和参数量的计算方法是什么？</h2><h2 id="问题13，-softMax的机制是怎么样的？"><a href="#问题13，-softMax的机制是怎么样的？" class="headerlink" title="问题13， softMax的机制是怎么样的？"></a>问题13， softMax的机制是怎么样的？</h2><h2 id="问题14，-AlexNet论文中使用的评估指标错误率的计算方法是什么？"><a href="#问题14，-AlexNet论文中使用的评估指标错误率的计算方法是什么？" class="headerlink" title="问题14， AlexNet论文中使用的评估指标错误率的计算方法是什么？"></a>问题14， AlexNet论文中使用的评估指标错误率的计算方法是什么？</h2><h2 id="问题15，Dropout的运行机制是什么，论文中怎么证明他们有效-理论证明和实验证明-？"><a href="#问题15，Dropout的运行机制是什么，论文中怎么证明他们有效-理论证明和实验证明-？" class="headerlink" title="问题15，Dropout的运行机制是什么，论文中怎么证明他们有效(理论证明和实验证明)？"></a>问题15，Dropout的运行机制是什么，论文中怎么证明他们有效(理论证明和实验证明)？</h2><h2 id="问题16，-什么是超参数？"><a href="#问题16，-什么是超参数？" class="headerlink" title="问题16， 什么是超参数？"></a>问题16， 什么是超参数？</h2><h2 id="问题17，-什么是监督学习和无监督学习，半监督学习？"><a href="#问题17，-什么是监督学习和无监督学习，半监督学习？" class="headerlink" title="问题17， 什么是监督学习和无监督学习，半监督学习？"></a>问题17， 什么是监督学习和无监督学习，半监督学习？</h2>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs smali">import cv2<br><br><span class="hljs-comment"># 读取图像</span><br>image = cv2.imread(&#x27;e1.jpg&#x27;, cv2.IMREAD_GRAYSCALE)<br><br><span class="hljs-comment"># 二值化处理</span><br>_, binary_image = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)<br><br><span class="hljs-comment"># 反二值化处理</span><br>_, binary_inv_image = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY_INV)<br><br><span class="hljs-comment"># 截断阈值处理</span><br>_, trunc_image = cv2.threshold(image, 127, 255, cv2.THRESH_TRUNC)<br><br><span class="hljs-comment"># 超阈值零处理</span><br>_, tozero_inv_image = cv2.threshold(image, 127, 255, cv2.THRESH_TOZERO_INV)<br><br><span class="hljs-comment"># 低阈值零处理</span><br>_, tozero_image = cv2.threshold(image, 127, 255, cv2.THRESH_TOZERO)<br><br><span class="hljs-comment"># 自适应阈值处理</span><br>adaptive_image = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)<br><br><span class="hljs-comment"># 保存处理后的图像</span><br>cv2.imwrite(&#x27;binary_image.jpg&#x27;, binary_image)<br>cv2.imwrite(&#x27;binary_inv_image.jpg&#x27;, binary_inv_image)<br>cv2.imwrite(&#x27;trunc_image.jpg&#x27;, trunc_image)<br>cv2.imwrite(&#x27;tozero_inv_image.jpg&#x27;, tozero_inv_image)<br>cv2.imwrite(&#x27;tozero_image.jpg&#x27;, tozero_image)<br>cv2.imwrite(&#x27;adaptive_image.jpg&#x27;, adaptive_image)<br><br></code></pre></td></tr></table></figure>
+<p><img src="/pic/e1.jpg" srcset="/img/loading.gif" lazyload alt="原图"><br><img src="/pic/binary_image.jpg" srcset="/img/loading.gif" lazyload alt="二值化处理图像"><br><img src="/pic/binary_inv_image.jpg" srcset="/img/loading.gif" lazyload alt="反二值化处理图像"><br><img src="/pic/trunc_image.jpg" srcset="/img/loading.gif" lazyload alt="截断阈值处理图像"><br><img src="/pic/tozero_inv_image.jpg" srcset="/img/loading.gif" lazyload alt="超阈值处理图像"><br><img src="/pic/tozero_image.jpg" srcset="/img/loading.gif" lazyload alt="低阈值零处理图像"><br><img src="/pic/adaptive_image.jpg" srcset="/img/loading.gif" lazyload alt="自适应阈值处理图像"></p>
+<h3 id="挖更大的坑，opencv库。"><a href="#挖更大的坑，opencv库。" class="headerlink" title="挖更大的坑，opencv库。"></a>挖更大的坑，opencv库。</h3><h3 id="彩色图像怎么转换为二维图像的？"><a href="#彩色图像怎么转换为二维图像的？" class="headerlink" title="彩色图像怎么转换为二维图像的？"></a>彩色图像怎么转换为二维图像的？</h3><p>首先灰度图像中的一个像素点的范围为0-255，彩色图像可以理解为3个灰度图重合。</p>
+<h3 id="需要深度解析代码中的含义，比如一个参数有什么用处。"><a href="#需要深度解析代码中的含义，比如一个参数有什么用处。" class="headerlink" title="需要深度解析代码中的含义，比如一个参数有什么用处。"></a>需要深度解析代码中的含义，比如一个参数有什么用处。</h3>
                 
               </div>
             
@@ -327,7 +319,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A1%AB%E5%9D%91/" class="print-no-link">#填坑</a>
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="print-no-link">#深度学习</a>
       
     </div>
   
@@ -339,8 +331,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>填坑——经典网络结构——AlexNet</div>
-      <div>https://chenlidbk.xyz/2024/04/23/tiankeng2/</div>
+      <div>图像处理</div>
+      <div>https://chenlidbk.xyz/2024/04/23/deeplearnbook3/</div>
     </div>
     <div class="license-meta">
       
@@ -384,9 +376,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/23/deeplearnbook3/" title="图像处理">
+                      <a href="/2024/04/24/ganwu10/" title="随笔10">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图像处理</span>
+                        <span class="hidden-mobile">随笔10</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -394,8 +386,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/23/tiankeng1/" title="填坑-PyTorch基础——Numpy">
-                        <span class="hidden-mobile">填坑-PyTorch基础——Numpy</span>
+                      <a href="/2024/04/23/tiankeng2/" title="填坑——经典网络结构——AlexNet">
+                        <span class="hidden-mobile">填坑——经典网络结构——AlexNet</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
