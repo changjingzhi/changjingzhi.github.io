@@ -4,11 +4,87 @@
   
   
   <entry>
+    <title>《定风波》</title>
+    <link href="/2024/04/25/juzhi2/"/>
+    <url>/2024/04/25/juzhi2/</url>
+    
+    <content type="html"><![CDATA[<center> <font size = 6>《定风波》 <font></center>  三月七日，沙湖道中遇雨。雨具先去，同行皆狼狈，余独不觉。已而遂晴，故作此词。  莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。  料峭春风吹酒醒，微冷，山头斜照却相迎。回首向来萧瑟处，归去，也无风雨也无晴。<p><font size = 3><font>译文：三月七日，在沙湖道上赶上了下雨。雨具先前被带走了，同行的人都觉得很狼狈，只有我不这么觉得。过了一会儿天晴了，就创作了这首词。不用注意那穿林打叶的雨声，不妨一边吟咏长啸着，一边悠然地行走。竹杖和草鞋轻捷得胜过骑马，有什么可怕的？一身蓑衣任凭风吹雨打，照样过我的一生。春风微凉，将我的酒意吹醒，寒意初上，山头初晴的斜阳却应时相迎。回头望一眼走过来遇到风雨的地方，回去吧，对我来说，既无所谓风雨，也无所谓天晴。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>句子</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>喜欢的一些句子</title>
+    <link href="/2024/04/25/juzhi1/"/>
+    <url>/2024/04/25/juzhi1/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>于浩歌狂热之际中寒，于天上看见深渊，于一切眼中看见无所有，于无所希望中得救 —— 鲁迅《墓碣文》</p></li><li><p>但是太阳，他每时每刻都是夕阳也都是旭日。 当他熄灭着走下山去收尽苍凉残照之际，正是他在另一面，燃烧着爬上山巅布散烈烈朝辉之时。那一天，我也将沉静着走下山去，扶着我的拐杖。有一天，在某一处山洼里，势必会跑上来一个欢蹦的孩子，抱着他的玩具。——史铁生</p></li><li><p>生命就是这样一个过程，一个不断超越自身局限的过程，这就是命运，任何人都是一样。在这过程中，我们遭遇痛苦、超越局限、从而感受幸福。所以一切人都是平等的，我们毫不特殊。——史铁生 《病隙碎笔》</p></li><li><p>只要你不停的向上走，一级级楼梯就没有尽头，在你向上走的脚下，它们也在向上长。——卡夫卡《律师》</p></li><li><p>找到属于自己的意义，赋予生命目的，每一天都像向日葵朝向太阳一样，充满方向和意义的活，是人类能活出的最好样子，它治愈我们的根本恐惧。</p></li><li><p>成功就是用自己喜欢的方式过一生。这句话分三部分。首先要知道自己喜欢什么，其次要有追逐它的勇气，追到了，还需要一生不渝的毅力。</p></li><li><p>“我来到这个世界，不是为了繁衍后代，而是来看花怎么开，水怎么流，太阳怎么升起，夕阳如何落下。我活在世上，无非是想要明白些道理，遇见有趣的事。生命是一场偶然，我在其中寻找因果。”生命对于每个人，它的意义是不一样的，每个人都是宇宙中一个独特的存在。</p></li><li><p>世界上只有一种英雄主义，那就是认清生活的真相后依旧热爱生活。</p></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>句子</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔11</title>
+    <link href="/2024/04/25/ganwu11/"/>
+    <url>/2024/04/25/ganwu11/</url>
+    
+    <content type="html"><![CDATA[<p>“人生的意义是什么？”<br>回答：“每个人都有不同的答案。”</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>感悟</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>论文思路</title>
+    <link href="/2024/04/25/paper_idear/"/>
+    <url>/2024/04/25/paper_idear/</url>
+    
+    <content type="html"><![CDATA[<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ol><li>傅里叶变换 （时间域变换为频域）</li><li>归一化（零归一化，批归一化，层归一化）</li></ol><h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><ol><li>startRule</li><li>ReLU</li></ol><h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><ol><li>编码器——解码器</li><li>残差连接（基于ResNet）</li><li>MLP</li><li></li></ol><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><ol><li>交叉熵损失函数</li></ol><h2 id="优化函数"><a href="#优化函数" class="headerlink" title="优化函数"></a>优化函数</h2><ol><li>SGD</li><li>RMSprop</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>填坑</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python自定义包的层级引用</title>
     <link href="/2024/04/24/tiankeng3/"/>
     <url>/2024/04/24/tiankeng3/</url>
     
-    <content type="html"><![CDATA[<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>今天debug的时候自定义了一个函数，使用了start主函数来引用processing函数，processing函数引用了同级文件夹中的python文件中的dataset函数，在运行processing的时候，test是通过的，但是在使用start函数来调用processing函数，processing函数函数调用dataset函数时就出现了报错，提示找不到这个包。（注：这里需要指明的是start函数放置在根文件夹中，processing函数放置在processing文件夹中）问题就在于python文件的文件运行路径的出错。</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs stylus">│  start<span class="hljs-selector-class">.py</span><br>│<br>├─static<br>│  │  __init__<span class="hljs-selector-class">.py</span><br>│  │<br>│  ├─model<br>│  │      MLPForMer<span class="hljs-selector-class">.pth</span><br>│  │<br>│  ├─processing<br>│  │  │  dataset<span class="hljs-selector-class">.py</span><br>│  │  │  net<span class="hljs-selector-class">.py</span><br>│  │  │  processing<span class="hljs-selector-class">.py</span><br>│  │  │  __init__<span class="hljs-selector-class">.py</span><br>│  │  │<br>│  │  └─__pycache__<br>│  │          dataset<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │          net<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │          processing<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │          __init__<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │<br>│  ├─result<br>│  │      average_probabilities<span class="hljs-selector-class">.csv</span><br>│  │      average_probabilities<span class="hljs-selector-class">.png</span><br>│  │<br>│  ├─tmp<br>│  │      <span class="hljs-number">1</span><span class="hljs-selector-class">.edf</span><br>│  │<br>│  └─__pycache__<br>│          __init__<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│<br>└─templates<br>        upload.html<br></code></pre></td></tr></table></figure><h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>对待这种问题目前我知道的有两种方法</p><ol><li>第一种方法在processing文件中明确的所以绝对引用的方法,因为问题是出现在processing中的。</li></ol><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader<br><span class="hljs-keyword">from</span> <span class="hljs-keyword">static</span>.processing.net <span class="hljs-keyword">import</span> * <span class="hljs-comment"># 这里引用是相对于start函数的位置</span><br><br></code></pre></td></tr></table></figure><ol start="2"><li>第二种方法，在__init__文件中给出直接引用<br>1.相对引用package需要采用from 相对位置 import package_name的方式。因为相对位置只能写在from和import中间。<br>2.from . import * 只会检索当前目录下的module，而不会导入package。</li></ol><h3 id="挖坑-1"><a href="#挖坑-1" class="headerlink" title="挖坑"></a>挖坑</h3><h3 id="windown怎么打印树状图？"><a href="#windown怎么打印树状图？" class="headerlink" title="windown怎么打印树状图？"></a>windown怎么打印树状图？</h3><p>使用<code>tree</code>来打印文件夹<br>使用<code>tree /f</code>来打印文件目录，如上面的文件目录结构。</p><h3 id="init-文件的作用是什么？"><a href="#init-文件的作用是什么？" class="headerlink" title="__init__文件的作用是什么？"></a>__init__文件的作用是什么？</h3><p>作为包的标识：</p><ol><li>当一个目录包含__init__.py文件时，Python会将该目录视为一个包，而不仅仅是一个普通的目录。这使得包内的模块可以被正确导入和使用。</li><li><strong>init</strong>.py文件可以是一个空文件，也可以包含初始化包的代码，比如设置包的属性、导入子模块等。</li></ol><p>初始化包：</p><ol><li>在包被导入时，<strong>init</strong>.py文件会在包内的其他模块之前被执行。这使得可以在__init__.py中执行一些初始化操作，比如设置包级别的变量、执行必要的初始化代码等。</li><li>这也可以用于在导入包时自动执行一些操作，比如注册插件、加载配置等。·</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>今天debug的时候自定义了一个函数，使用了start主函数来引用processing函数，processing函数引用了同级文件夹中的python文件中的dataset函数，在运行processing的时候，test是通过的，但是在使用start函数来调用processing函数，processing函数函数调用dataset函数时就出现了报错，提示找不到这个包。（注：这里需要指明的是start函数放置在根文件夹中，processing函数放置在processing文件夹中）问题就在于python文件的文件运行路径的出错。</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs stylus">│  start<span class="hljs-selector-class">.py</span><br>│<br>├─static<br>│  │  __init__<span class="hljs-selector-class">.py</span><br>│  │<br>│  ├─model<br>│  │      MLPForMer<span class="hljs-selector-class">.pth</span><br>│  │<br>│  ├─processing<br>│  │  │  dataset<span class="hljs-selector-class">.py</span><br>│  │  │  net<span class="hljs-selector-class">.py</span><br>│  │  │  processing<span class="hljs-selector-class">.py</span><br>│  │  │  __init__<span class="hljs-selector-class">.py</span><br>│  │  │<br>│  │  └─__pycache__<br>│  │          dataset<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │          net<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │          processing<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │          __init__<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│  │<br>│  ├─result<br>│  │      average_probabilities<span class="hljs-selector-class">.csv</span><br>│  │      average_probabilities<span class="hljs-selector-class">.png</span><br>│  │<br>│  ├─tmp<br>│  │      <span class="hljs-number">1</span><span class="hljs-selector-class">.edf</span><br>│  │<br>│  └─__pycache__<br>│          __init__<span class="hljs-selector-class">.cpython-38</span><span class="hljs-selector-class">.pyc</span><br>│<br>└─templates<br>        upload.html<br></code></pre></td></tr></table></figure><h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>对待这种问题目前我知道的有两种方法</p><ol><li>第一种方法在processing文件中明确的所以绝对引用的方法,因为问题是出现在processing中的。</li></ol><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader<br><span class="hljs-keyword">from</span> <span class="hljs-keyword">static</span>.processing.net <span class="hljs-keyword">import</span> * <span class="hljs-comment"># 这里引用是相对于start函数的位置</span><br><br></code></pre></td></tr></table></figure><ol start="2"><li>第二种方法，在__init__文件中给出直接引用<br>1.相对引用package需要采用from 相对位置 import package_name的方式。因为相对位置只能写在from和import中间。<br>2.from . import * 只会检索当前目录下的module，而不会导入package。</li></ol><h3 id="挖坑-1"><a href="#挖坑-1" class="headerlink" title="挖坑"></a>挖坑</h3><h3 id="windown怎么打印树状图？"><a href="#windown怎么打印树状图？" class="headerlink" title="windown怎么打印树状图？"></a>windown怎么打印树状图？</h3><p>使用<code>tree</code>来打印文件夹<br>使用<code>tree /f</code>来打印文件目录，如上面的文件目录结构。</p><h3 id="init-文件的作用是什么？"><a href="#init-文件的作用是什么？" class="headerlink" title="__init__文件的作用是什么？"></a>__init__文件的作用是什么？</h3><p>作为包的标识：</p><ol><li>当一个目录包含__init__.py文件时，Python会将该目录视为一个包，而不仅仅是一个普通的目录。这使得包内的模块可以被正确导入和使用。</li><li><strong>init</strong>.py文件可以是一个空文件，也可以包含初始化包的代码，比如设置包的属性、导入子模块等。</li></ol><p>初始化包：</p><ol><li>在包被导入时，<strong>init</strong>.py文件会在包内的其他模块之前被执行。这使得可以在__init__.py中执行一些初始化操作，比如设置包级别的变量、执行必要的初始化代码等。</li><li>这也可以用于在导入包时自动执行一些操作，比如注册插件、加载配置等。·</li></ol><h2 id="填坑-1"><a href="#填坑-1" class="headerlink" title="填坑"></a>填坑</h2><h3 id="居中显示"><a href="#居中显示" class="headerlink" title="居中显示"></a>居中显示</h3><p>可以使用center标签，或者使用div标签，或者使用p标签，或者h标签都是可以的</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span> <span class="hljs-tag">&lt;&gt;</span>数据结构和算法是居中展示，使用center标签<span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">align</span>=<span class="hljs-string">center</span>&gt;</span>数据结构和算法是居中展示，使用div标签<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>数据结构和算法是居中展示，使用p标签<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">h5</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align:center&quot;</span>&gt;</span>数据结构和算法是居中展示，使用h标签<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span><br></code></pre></td></tr></table></figure><h3 id="给改文字大小"><a href="#给改文字大小" class="headerlink" title="给改文字大小"></a>给改文字大小</h3><p>使用font标签，字体使用face，颜色使用color，尺寸使用size。<br>颜色可以使用字母比如red，black，blue，yellow等，也可以是十六进制表示比如#0000ff或者#F025AB等等<br>size 是从1到7，数字越小字体越小，浏览器默认是3<br>这几个属性可以都设置，也可以只设置其中的1到2个</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;font <span class="hljs-attribute">face</span>=<span class="hljs-string">&quot;黑体&quot;</span>&gt;我是黑体字体&lt;/font&gt;<br>&lt;font <span class="hljs-attribute">face</span>=<span class="hljs-string">&quot;微软雅黑&quot;</span>&gt;我是微软雅黑字体&lt;/font&gt;<br>&lt;font <span class="hljs-attribute">face</span>=<span class="hljs-string">&quot;STCAIYUN&quot;</span>&gt;我是华文彩字体云&lt;/font&gt;<br>&lt;font <span class="hljs-attribute">color</span>=red <span class="hljs-attribute">size</span>=3 <span class="hljs-attribute">face</span>=<span class="hljs-string">&quot;黑体&quot;</span>&gt;我是红色，黑色字体，大小是3&lt;/font&gt;<br>&lt;font <span class="hljs-attribute">color</span>=#F025AB <span class="hljs-attribute">size</span>=5&gt;我的颜色是#F025AB，大小是5&lt;/font&gt;<br><br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -27,7 +103,7 @@
     <link href="/2024/04/24/ganwu10/"/>
     <url>/2024/04/24/ganwu10/</url>
     
-    <content type="html"><![CDATA[<h3 id="怎么才能快乐"><a href="#怎么才能快乐" class="headerlink" title="怎么才能快乐"></a>怎么才能快乐</h3><p>不以物喜，不以己悲。因为外物而带来的快乐是会失去的，喜悦要来源于自己的内心。对我而言，战胜一个又一个困难的过程是有意识的，可能这件事我不是很感兴趣，但是令我开心的是解决问题的过程。我知道自己现在无法解决这个问题，但是慢慢的去做，在做的过程中我发现自己爱上了这个感觉，即使是一点点进步我就会产生一点点发自内心的喜悦。<br>一呼一吸，一言一行。花开花落，云卷云舒。感受过程，提升自己。一句从小我听到的话，隐含着巨大的道理——“每天进步一点点”,这句话在我的小学校园的门口就能看到。进步是令人快乐的，这种快乐不是来源与外物，而是来源于自己的内心。胡适先生为“中国科学社”写社歌，最后几句歌词就是:我们唱天行有常°，我们唱致知穷理。怕什么真理无穷，进一寸有一寸的欢喜。1934年，他写《“九·一八”的第三周年纪念告全国的青年》。其中说:“努力一分，就有一分的效果。努力百分，就有百分的效果。”<br>以勇气来迎接人生的每一个挑战。这个挑战不一定很宏大，可能它就是今天我要8点起床，晚上11点睡觉。可能就是我今天要做一个俯卧撑，跑一圈操场。改变总是很微小的，即使是写一个project也是从新建文件开始的。积极向上，把每一次挑战看作一次进步的机会，即使失败了又有什么问题，我想这个过程中一定是快乐的。苦难不值得被歌颂，认清苦难的现实和战胜苦难的勇气才值得被歌颂。<br>踏上自我成长的道路，每一个过程都是令人快乐的。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="怎么才能快乐？"><a href="#怎么才能快乐？" class="headerlink" title="怎么才能快乐？"></a>怎么才能快乐？</h3><p>不以物喜，不以己悲。因为外物而带来的快乐是会失去的，喜悦要来源于自己的内心。对我而言，战胜一个又一个困难的过程是有意思的，可能这件事我不是很感兴趣，但是令我开心的是解决问题的过程。我知道自己现在无法解决这个问题，但是慢慢的去做，在做的过程中我发现自己爱上了这个感觉，爱上了解决问题的过程，就像米哈里所说的心流状态，即使是一点点进步我就会产生一点点发自内心的喜悦。</p><p>一呼一吸，一言一行。花开花落，云卷云舒。感受过程，提升自己。一句我从小听到的话，一句很普通的话，隐含着巨大的道理——“每天进步一点点”,这句话在我曾经就读的小学校园的门口就能看到。进步是令人快乐的，这种快乐不是来源于外物，而是来源于自己的内心。胡适先生为“中国科学社”写社歌，最后几句歌词就是:我们唱天行有常，我们唱致知穷理。怕什么真理无穷，进一寸有一寸的欢喜。1934年，他写《“九·一八”的第三周年纪念告全国的青年》。其中说:“努力一分，就有一分的效果。努力百分，就有百分的效果。”</p><p>以勇气来迎接人生的每一个挑战。这个挑战不一定很宏大，可能它就是今天我要8点起床，晚上11点睡觉，可能就是我今天要做一个俯卧撑，跑一圈操场，一个普普通通的挑战。改变总是开始于微小的，即使是写一个project也是从新建文件开始的。积极向上，把每一次挑战看作一次进步的机会，即使失败了又有什么问题，我想这个过程中一定是快乐的。苦难不值得被歌颂，认清苦难的现实和战胜苦难的勇气才值得被歌颂。</p><p>踏上自我成长的道路，每一个过程都是令人快乐的。</p><h3 id="今天冲浪的感受。"><a href="#今天冲浪的感受。" class="headerlink" title="今天冲浪的感受。"></a>今天冲浪的感受。</h3>]]></content>
     
     
     
@@ -42,7 +118,7 @@
   
   
   <entry>
-    <title>图像处理</title>
+    <title>图像处理-数据预处理</title>
     <link href="/2024/04/23/deeplearnbook3/"/>
     <url>/2024/04/23/deeplearnbook3/</url>
     
@@ -103,7 +179,7 @@
     <link href="/2024/04/22/deeplearnpaper2/"/>
     <url>/2024/04/22/deeplearnpaper2/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="使用VGG来实现垃圾的40分类"><a href="#使用VGG来实现垃圾的40分类" class="headerlink" title="使用VGG来实现垃圾的40分类"></a>使用VGG来实现垃圾的40分类</h3>]]></content>
     
     
     
