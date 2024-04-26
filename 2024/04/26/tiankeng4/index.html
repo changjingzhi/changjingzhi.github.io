@@ -16,24 +16,24 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta name="description" content="《定风波》    三月七日，沙湖道中遇雨。雨具先去，同行皆狼狈，余独不觉。已而遂晴，故作此词。   莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。   料峭春风吹酒醒，微冷，山头斜照却相迎。回首向来萧瑟处，归去，也无风雨也无晴。       译文：三月七日，在沙湖道上赶上了下雨。雨具先前被带走了，同行的人都觉得很狼狈，只有我不这么觉得。过了一会儿天晴了，就创作了这首词。不">
+    <meta name="description" content="背景介绍今天想重新复写一下模型结构，让模型能够自适应的去适应在不同的数据集，实现软编码。首先介绍一下硬编码参考博客硬编码是指将具体的数值、路径、参数等直接写入程序代码中，而不通过变量或配置文件来表示。这样的做法使得程序中的这些数值和参数变得固定，不容易修改，且缺乏灵活性。硬编码的值通常被称为”魔法数”（Magic Numbers）或”魔法字符串”，因为它们没有直观的含义，只能通过查看代码来了解。例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《定风波》">
-<meta property="og:url" content="https://chenlidbk.xyz/2024/04/25/juzhi2/index.html">
+<meta property="og:title" content="填坑——软编码">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/04/26/tiankeng4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="《定风波》    三月七日，沙湖道中遇雨。雨具先去，同行皆狼狈，余独不觉。已而遂晴，故作此词。   莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。   料峭春风吹酒醒，微冷，山头斜照却相迎。回首向来萧瑟处，归去，也无风雨也无晴。       译文：三月七日，在沙湖道上赶上了下雨。雨具先前被带走了，同行的人都觉得很狼狈，只有我不这么觉得。过了一会儿天晴了，就创作了这首词。不">
+<meta property="og:description" content="背景介绍今天想重新复写一下模型结构，让模型能够自适应的去适应在不同的数据集，实现软编码。首先介绍一下硬编码参考博客硬编码是指将具体的数值、路径、参数等直接写入程序代码中，而不通过变量或配置文件来表示。这样的做法使得程序中的这些数值和参数变得固定，不容易修改，且缺乏灵活性。硬编码的值通常被称为”魔法数”（Magic Numbers）或”魔法字符串”，因为它们没有直观的含义，只能通过查看代码来了解。例">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T11:00:37.000Z">
-<meta property="article:modified_time" content="2024-04-25T11:23:56.787Z">
+<meta property="article:published_time" content="2024-04-26T04:56:01.000Z">
+<meta property="article:modified_time" content="2024-04-26T05:21:31.436Z">
 <meta property="article:author" content="chenli">
-<meta property="article:tag" content="句子">
+<meta property="article:tag" content="填坑">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>《定风波》 - Hexo</title>
+  <title>填坑——软编码 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="《定风波》"></span>
+            <span id="subtitle" data-typed-text="填坑——软编码"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-25 19:00" pubdate>
-          2024年4月25日 晚上
+        <time datetime="2024-04-26 12:56" pubdate>
+          2024年4月26日 下午
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          277 字
+          638 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -281,22 +281,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">《定风波》</h1>
+            <h1 id="seo-header">填坑——软编码</h1>
             
             
               <div class="markdown-body">
                 
-                <center> <font size = 6>《定风波》 <font></center>
-  三月七日，沙湖道中遇雨。雨具先去，同行皆狼狈，余独不觉。已而遂晴，故作此词。
-  莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。
-  料峭春风吹酒醒，微冷，山头斜照却相迎。回首向来萧瑟处，归去，也无风雨也无晴。
+                <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>今天想重新复写一下模型结构，让模型能够自适应的去适应在不同的数据集，实现软编码。<br>首先介绍一下硬编码<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44943389/article/details/134928228">参考博客</a><br>硬编码是指将具体的数值、路径、参数等直接写入程序代码中，而不通过变量或配置文件来表示。这样的做法使得程序中的这些数值和参数变得固定，不容易修改，且缺乏灵活性。硬编码的值通常被称为”魔法数”（Magic Numbers）或”魔法字符串”，因为它们没有直观的含义，只能通过查看代码来了解。<br>例如，以下是一个硬编码的示例，其中数值 10 直接出现在代码中：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss">for <span class="hljs-selector-tag">i</span> in <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Iteration&quot;</span>, i)<br></code></pre></td></tr></table></figure>
+<p>软编码（Softcoding）：</p>
+<p>软编码是指通过变量、配置文件、参数等方式将具体数值或参数抽象出来，而不是直接写入代码。通过软编码，程序变得更加灵活，可以更容易地进行修改和维护，且适应性更强。</p>
+<p>使用软编码的例子：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">iterations</span> = <span class="hljs-number">10</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">iterations</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Iteration&quot;</span>, i)<br></code></pre></td></tr></table></figure>
+<p>硬编码：将具体数值、参数等直接写入程序代码中，缺乏灵活性，不易修改和维护。</p>
+<p>软编码：通过变量、配置文件等方式将数值或参数抽象出来，使得程序更具灵活性，易于修改和维护。</p>
+<h2 id="我的解决办法"><a href="#我的解决办法" class="headerlink" title="我的解决办法"></a>我的解决办法</h2><ol>
+<li><p>在foward中进行重新赋值（有问题），问题就是没有前向训练过程中都重新创建了一个linear，这个linear层的参数没有训练，相当于随机（注：只是我猜的，没有验证，挖个坑在这）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">IntegratedNet</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>(IntegratedNet, self).__init__()<br>        self.linear = <span class="hljs-literal">None</span> <span class="hljs-comment"># 在初始类中先第一一个self.linear=None ，而后在forward中重新定义</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-keyword">if</span> self.linear <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            self.linear = nn.Linear(in_features=x.size(<span class="hljs-number">1</span>), out_features=<span class="hljs-number">1</span>)<br>        <br>        x = self.linear(x)<br>        <span class="hljs-keyword">return</span> x<br><br><span class="hljs-comment"># 创建模型实例</span><br>model = IntegratedNet()<br><br><span class="hljs-comment"># 创建输入数据</span><br>x = torch.randn(<span class="hljs-number">2</span>, <span class="hljs-number">512</span>, <span class="hljs-number">64</span>)<br><br><span class="hljs-comment"># 前向传播</span><br>output = model(x)<br><br><span class="hljs-comment"># 打印输出的形状</span><br><span class="hljs-built_in">print</span>(output.size())<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>第二种解决方法在__init__中留下一个接口，在调用这个模型时直接重新赋值。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">class</span> IntegratedNet(nn.Module):<br>    <span class="hljs-attribute">def</span> __init__(self, input_size=<span class="hljs-number">3</span>, mlp_dim=<span class="hljs-number">512</span>, mlp_ratio=<span class="hljs-number">4</span>,<br>                 <span class="hljs-attribute">dims</span>=[<span class="hljs-number">64</span>, <span class="hljs-number">128</span>, <span class="hljs-number">320</span>, <span class="hljs-number">512</span>],in_feature=<span class="hljs-number">64</span>):<br>        <span class="hljs-attribute">super</span>(IntegratedNet, self).__init__()<br><br><span class="hljs-attribute">model</span> = IntegratedNet(input_size=<span class="hljs-number">2</span>,in_feature=<span class="hljs-number">209</span>)  # 全部重新赋值，实现<br><span class="hljs-attribute">device</span> = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> if torch.cuda.is_available() else <span class="hljs-string">&quot;cpu&quot;</span>)<br><span class="hljs-attribute">model</span> = model.to(device)<br><br><span class="hljs-comment"># 打印模型结构摘要</span><br><span class="hljs-attribute">summary</span>(model, (<span class="hljs-number">2</span>, <span class="hljs-number">33</span>, <span class="hljs-number">3333</span>))<br><br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-<p><font size = 3><font>译文：三月七日，在沙湖道上赶上了下雨。雨具先前被带走了，同行的人都觉得很狼狈，只有我不这么觉得。过了一会儿天晴了，就创作了这首词。不用注意那穿林打叶的雨声，不妨一边吟咏长啸着，一边悠然地行走。竹杖和草鞋轻捷得胜过骑马，有什么可怕的？一身蓑衣任凭风吹雨打，照样过我的一生。春风微凉，将我的酒意吹醒，寒意初上，山头初晴的斜阳却应时相迎。回头望一眼走过来遇到风雨的地方，回去吧，对我来说，既无所谓风雨，也无所谓天晴。</p>
+</li>
+<li><p>重新构建网络结构，加入自适应池化层。</p>
+</li>
+</ol>
 
                 
               </div>
@@ -309,7 +317,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8F%A5%E5%AD%90/" class="print-no-link">#句子</a>
+        <a href="/tags/%E5%A1%AB%E5%9D%91/" class="print-no-link">#填坑</a>
       
     </div>
   
@@ -321,8 +329,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>《定风波》</div>
-      <div>https://chenlidbk.xyz/2024/04/25/juzhi2/</div>
+      <div>填坑——软编码</div>
+      <div>https://chenlidbk.xyz/2024/04/26/tiankeng4/</div>
     </div>
     <div class="license-meta">
       
@@ -334,7 +342,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月25日</div>
+          <div>2024年4月26日</div>
         </div>
       
       
@@ -366,18 +374,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/26/tiankeng4/" title="填坑——软编码">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">填坑——软编码</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/25/juzhi1/" title="喜欢的一些句子">
-                        <span class="hidden-mobile">喜欢的一些句子</span>
+                      <a href="/2024/04/25/juzhi2/" title="《定风波》">
+                        <span class="hidden-mobile">《定风波》</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
