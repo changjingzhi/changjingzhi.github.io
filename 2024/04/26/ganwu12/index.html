@@ -16,24 +16,24 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据预处理 傅里叶变换 （时间域变换为频域） 归一化（零归一化，批归一化，层归一化）  激活函数 startRule ReLU  模型架构 编码器——解码器 残差连接（基于ResNet） MLP   损失函数 交叉熵损失函数  优化函数 SGD RMSprop  评估指标 ACC pression Recall F1-score 混淆矩阵  数据输入 双输入卷积神经网络 （傅里叶信号+归一化信号）">
+    <meta name="description" content="当我感觉烦躁时我该怎么办？感到烦躁是自己告诉自己应该休息了，大脑到达负荷了。出去走走，小睡一会，放松放松。精力越是消极、情绪越低落，表现就越糟糕；相反，精力越积极、情绪越高涨，表现也会越高效。精力主要来自体能、思维、意志、情感  锻炼，适当的锻炼会对精力有很大的帮助，间歇性训练，每一次哪怕只是维持1分钟左右，都会产生出乎意料的积极影响。俯卧撑微行为计划 呼吸，恢复精力时有技巧的，三次一组吸气，三次">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论文思路">
-<meta property="og:url" content="https://chenlidbk.xyz/2024/04/25/paper_idear/index.html">
+<meta property="og:title" content="随笔12">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/04/26/ganwu12/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数据预处理 傅里叶变换 （时间域变换为频域） 归一化（零归一化，批归一化，层归一化）  激活函数 startRule ReLU  模型架构 编码器——解码器 残差连接（基于ResNet） MLP   损失函数 交叉熵损失函数  优化函数 SGD RMSprop  评估指标 ACC pression Recall F1-score 混淆矩阵  数据输入 双输入卷积神经网络 （傅里叶信号+归一化信号）">
+<meta property="og:description" content="当我感觉烦躁时我该怎么办？感到烦躁是自己告诉自己应该休息了，大脑到达负荷了。出去走走，小睡一会，放松放松。精力越是消极、情绪越低落，表现就越糟糕；相反，精力越积极、情绪越高涨，表现也会越高效。精力主要来自体能、思维、意志、情感  锻炼，适当的锻炼会对精力有很大的帮助，间歇性训练，每一次哪怕只是维持1分钟左右，都会产生出乎意料的积极影响。俯卧撑微行为计划 呼吸，恢复精力时有技巧的，三次一组吸气，三次">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T04:16:48.000Z">
-<meta property="article:modified_time" content="2024-04-26T07:24:53.842Z">
+<meta property="article:published_time" content="2024-04-26T08:59:32.000Z">
+<meta property="article:modified_time" content="2024-04-27T06:48:12.021Z">
 <meta property="article:author" content="chenli">
-<meta property="article:tag" content="填坑">
+<meta property="article:tag" content="感悟">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>论文思路 - Hexo</title>
+  <title>随笔12 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="论文思路"></span>
+            <span id="subtitle" data-typed-text="随笔12"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-25 12:16" pubdate>
-          2024年4月25日 中午
+        <time datetime="2024-04-26 16:59" pubdate>
+          2024年4月26日 下午
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          231 字
+          566 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -281,46 +281,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">论文思路</h1>
+            <h1 id="seo-header">随笔12</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ol>
-<li>傅里叶变换 （时间域变换为频域）</li>
-<li>归一化（零归一化，批归一化，层归一化）</li>
+                <h2 id="当我感觉烦躁时我该怎么办？"><a href="#当我感觉烦躁时我该怎么办？" class="headerlink" title="当我感觉烦躁时我该怎么办？"></a>当我感觉烦躁时我该怎么办？</h2><p>感到烦躁是自己告诉自己应该休息了，大脑到达负荷了。出去走走，小睡一会，放松放松。<br>精力越是消极、情绪越低落，表现就越糟糕；相反，精力越积极、情绪越高涨，表现也会越高效。精力主要来自体能、思维、意志、情感</p>
+<ol>
+<li>锻炼，适当的锻炼会对精力有很大的帮助，间歇性训练，每一次哪怕只是维持1分钟左右，都会产生出乎意料的积极影响。俯卧撑微行为计划</li>
+<li>呼吸，恢复精力时有技巧的，三次一组吸气，三次一组吸气、也就是，把一次吸气分为三次，把呼气分成六次，这样通过深度、平静、有节奏地呼吸会激发精力，带来放松、精力不够的时候可以尝试做一下这个动作。</li>
+<li>食物，早餐非常重要，它不仅能提高血糖水平，还能强力推动机体新陈代谢。</li>
+<li>充足的睡眠，充足的睡眠是最重要的精力恢复来源。中午小睡一会，能快速恢复精力。随时准备20分钟的小睡。</li>
+<li>情绪，满足和安全感的活动都能够激发正面情感、能够恢复精力，但是很多人会觉得看电视，拿着Ipad追剧，看综艺也能带来满足感，看电视带来了只是暂时的恢复，时间长了、反而让人消耗精力。要去多做一些能够有社交性的活动，比如骑自行车、参加读书会、听音乐会等等，因为可以和其它人交流，这样满足感会时间会持续的长一些。</li>
+<li>思维精力恢复的关键呢，就是让大脑能有间歇地休息。创造性需要投入和抽离、思考和放松、活跃与休息之间有节奏的交替进行。</li>
 </ol>
-<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><ol>
-<li>startRule</li>
-<li>ReLU</li>
+<h2 id="我的精力恢复方式"><a href="#我的精力恢复方式" class="headerlink" title="我的精力恢复方式"></a>我的精力恢复方式</h2><ol>
+<li>抖腿</li>
+<li>小睡</li>
+<li>做一个俯卧撑。</li>
+<li>吃点坚果</li>
+<li>多喝水</li>
 </ol>
-<h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><ol>
-<li>编码器——解码器</li>
-<li>残差连接（基于ResNet）</li>
-<li>MLP</li>
-<li></li>
-</ol>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><ol>
-<li>交叉熵损失函数</li>
-</ol>
-<h2 id="优化函数"><a href="#优化函数" class="headerlink" title="优化函数"></a>优化函数</h2><ol>
-<li>SGD</li>
-<li>RMSprop</li>
-</ol>
-<h2 id="评估指标"><a href="#评估指标" class="headerlink" title="评估指标"></a>评估指标</h2><ol>
-<li>ACC</li>
-<li>pression</li>
-<li>Recall</li>
-<li>F1-score</li>
-<li>混淆矩阵</li>
-</ol>
-<h2 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h2><ol>
-<li>双输入卷积神经网络 （傅里叶信号+归一化信号）</li>
-</ol>
-<h2 id="实验对比设置"><a href="#实验对比设置" class="headerlink" title="实验对比设置"></a>实验对比设置</h2><ol>
-<li>横向实验： 3个数据集，其中包含为1个私有数据集，2个公开数据集。（注：私有数据集中的数据使用不同仪器采集，可以分为很多类。公开数据集本身为一个数据集，但是有两个阶段数据，一个为包含了伪迹信号的数据，一个为未包含伪迹信号的数据集。）</li>
-<li>纵向实验: 模型对比，AlexNet，CNN，googleNet，shuffleNet，ResNet（注：对比模型不足。）</li>
-</ol>
+<p>你对自己从事一生的事业了解之匮乏是难以想象的。”每个人都真正会从事一生的事业，那就是：学习和成长！</p>
 
                 
               </div>
@@ -333,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A1%AB%E5%9D%91/" class="print-no-link">#填坑</a>
+        <a href="/tags/%E6%84%9F%E6%82%9F/" class="print-no-link">#感悟</a>
       
     </div>
   
@@ -345,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>论文思路</div>
-      <div>https://chenlidbk.xyz/2024/04/25/paper_idear/</div>
+      <div>随笔12</div>
+      <div>https://chenlidbk.xyz/2024/04/26/ganwu12/</div>
     </div>
     <div class="license-meta">
       
@@ -358,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月25日</div>
+          <div>2024年4月26日</div>
         </div>
       
       
@@ -390,9 +372,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/25/ganwu11/" title="随笔11">
+                      <a href="/2024/04/26/tiankeng5/" title="python——flask后端代码开发">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">随笔11</span>
+                        <span class="hidden-mobile">python——flask后端代码开发</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -400,8 +382,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/24/tiankeng3/" title="python自定义包的层级引用">
-                        <span class="hidden-mobile">python自定义包的层级引用</span>
+                      <a href="/2024/04/26/tiankeng4/" title="填坑——软编码">
+                        <span class="hidden-mobile">填坑——软编码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
