@@ -16,15 +16,15 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据预处理 傅里叶变换 （时间域变换为频域） 归一化（零归一化，批归一化，层归一化）  激活函数 startRule ReLU  模型架构 编码器——解码器 残差连接（基于ResNet） MLP 双输入卷积神经网络。  损失函数 交叉熵损失函数  优化函数 SGD RMSprop  评估指标 ACC pression Recall F1-score 混淆矩阵  数据输入 双输入卷积神经网络 （傅里">
+    <meta name="description" content="目前的数据预处理有This may be time-domain features(时域特征)45——2021年  absolute band power(绝对功率谱) Discrete Wavelet Transform (离散小波变换)37-2022-IEEE permutation entropy (排列熵) or spectral entropy (熵谱)[21-2021-Complexi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论文思路">
-<meta property="og:url" content="https://chenlidbk.xyz/2024/04/25/paper_idear/index.html">
+<meta property="og:title" content="论文思路——数据预处理">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/04/28/paper-idear2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数据预处理 傅里叶变换 （时间域变换为频域） 归一化（零归一化，批归一化，层归一化）  激活函数 startRule ReLU  模型架构 编码器——解码器 残差连接（基于ResNet） MLP 双输入卷积神经网络。  损失函数 交叉熵损失函数  优化函数 SGD RMSprop  评估指标 ACC pression Recall F1-score 混淆矩阵  数据输入 双输入卷积神经网络 （傅里">
+<meta property="og:description" content="目前的数据预处理有This may be time-domain features(时域特征)45——2021年  absolute band power(绝对功率谱) Discrete Wavelet Transform (离散小波变换)37-2022-IEEE permutation entropy (排列熵) or spectral entropy (熵谱)[21-2021-Complexi">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T04:16:48.000Z">
-<meta property="article:modified_time" content="2024-04-29T01:44:13.659Z">
+<meta property="article:published_time" content="2024-04-28T13:49:52.000Z">
+<meta property="article:modified_time" content="2024-04-29T02:19:45.790Z">
 <meta property="article:author" content="chenli">
 <meta property="article:tag" content="填坑">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>论文思路 - Hexo</title>
+  <title>论文思路——数据预处理 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="论文思路"></span>
+            <span id="subtitle" data-typed-text="论文思路——数据预处理"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-25 12:16" pubdate>
-          2024年4月25日 中午
+        <time datetime="2024-04-28 21:49" pubdate>
+          2024年4月28日 晚上
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          338 字
+          222 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -281,52 +281,32 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">论文思路</h1>
+            <h1 id="seo-header">论文思路——数据预处理</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ol>
-<li>傅里叶变换 （时间域变换为频域）</li>
-<li>归一化（零归一化，批归一化，层归一化）</li>
+                <h2 id="目前的数据预处理有"><a href="#目前的数据预处理有" class="headerlink" title="目前的数据预处理有"></a>目前的数据预处理有</h2><p>This may be time-domain features(时域特征)<a href="dx.doi.org/10.3390/diagnostics11081437">45——2021年</a></p>
+<ol>
+<li>absolute band power(绝对功率谱)</li>
+<li>Discrete Wavelet Transform (离散小波变换)<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9857825">37-2022-IEEE</a></li>
+<li>permutation entropy (排列熵) or spectral entropy (熵谱)[21-2021-Complexity of EEG dynamics for early diagnosis of Alzheimer’s disease using permutation entropy neuromarker,’’ C]</li>
+<li>coherence anaylysis features (相干性分析) such as spectrall coherece(光谱相干性)</li>
+<li>RBP (注：按照下面的频率划分，the shape of data is [T , B ,C]&#x3D;[T, 5, C]，Delta: 0.5 – 4 Hz Theta: 4 – 8 Hz Alpha: 8 – 13 Hz Beta: 13-25 Hz Gamma: 25-45 Hz,或许这个数据预处理的方法会生效 )</li>
+<li>spectral coherence connectivity (光谱相干性，光谱相干性建立在PSD，PSD是功率谱密度)</li>
 </ol>
-<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><ol>
-<li>startRule</li>
-<li>ReLU</li>
+<h2 id="数据预处理组合思路"><a href="#数据预处理组合思路" class="headerlink" title="数据预处理组合思路"></a>数据预处理组合思路</h2><ol>
+<li>Morlet Wavelet Transform ——&gt; RBP</li>
+<li>Welch PSD ——&gt; SSC</li>
 </ol>
-<h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><ol>
-<li>编码器——解码器</li>
-<li>残差连接（基于ResNet）</li>
-<li>MLP</li>
-<li>双输入卷积神经网络。</li>
+<h2 id="需要注意的前提知识。"><a href="#需要注意的前提知识。" class="headerlink" title="需要注意的前提知识。"></a>需要注意的前提知识。</h2><ol>
+<li>AD patients may exhaibit changes in the EEG signal, such as reduced(减少) alpha power and increased (增加) theta power.<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S1388245721005976">39-2021-Clinical Neurophysiology-3区 </a><br>It can be visually observed that AD group has lower delta connectivity than CN group in multiple brain locations.This finding is supported by the literature  [53-2016]<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1388245715009839()">https://www.sciencedirect.com/science/article/pii/S1388245715009839()</a></li>
+<li>Train, validation and test sets are created.</li>
+<li>The time frequency transforms and the feature extraction steps were implemented in Python 3.10 using the MNE library.</li>
+<li>GFlops (计算量)</li>
+<li>hyperparameters (超参数)</li>
 </ol>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><ol>
-<li>交叉熵损失函数</li>
-</ol>
-<h2 id="优化函数"><a href="#优化函数" class="headerlink" title="优化函数"></a>优化函数</h2><ol>
-<li>SGD</li>
-<li>RMSprop</li>
-</ol>
-<h2 id="评估指标"><a href="#评估指标" class="headerlink" title="评估指标"></a>评估指标</h2><ol>
-<li>ACC</li>
-<li>pression</li>
-<li>Recall</li>
-<li>F1-score</li>
-<li>混淆矩阵</li>
-</ol>
-<h2 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h2><ol>
-<li>双输入卷积神经网络 （傅里叶信号+归一化信号）</li>
-</ol>
-<h2 id="实验对比设置"><a href="#实验对比设置" class="headerlink" title="实验对比设置"></a>实验对比设置</h2><ol>
-<li>横向实验： 3个数据集，其中包含为1个私有数据集，2个公开数据集。（注：私有数据集中的数据使用不同仪器采集，可以分为很多类。公开数据集本身为一个数据集，但是有两个阶段数据，一个为包含了伪迹信号的数据，一个为未包含伪迹信号的数据集。）</li>
-<li>纵向实验: 模型对比，AlexNet，CNN，googleNet，shuffleNet，ResNet（注：对比模型不足。）</li>
-</ol>
-<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><ol>
-<li>双数据输入，对数据采用不同的数据预处理，比如FFT(傅里叶变换)，小波变换，零归一化</li>
-<li>在公开数据集上验证处理不同的数据预处理方法对实验结果的好坏。</li>
-<li>对比私有数据集，验证自己模型的稳健性（鲁棒性）。</li>
-<li>使用图像处理的模型结构。</li>
-</ol>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="怎么计算模型的计算量。"><a href="#怎么计算模型的计算量。" class="headerlink" title="怎么计算模型的计算量。"></a>怎么计算模型的计算量。</h3><h2 id="看论文的心态"><a href="#看论文的心态" class="headerlink" title="看论文的心态"></a>看论文的心态</h2><p>Because it is an English paper, there is a kind of resistance. Take your time.<br>由于是英文论文，有种抗拒的心态。慢慢看吧。</p>
 
                 
               </div>
@@ -351,8 +331,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>论文思路</div>
-      <div>https://chenlidbk.xyz/2024/04/25/paper_idear/</div>
+      <div>论文思路——数据预处理</div>
+      <div>https://chenlidbk.xyz/2024/04/28/paper-idear2/</div>
     </div>
     <div class="license-meta">
       
@@ -364,7 +344,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月25日</div>
+          <div>2024年4月28日</div>
         </div>
       
       
@@ -396,18 +376,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/25/ganwu11/" title="随笔11">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">随笔11</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/24/tiankeng3/" title="python自定义包的层级引用">
-                        <span class="hidden-mobile">python自定义包的层级引用</span>
+                      <a href="/2024/04/28/juzhi3/" title="兰亭集序">
+                        <span class="hidden-mobile">兰亭集序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
