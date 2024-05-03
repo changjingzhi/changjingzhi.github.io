@@ -16,13 +16,15 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="参考文献github上的代码动手强化学习tensorflow实现的强化学习pytorch+gym实现的flyappybird 开篇（广义的讲）强化学习是机器通过与环境交互来实现目标的一种计算方法。机器和环境的一轮交互是指，机器在环境的一个状态下做一个动作决策，把这个动作作用到环境当中，这个环境发生相应的改变并且将相应的奖励反馈和下一轮状态传回机器。这种交互是迭代进行的，机器的目标是最大化在多轮交互">
+<meta property="og:type" content="article">
 <meta property="og:title" content="填坑——强化学习——使用智能体来玩游戏">
 <meta property="og:url" content="https://chenlidbk.xyz/2024/04/30/tiankeng6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考文献github上的代码动手强化学习tensorflow实现的强化学习pytorch+gym实现的flyappybird 开篇（广义的讲）强化学习是机器通过与环境交互来实现目标的一种计算方法。机器和环境的一轮交互是指，机器在环境的一个状态下做一个动作决策，把这个动作作用到环境当中，这个环境发生相应的改变并且将相应的奖励反馈和下一轮状态传回机器。这种交互是迭代进行的，机器的目标是最大化在多轮交互">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-30T11:28:01.000Z">
-<meta property="article:modified_time" content="2024-04-30T11:28:31.708Z">
+<meta property="article:modified_time" content="2024-05-02T10:10:15.387Z">
 <meta property="article:author" content="chenli">
 <meta property="article:tag" content="填坑">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          645 字
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          1 分钟
+          6 分钟
         
       </span>
     
@@ -284,7 +286,10 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://github.com/luozhiyun993/FlappyBird-PPO-pytorch">github上的代码</a><br><a target="_blank" rel="noopener" href="https://hrl.boyuai.com/chapter/">动手强化学习</a><br><a target="_blank" rel="noopener" href="https://github.com/alexzhuustc/gym-flappybird">tensorflow实现的强化学习</a><br><a target="_blank" rel="noopener" href="https://github.com/alexzhuustc/gym-flappybird">pytorch+gym实现的flyappybird</a></p>
+<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>（广义的讲）强化学习是机器通过与环境交互来实现目标的一种计算方法。机器和环境的一轮交互是指，机器在环境的一个状态下做一个动作决策，把这个动作作用到环境当中，这个环境发生相应的改变并且将相应的奖励反馈和下一轮状态传回机器。这种交互是迭代进行的，机器的目标是最大化在多轮交互过程中获得的累积奖励的期望。强化学习用智能体（agent）这个概念来表示做决策的机器。相比于有监督学习中的“模型”，强化学习中的“智能体”强调机器不但可以感知周围的环境信息，还可以通过做决策来直接改变这个环境，而不只是给出一些预测信号。<br>在每一轮交互中，智能体感知到环境目前所处的状态，经过自身的计算给出本轮的动作，将其作用到环境中；环境得到智能体的动作后，产生相应的即时奖励信号并发生相应的状态转移。智能体则在下一轮交互中感知到新的环境状态，依次类推。<br>在这个过程中，智能体有3种控制要素、即感知、决策和奖励<br>感知：智能体在某种程度上感知环境的状态，从而知道自己所处的现状。<br>决策： 智能体根据感知的现状计算出达到目标需要采取的动作的过程叫做决策。比如，针对当前棋盘决定下一颗落子的位置。<br>奖励： 环境根据状态和智能体采取的动作，产生一个标量信号作为奖励反馈。这个标量信号衡量智能体的好坏。（类似于在深度学习中的损失函数，）</p>
+<h2 id="游戏选择-FlappyBird"><a href="#游戏选择-FlappyBird" class="headerlink" title="游戏选择 FlappyBird"></a>游戏选择 FlappyBird</h2><p>flappy bird》是一款由来自越南的独立游戏开发者Dong Nguyen所开发的作品，游戏于2013年5月24日上线，并在2014年2月突然暴红。2014年2月，《Flappy Bird》被开发者本人从苹果及谷歌应用商店（Google Play）撤下。2014年8月份正式回归App Store，正式加入Flappy迷们期待已久的多人对战模式。游戏中玩家必须控制一只小鸟，跨越由各种不同长度水管所组成的障碍。</p>
+
                 
               </div>
             
