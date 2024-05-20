@@ -16,15 +16,15 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景介绍最近我们在研究如何将直接的模型部署在网站上面，所以我们打算写一个python工程来放置对模型部署，使用的flask来进行模型和前端的交互。大概思路是这样的，前端传入一个文件，经过flask传输到服务器，触发处理求取，模型处理完成后返回模型处理结果。增加功能是用户可以自己选择模型种类和通道种类。（用户可以自由选取自己想处理的通道对应的模型） 挖坑跨域http:&#x2F;&#x2F; (协议">
+    <meta name="description" content="看别人的代码是必要的 背景介绍最近我们在研究如何将直接的模型部署在网站上面，所以我们打算写一个python工程来放置对模型部署，使用的flask来进行模型和前端的交互。大概思路是这样的，前端传入一个文件，经过flask传输到服务器，触发处理求取，模型处理完成后返回模型处理结果。增加功能是用户可以自己选择模型种类和通道种类。（用户可以自由选取自己想处理的通道对应的模型） 挖坑世界上没有技术驱动的公司">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python——flask后端代码开发">
 <meta property="og:url" content="https://chenlidbk.xyz/2024/04/26/tiankeng5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="背景介绍最近我们在研究如何将直接的模型部署在网站上面，所以我们打算写一个python工程来放置对模型部署，使用的flask来进行模型和前端的交互。大概思路是这样的，前端传入一个文件，经过flask传输到服务器，触发处理求取，模型处理完成后返回模型处理结果。增加功能是用户可以自己选择模型种类和通道种类。（用户可以自由选取自己想处理的通道对应的模型） 挖坑跨域http:&#x2F;&#x2F; (协议">
+<meta property="og:description" content="看别人的代码是必要的 背景介绍最近我们在研究如何将直接的模型部署在网站上面，所以我们打算写一个python工程来放置对模型部署，使用的flask来进行模型和前端的交互。大概思路是这样的，前端传入一个文件，经过flask传输到服务器，触发处理求取，模型处理完成后返回模型处理结果。增加功能是用户可以自己选择模型种类和通道种类。（用户可以自由选取自己想处理的通道对应的模型） 挖坑世界上没有技术驱动的公司">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-26T14:28:57.000Z">
-<meta property="article:modified_time" content="2024-04-27T14:15:33.600Z">
+<meta property="article:modified_time" content="2024-05-20T03:25:01.368Z">
 <meta property="article:author" content="chenli">
 <meta property="article:tag" content="填坑">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          207 字
+          686 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -286,8 +286,11 @@
             
               <div class="markdown-body">
                 
-                <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近我们在研究如何将直接的模型部署在网站上面，所以我们打算写一个python工程来放置对模型部署，使用的flask来进行模型和前端的交互。<br>大概思路是这样的，前端传入一个文件，经过flask传输到服务器，触发处理求取，模型处理完成后返回模型处理结果。<br>增加功能是用户可以自己选择模型种类和通道种类。（用户可以自由选取自己想处理的通道对应的模型）</p>
-<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>http:&#x2F;&#x2F; (协议)<br><a href="http://hostname(主机名)：port（端口号）">http://hostname(主机名)：port（端口号）</a> 这三个东西有一个不同就叫做跨域，跨域的本质是浏览器的安全保护。<br>怎么解决，后端允许跨域。</p>
+                <p>看别人的代码是必要的</p>
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近我们在研究如何将直接的模型部署在网站上面，所以我们打算写一个python工程来放置对模型部署，使用的flask来进行模型和前端的交互。<br>大概思路是这样的，前端传入一个文件，经过flask传输到服务器，触发处理求取，模型处理完成后返回模型处理结果。<br>增加功能是用户可以自己选择模型种类和通道种类。（用户可以自由选取自己想处理的通道对应的模型）</p>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>世界上没有技术驱动的公司，不论是google、facebook，还是阿里腾讯、阿里。技术不是源头，需求才是，因此一切技术问题，都要服从产品交付和市场反馈。所以，任何公司，都不可能以技术去驱动自身。人可以以技术驱动自己进步，但公司不行。以解决问题为导向，我需要解决什么问题，然后了解这个问题，有什么解决问题的思路。<br>资本富集的地方，人都得加班，加班的本质，是人跟着机器跑、人跟着钱跑；更为本质地说，资本富集的地方，人作为劳动力，也是资本的一种。即，人是资本而不是人本身。IT是工科，不是理科，和IT行业相似度最高的行业是盖楼房。真的，相似度相当惊人。<br>一个程序员，应该花80%的时间做代码设计、画UML图、画时序图，20%的时间写code和debug；菜鸟程序员的这个比例恰好是反的。一句话，不论这个需求有多紧急，你都一定要“想好再动手”；“想好”的标志就是设计文档写好了；文档一旦写好，写代码就是纯粹的无脑工作。<br>英语，很重要。能否使用英语查阅资料，是区分技术人员水平的重要指示之一。寄希望于“有人迟早会翻译成中文”的人是愚蠢的、是会被淘汰的。<br>工作要有热情。</p>
+<p>智商决定你的起点情商决定你能走多远爬多高；混职场，靠的是情商。情商高就是：别人愿意和你一起工作、你有问题的时候别人愿意帮你。智商有时候可以稍微弥补一下情商但不起决定性的作用。</p>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>http:&#x2F;&#x2F; (协议)<br><a href="http://hostname(主机名)：port（端口号）">http://hostname(主机名)：port（端口号）</a> 这三个东西有一个不同就叫做跨域，跨域的本质是浏览器的安全保护。<br>怎么解决，后端允许跨域。</p>
 
                 
               </div>
