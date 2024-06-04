@@ -18,22 +18,52 @@
   
     <meta name="description" content="神经元的工程实现使用了矩阵来作为工程学上的实现。线性代数研究向量空间和线性映射的理论。 内容 行列式 ，行列式的概念和基本性质 行列式按行（列）展开定理 。 矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。  向量 ，向量的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性代数1">
+<meta property="og:title" content="线性代数-行列式">
 <meta property="og:url" content="https://chenlidbk.xyz/2024/04/29/xianxindaishu/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="神经元的工程实现使用了矩阵来作为工程学上的实现。线性代数研究向量空间和线性映射的理论。 内容 行列式 ，行列式的概念和基本性质 行列式按行（列）展开定理 。 矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。  向量 ，向量的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls1.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls2.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls3.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls4.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls5.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls6.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls7.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls8.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls9.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls10.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls11.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls12.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls13.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls14.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls15.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls16.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls17.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls18.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls19.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls20.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls21.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls22.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls23.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls24.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls25.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls26.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls27.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls28.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-hls29.jpg">
 <meta property="article:published_time" content="2024-04-29T13:53:18.000Z">
-<meta property="article:modified_time" content="2024-05-03T12:18:51.224Z">
+<meta property="article:modified_time" content="2024-06-04T02:03:36.323Z">
 <meta property="article:author" content="chenli">
 <meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chenlidbk.xyz/pic/xxds-hls1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>线性代数1 - Hexo</title>
+  <title>线性代数-行列式 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="线性代数1"></span>
+            <span id="subtitle" data-typed-text="线性代数-行列式"></span>
           
         </div>
 
@@ -225,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          485 字
+          549 字
         
       </span>
     
@@ -281,7 +311,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">线性代数1</h1>
+            <h1 id="seo-header">线性代数-行列式</h1>
             
             
               <div class="markdown-body">
@@ -295,6 +325,161 @@
 <li>矩阵的特征值和特征向量， 矩阵的特征值和特征向量的概念、性质， 相似矩阵的概念及性质， 矩阵可相似对角化的充分必要条件及相似对角矩阵， 实对称矩阵的特征值、特征向量及其相似对角矩阵 。</li>
 <li>二次型 ，二次型及其矩阵表示，合同变换与合同矩阵，二次型的秩，惯性定理，二次型的标准形和规范形， 用正交变换和配方法化二次型为标准形，二次型及其矩阵的正定性。</li>
 </ol>
+<h2 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h2><p>包含十一个公式，行列式的计算公式。<br><img src="/pic/xxds-hls1.jpg" srcset="/img/loading.gif" lazyload alt="行列式公式"></p>
+<h3 id="公式三的例子"><a href="#公式三的例子" class="headerlink" title="公式三的例子"></a>公式三的例子</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls2.jpg" srcset="/img/loading.gif" lazyload alt="有规律的情况下，顺着规律相加减，会更简单"></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls3.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls4.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls5.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式四"><a href="#公式四" class="headerlink" title="公式四"></a>公式四</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls6.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls7.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls8.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls9.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls10.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls11.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls12.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls13.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式五"><a href="#公式五" class="headerlink" title="公式五"></a>公式五</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls14.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls15.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式六"><a href="#公式六" class="headerlink" title="公式六"></a>公式六</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls16.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls17.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式七"><a href="#公式七" class="headerlink" title="公式七"></a>公式七</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls18.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式八"><a href="#公式八" class="headerlink" title="公式八"></a>公式八</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls19.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式九"><a href="#公式九" class="headerlink" title="公式九"></a>公式九</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls20.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="公式十：范德蒙德行列式"><a href="#公式十：范德蒙德行列式" class="headerlink" title="公式十：范德蒙德行列式"></a>公式十：范德蒙德行列式</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls21.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls22.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls23.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls24.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="拉普拉斯行列式"><a href="#拉普拉斯行列式" class="headerlink" title="拉普拉斯行列式"></a>拉普拉斯行列式</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls25.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls26.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<h3 id="代数余子式"><a href="#代数余子式" class="headerlink" title="代数余子式"></a>代数余子式</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/xxds-hls27.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls28.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/xxds-hls29.jpg" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -319,7 +504,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>线性代数1</div>
+      <div>线性代数-行列式</div>
       <div>https://chenlidbk.xyz/2024/04/29/xianxindaishu/</div>
     </div>
     <div class="license-meta">

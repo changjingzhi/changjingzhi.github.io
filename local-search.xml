@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>填坑 —— 稀奇古怪的链接</title>
+    <link href="/2024/06/04/tiankeng11/"/>
+    <url>/2024/06/04/tiankeng11/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>美团技术团队<a href="https://tech.meituan.com/">链接</a></p></li><li><p>阮一峰的网络日志<a href="https://www.ruanyifeng.com/blog/"></a></p></li><li><p>wed前端导航<a href="https://www.alloyteam.com/nav/"></a></p></li><li><p>小傅哥bugstack虫洞栈<a href="https://bugstack.cn/"></a></p></li><li><p>酷壳-陈皓<a href="https://coolshell.cn/"></a></p></li><li></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>填坑</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>线性代数-矩阵</title>
+    <link href="/2024/06/04/xianxindaishu2/"/>
+    <url>/2024/06/04/xianxindaishu2/</url>
+    
+    <content type="html"><![CDATA[<p>矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。 </p><h2 id="矩阵-矩阵"><a href="#矩阵-矩阵" class="headerlink" title="矩阵+矩阵"></a>矩阵+矩阵</h2><p><img src="/pic/xxds-jz1.png" alt="矩阵相加"><br><img src="/pic/xxds-jz2.png"></p><h2 id="矩阵乘矩阵（前行乘后列）"><a href="#矩阵乘矩阵（前行乘后列）" class="headerlink" title="矩阵乘矩阵（前行乘后列）"></a>矩阵乘矩阵（前行乘后列）</h2><p><img src="/pic/xxds-jz3.png"><br><img src="/pic/xxds-jz4.jpg"></p><h2 id="矩阵的逆矩阵"><a href="#矩阵的逆矩阵" class="headerlink" title="矩阵的逆矩阵"></a>矩阵的逆矩阵</h2><p><img src="/pic/xxds-jz5.jpg"><br><img src="/pic/xxds-jz6.jpg"></p><h2 id="矩阵的行列式"><a href="#矩阵的行列式" class="headerlink" title="矩阵的行列式"></a>矩阵的行列式</h2><p><img src="/pic/xxds-jz7.jpg"></p><h2 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h2><p><img src="/pic/xxds-jz8.jpg"></p><h2 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h2><p><img src="/pic/xxds-jz9.jpg"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>线性代数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>How to be a Programmer ——如何做好一名程序员</title>
     <link href="/2024/06/03/yudubiji/"/>
     <url>/2024/06/03/yudubiji/</url>
@@ -631,11 +669,11 @@
   
   
   <entry>
-    <title>线性代数1</title>
+    <title>线性代数-行列式</title>
     <link href="/2024/04/29/xianxindaishu/"/>
     <url>/2024/04/29/xianxindaishu/</url>
     
-    <content type="html"><![CDATA[<p>神经元的工程实现使用了矩阵来作为工程学上的实现。线性代数研究向量空间和线性映射的理论。</p><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ol><li>行列式 ，行列式的概念和基本性质 行列式按行（列）展开定理 。</li><li>矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。 </li><li>向量 ，向量的概念， 向量的线性组合和线性表示， 向量组的线性相关与线性无关， 向量组的极， 大线性无关组， 等价向量组， 向量组的秩， 向量组的秩与矩阵的秩之间的关系， 向量的内积 ，线性无关向量组的的正交规范化方法 。</li><li>线性方程组 ，线性方程组的克拉默（Cramer）法则， 齐次线性方程组有非零解的充分必要条件， 非齐次线性方程组有解的充分必要条件， 线性方程组解的性质和解的结构， 齐次线性方程组的基础解系和通解， 非齐次线性方程组的通解 。</li><li>矩阵的特征值和特征向量， 矩阵的特征值和特征向量的概念、性质， 相似矩阵的概念及性质， 矩阵可相似对角化的充分必要条件及相似对角矩阵， 实对称矩阵的特征值、特征向量及其相似对角矩阵 。</li><li>二次型 ，二次型及其矩阵表示，合同变换与合同矩阵，二次型的秩，惯性定理，二次型的标准形和规范形， 用正交变换和配方法化二次型为标准形，二次型及其矩阵的正定性。</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>神经元的工程实现使用了矩阵来作为工程学上的实现。线性代数研究向量空间和线性映射的理论。</p><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ol><li>行列式 ，行列式的概念和基本性质 行列式按行（列）展开定理 。</li><li>矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。 </li><li>向量 ，向量的概念， 向量的线性组合和线性表示， 向量组的线性相关与线性无关， 向量组的极， 大线性无关组， 等价向量组， 向量组的秩， 向量组的秩与矩阵的秩之间的关系， 向量的内积 ，线性无关向量组的的正交规范化方法 。</li><li>线性方程组 ，线性方程组的克拉默（Cramer）法则， 齐次线性方程组有非零解的充分必要条件， 非齐次线性方程组有解的充分必要条件， 线性方程组解的性质和解的结构， 齐次线性方程组的基础解系和通解， 非齐次线性方程组的通解 。</li><li>矩阵的特征值和特征向量， 矩阵的特征值和特征向量的概念、性质， 相似矩阵的概念及性质， 矩阵可相似对角化的充分必要条件及相似对角矩阵， 实对称矩阵的特征值、特征向量及其相似对角矩阵 。</li><li>二次型 ，二次型及其矩阵表示，合同变换与合同矩阵，二次型的秩，惯性定理，二次型的标准形和规范形， 用正交变换和配方法化二次型为标准形，二次型及其矩阵的正定性。</li></ol><h2 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h2><p>包含十一个公式，行列式的计算公式。<br><img src="/pic/xxds-hls1.jpg" alt="行列式公式"></p><h3 id="公式三的例子"><a href="#公式三的例子" class="headerlink" title="公式三的例子"></a>公式三的例子</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls2.jpg" alt="有规律的情况下，顺着规律相加减，会更简单"></td></tr><tr><td align="left"><img src="/pic/xxds-hls3.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls4.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls5.jpg"></td></tr></tbody></table><h3 id="公式四"><a href="#公式四" class="headerlink" title="公式四"></a>公式四</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls6.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls7.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls8.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls9.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls10.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls11.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls12.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls13.jpg"></td></tr></tbody></table><h3 id="公式五"><a href="#公式五" class="headerlink" title="公式五"></a>公式五</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls14.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls15.jpg"></td></tr></tbody></table><h3 id="公式六"><a href="#公式六" class="headerlink" title="公式六"></a>公式六</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls16.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls17.jpg"></td></tr></tbody></table><h3 id="公式七"><a href="#公式七" class="headerlink" title="公式七"></a>公式七</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls18.jpg"></td></tr></tbody></table><h3 id="公式八"><a href="#公式八" class="headerlink" title="公式八"></a>公式八</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls19.jpg"></td></tr></tbody></table><h3 id="公式九"><a href="#公式九" class="headerlink" title="公式九"></a>公式九</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls20.jpg"></td></tr></tbody></table><h3 id="公式十：范德蒙德行列式"><a href="#公式十：范德蒙德行列式" class="headerlink" title="公式十：范德蒙德行列式"></a>公式十：范德蒙德行列式</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls21.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls22.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls23.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls24.jpg"></td></tr></tbody></table><h3 id="拉普拉斯行列式"><a href="#拉普拉斯行列式" class="headerlink" title="拉普拉斯行列式"></a>拉普拉斯行列式</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls25.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls26.jpg"></td></tr></tbody></table><h3 id="代数余子式"><a href="#代数余子式" class="headerlink" title="代数余子式"></a>代数余子式</h3><table><thead><tr><th align="left"></th></tr></thead><tbody><tr><td align="left"><img src="/pic/xxds-hls27.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls28.jpg"></td></tr><tr><td align="left"><img src="/pic/xxds-hls29.jpg"></td></tr></tbody></table>]]></content>
     
     
     
