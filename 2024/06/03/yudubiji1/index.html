@@ -16,37 +16,24 @@
   <meta name="author" content="chenli">
   <meta name="keywords" content="">
   
-    <meta name="description" content="矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。  矩阵+矩阵             矩阵乘矩阵（前行乘后列）             矩阵的逆矩阵             矩阵的行列式 矩阵的转置 矩阵的秩 公式乱炖">
+    <meta name="description" content="学会如何调试，简而言之就是Debug，真实的含义时通过检查来观察程序的运行，我的调试的方法是print，打印变量，但实际上python提供了调试窗口，只是我懒得使用罢了。调试方法的分类，一种是使用调试工具（IDE中的Debugger），一种是Printlining，对程序做一个临时的修改，比如使用print，一种使用日志。  学会如何修改错误，Logging（日志）是一种编写系统的方式，可以产生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性代数 —— 矩阵">
-<meta property="og:url" content="https://chenlidbk.xyz/2024/06/04/xianxindaishu2/index.html">
+<meta property="og:title" content="How to be a Programmer ——如何做好一名程序员">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/06/03/yudubiji1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。  矩阵+矩阵             矩阵乘矩阵（前行乘后列）             矩阵的逆矩阵             矩阵的行列式 矩阵的转置 矩阵的秩 公式乱炖">
+<meta property="og:description" content="学会如何调试，简而言之就是Debug，真实的含义时通过检查来观察程序的运行，我的调试的方法是print，打印变量，但实际上python提供了调试窗口，只是我懒得使用罢了。调试方法的分类，一种是使用调试工具（IDE中的Debugger），一种是Printlining，对程序做一个临时的修改，比如使用print，一种使用日志。  学会如何修改错误，Logging（日志）是一种编写系统的方式，可以产生">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz1.png">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz2.png">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz3.png">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz4.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz5.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz6.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz7.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz8.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz9.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz10.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz11.jpg">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/xxds-jz12.jpg">
-<meta property="article:published_time" content="2024-06-04T01:06:32.000Z">
-<meta property="article:modified_time" content="2024-06-06T11:10:31.484Z">
+<meta property="article:published_time" content="2024-06-03T04:51:55.000Z">
+<meta property="article:modified_time" content="2024-06-03T05:41:03.008Z">
 <meta property="article:author" content="chenli">
-<meta property="article:tag" content="线性代数">
+<meta property="article:tag" content="阅读笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chenlidbk.xyz/pic/xxds-jz1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>线性代数 —— 矩阵 - Hexo</title>
+  <title>How to be a Programmer ——如何做好一名程序员 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="线性代数 —— 矩阵"></span>
+            <span id="subtitle" data-typed-text="How to be a Programmer ——如何做好一名程序员"></span>
           
         </div>
 
@@ -226,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-04 09:06" pubdate>
-          2024年6月4日 上午
+        <time datetime="2024-06-03 12:51" pubdate>
+          2024年6月3日 下午
         </time>
       </span>
     
@@ -238,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          127 字
+          1.4k 字
         
       </span>
     
@@ -249,7 +236,7 @@
         
         
         
-          2 分钟
+          12 分钟
         
       </span>
     
@@ -294,70 +281,43 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">线性代数 —— 矩阵</h1>
+            <h1 id="seo-header">How to be a Programmer ——如何做好一名程序员</h1>
             
             
               <div class="markdown-body">
                 
-                <p>矩阵 ， 矩阵的概念， 矩阵的线性运算， 矩阵的乘法， 方阵的幂， 方阵乘积的行列式， 矩阵的转置，逆矩阵的概念和性质， 矩阵可逆的充分必要条件， 伴随矩阵，矩阵的初等变换，初等矩阵，矩阵的秩，矩阵的等价 分块矩阵及其运算。 </p>
-<h2 id="矩阵-矩阵"><a href="#矩阵-矩阵" class="headerlink" title="矩阵+矩阵"></a>矩阵+矩阵</h2><table>
-<thead>
-<tr>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><img src="/pic/xxds-jz1.png" srcset="/img/loading.gif" lazyload alt="矩阵相加"></td>
-</tr>
-<tr>
-<td align="left"><img src="/pic/xxds-jz2.png" srcset="/img/loading.gif" lazyload></td>
-</tr>
-</tbody></table>
-<h2 id="矩阵乘矩阵（前行乘后列）"><a href="#矩阵乘矩阵（前行乘后列）" class="headerlink" title="矩阵乘矩阵（前行乘后列）"></a>矩阵乘矩阵（前行乘后列）</h2><table>
-<thead>
-<tr>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><img src="/pic/xxds-jz3.png" srcset="/img/loading.gif" lazyload></td>
-</tr>
-<tr>
-<td align="left"><img src="/pic/xxds-jz4.jpg" srcset="/img/loading.gif" lazyload></td>
-</tr>
-</tbody></table>
-<h2 id="矩阵的逆矩阵"><a href="#矩阵的逆矩阵" class="headerlink" title="矩阵的逆矩阵"></a>矩阵的逆矩阵</h2><table>
-<thead>
-<tr>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><img src="/pic/xxds-jz5.jpg" srcset="/img/loading.gif" lazyload></td>
-</tr>
-<tr>
-<td align="left"><img src="/pic/xxds-jz6.jpg" srcset="/img/loading.gif" lazyload></td>
-</tr>
-</tbody></table>
-<h2 id="矩阵的行列式"><a href="#矩阵的行列式" class="headerlink" title="矩阵的行列式"></a>矩阵的行列式</h2><p><img src="/pic/xxds-jz7.jpg" srcset="/img/loading.gif" lazyload></p>
-<h2 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h2><p><img src="/pic/xxds-jz8.jpg" srcset="/img/loading.gif" lazyload></p>
-<h2 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h2><p><img src="/pic/xxds-jz9.jpg" srcset="/img/loading.gif" lazyload></p>
-<h2 id="公式乱炖"><a href="#公式乱炖" class="headerlink" title="公式乱炖"></a>公式乱炖</h2><table>
-<thead>
-<tr>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><img src="/pic/xxds-jz10.jpg" srcset="/img/loading.gif" lazyload></td>
-</tr>
-<tr>
-<td align="left"><img src="/pic/xxds-jz11.jpg" srcset="/img/loading.gif" lazyload></td>
-</tr>
-<tr>
-<td align="left"><img src="/pic/xxds-jz12.jpg" srcset="/img/loading.gif" lazyload></td>
-</tr>
-</tbody></table>
+                <ol>
+<li><p>学会如何调试，简而言之就是Debug，真实的含义时通过检查来观察程序的运行，我的调试的方法是print，打印变量，但实际上python提供了调试窗口，只是我懒得使用罢了。调试方法的分类，一种是使用调试工具（IDE中的Debugger），一种是Printlining，对程序做一个临时的修改，比如使用print，一种使用日志。</p>
+</li>
+<li><p>学会如何修改错误，Logging（日志）是一种编写系统的方式，可以产生一系列信息记录，被称为 log。Printlining 只是输出简单的，通常是临时的日志。（怎么生成日志？）性能问题，I&#x2F;O代价，内存管理</p>
+</li>
+<li><p>如何发现信息。你所搜寻的事情的本质决定了你应该如何去寻找它。不要在网上搜索任何带有观点或主观解释的东西：能够抵达真相的概率太低了。如果你需要可能没有人知道的信息，例如，“这个新品牌的软件在海量数据的情况下能工作吗”，你仍然必须在网络和图书馆里搜索。在这些选项都完全竭尽后，你可能需要设计一个实验来搞清楚这个问题。如果你想要做一个只有你自己能做的个人决定，比如你是否应该开始某个事业，尝试把一些对这个想法有益和有害的点列出来。如果这没有什么用，做一些预测。</p>
+</li>
+<li><p>如何睿智的编写文档，人生太短，不能写没人会读的废话，如果你写了废话，没人会去读。文档，就像测试，会花比开发代码多几倍的时间。己所不欲，勿施于人。花时间去确实地思考谁会读你的文档，他们从文档中想要获得的真正的东西是什么，并且你可以如何把这些东西交给他们。如果你这样做，你将会变成一个超过平均水平的文档编写者，和一个好的程序员。最好的程序员们有这样一个普遍的观点：编写具有自我解释功能的代码，仅在你不能通过代码清晰解释其含义的地方，才写注释。有两个好的原因：第一，任何人需要查看代码级别的文档大多数情况下都能够并且更喜欢阅读代码。<br>负责任的程序员也不能让这件事变得更简单些。如何写自解释的代码？那意味着什么？它意味着：</p>
+</li>
+</ol>
+<ul>
+<li>编写知道别人会去阅读的代码(译者注：编写给人看的代码)</li>
+<li>运用黄金法则</li>
+<li>选择直接的解决方案，即使你可以更快地获得另一个解决方案</li>
+<li>牺牲那些可能混淆代码的小的优化</li>
+<li>为读者考虑，把你珍贵的时间花在让她更加容易阅读的事情上,并且</li>
+<li>永远不要使用这样的函数名比如 <code>foo</code>,<code>bar</code>, 或 <code>doIt</code>!</li>
+</ul>
+<ol start="5">
+<li><p>源代码控制，怎么使用源代码控制？</p>
+</li>
+<li><p>如何成长，承担超过你的权力的责任。扮演你想要扮演的角色。如果你想成为团队的领导，去激励与团结。如果你想成为一个经理，担起规划的责任。计划学习新技能的方式，包括琐碎的技术类型，比如学习一个新的软件系统，和困难的社交类型，像漂亮的写作，把它们集成到你的工作中。为了提升到某个位置，找到那个位置期望做的事情，然后去做。树的种子包含了成长的思想，但不完全实现成长体的形式与力量。胚胎会成长。它会变大。它看起来更像成长体，并越来越有用。最终它孕育果实。最后，它死亡并且它的躯体喂养了其他的有机体。</p>
+</li>
+<li><p>如何和非工程师交谈，非工程师聪明，但在创造技术类的东西不像我们那样踏实。我们制造东西。他们销售，处理，统计，管理，但他们在制造上不是专家。非工程师可以理解技术的东西，但他们不会做那件甚至对我们来讲都很困难的事情 - 技术评审。</p>
+</li>
+<li><p>如何保持活力，如果当程序员被要求做一些既不美丽，也没有用，也不漂亮的事情，他们会斗志低落。虽然可以通过做丑陋的，愚蠢的，无聊的东西赚很多的钱，但最后，乐趣才会为公司赚最多的钱。进步，进步，进步</p>
+</li>
+<li><p>如何学习新技能，人类通过做来学。读书和上课是有用的。但你对一个从不写程序的程序员会有任何敬意吗？学习任何技能，你应该把自己放在一个可以练习技能的宽容的位置。学习一个新的编程语言时，在你必须做一个大工程前，试着用它做一个小的工程。学习管理软件项目时，先试着管理一个小的工程。不要忘记程序员最重要的技能不是技术。让你的团队成员有一个机会去玩，锻炼勇气，诚实，以及交流。</p>
+</li>
+<li><p>经常表扬，但不要浪费。尤其是表扬那些反对你且确实值得表扬的人。公开表扬，私下批评</p>
+</li>
+</ol>
 
                 
               </div>
@@ -370,7 +330,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="print-no-link">#线性代数</a>
+        <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="print-no-link">#阅读笔记</a>
       
     </div>
   
@@ -382,8 +342,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>线性代数 —— 矩阵</div>
-      <div>https://chenlidbk.xyz/2024/06/04/xianxindaishu2/</div>
+      <div>How to be a Programmer ——如何做好一名程序员</div>
+      <div>https://chenlidbk.xyz/2024/06/03/yudubiji1/</div>
     </div>
     <div class="license-meta">
       
@@ -395,7 +355,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月4日</div>
+          <div>2024年6月3日</div>
         </div>
       
       
@@ -427,9 +387,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/04/tiankeng11/" title="填坑 —— 稀奇古怪的链接">
+                      <a href="/2024/06/04/xianxindaishu2/" title="线性代数 —— 矩阵">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">填坑 —— 稀奇古怪的链接</span>
+                        <span class="hidden-mobile">线性代数 —— 矩阵</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -437,8 +397,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/03/yudubiji1/" title="How to be a Programmer ——如何做好一名程序员">
-                        <span class="hidden-mobile">How to be a Programmer ——如何做好一名程序员</span>
+                      <a href="/2024/06/03/juzhi5/" title="收集的句子">
+                        <span class="hidden-mobile">收集的句子</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

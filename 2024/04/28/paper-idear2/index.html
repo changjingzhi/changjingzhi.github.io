@@ -24,7 +24,7 @@
 <meta property="og:description" content="目前的数据预处理有This may be time-domain features(时域特征)45——2021年  absolute band power(绝对功率谱) Discrete Wavelet Transform (离散小波变换)37-2022-IEEE permutation entropy (排列熵) or spectral entropy (熵谱)[21-2021-Complexi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-28T13:49:52.000Z">
-<meta property="article:modified_time" content="2024-06-05T04:10:30.843Z">
+<meta property="article:modified_time" content="2024-06-06T10:41:36.791Z">
 <meta property="article:author" content="chenli">
 <meta property="article:tag" content="论文思路">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          8.7k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          71 分钟
+          73 分钟
         
       </span>
     
@@ -307,7 +307,9 @@
 <li>GFlops (计算量)</li>
 <li>hyperparameters (超参数)</li>
 </ol>
-<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="怎么计算模型的计算量。"><a href="#怎么计算模型的计算量。" class="headerlink" title="怎么计算模型的计算量。"></a>怎么计算模型的计算量。</h3><h2 id="看论文的心态"><a href="#看论文的心态" class="headerlink" title="看论文的心态"></a>看论文的心态</h2><p>Because it is an English paper, there is a kind of resistance. Take your time.<br>由于是英文论文，有种抗拒的心态。慢慢看吧。</p>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="怎么计算模型的计算量。"><a href="#怎么计算模型的计算量。" class="headerlink" title="怎么计算模型的计算量。"></a>怎么计算模型的计算量。</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 创建模型实例</span><br>model = IntegratedNet(<span class="hljs-attribute">input_size</span>=1, <span class="hljs-attribute">in_feature</span>=320)<br>device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)<br>model = model.<span class="hljs-keyword">to</span>(device)<br><br><span class="hljs-comment"># 随机输入数据</span><br>x = torch.randn(1, 1, 11, 5120).<span class="hljs-keyword">to</span>(device)<br><br><span class="hljs-keyword">from</span> thop import<span class="hljs-built_in"> profile</span><br><span class="hljs-built_in"></span>flops, params = profile(model, inputs=(x,))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Total FLOPs:&#x27;</span>, flops)<br><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="看论文的心态"><a href="#看论文的心态" class="headerlink" title="看论文的心态"></a>看论文的心态</h2><p>Because it is an English paper, there is a kind of resistance. Take your time.<br>由于是英文论文，有种抗拒的心态。慢慢看吧。</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ol>
 <li><p>FFT快速傅里叶变换<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/347091298">参考博客</a></p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">import os<br>import numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-built_in">from</span> tqdm import tqdm<br><br><span class="hljs-comment"># 定义输入和输出文件夹路径</span><br>input_folder = <span class="hljs-string">&#x27;data_cut_npy/AD&#x27;</span>  <span class="hljs-comment"># 输入文件夹路径，包含要进行 FFT 变换的 .npy 文件</span><br>output_folder = <span class="hljs-string">&#x27;data_FFT_npy/AD&#x27;</span>  <span class="hljs-comment"># 输出文件夹路径，用于保存变换后的数据</span><br><br><span class="hljs-comment"># 确保输出文件夹存在</span><br>os.makedirs(output_folder, exist_ok=True)<br><br><span class="hljs-comment"># 获取输入文件夹中的所有 .npy 文件</span><br>file_list = os.listdir(input_folder)<br>npy_files = [<span class="hljs-built_in">file</span> <span class="hljs-keyword">for</span> <span class="hljs-built_in">file</span> <span class="hljs-keyword">in</span> file_list <span class="hljs-keyword">if</span> <span class="hljs-built_in">file</span>.endswith(<span class="hljs-string">&#x27;.npy&#x27;</span>)]<br><br><span class="hljs-comment"># 遍历每个 .npy 文件进行 FFT 变换并保存</span><br><span class="hljs-keyword">for</span> file_name <span class="hljs-keyword">in</span> tqdm(npy_files, desc=<span class="hljs-string">&#x27;Processing&#x27;</span>, unit=<span class="hljs-string">&#x27;file&#x27;</span>):<br>    <span class="hljs-comment"># 读取 .npy 文件</span><br>    file_path = os.path.join(input_folder, file_name)<br>    data = np.<span class="hljs-built_in">load</span>(file_path)<br><br>    <span class="hljs-comment"># 对数据中的每一行进行 FFT 变换</span><br>    fft_data = np.apply_along_axis(np.fft.fft, axis=<span class="hljs-number">0</span>, arr=data)<br><br>    <span class="hljs-comment"># 获取 FFT 结果的幅值</span><br>    fft_magnitude = np.<span class="hljs-built_in">abs</span>(fft_data)<br><br>    <span class="hljs-comment"># 构造输出文件路径</span><br>    output_file_name = file_name.<span class="hljs-built_in">replace</span>(<span class="hljs-string">&#x27;.npy&#x27;</span>, <span class="hljs-string">&#x27;_fft.npy&#x27;</span>)<br>    output_file_path = os.path.join(output_folder, output_file_name)<br><br>    <span class="hljs-comment"># 保存 FFT 结果</span><br>    np.save(output_file_path, fft_magnitude)<br><br></code></pre></td></tr></table></figure>
@@ -405,7 +407,36 @@
 <li>替换模型的输出层</li>
 </ol>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
-<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>Qwer123@<br>Qwer123.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">batch-size</td>
+<td align="left">learning</td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left">0.00005</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">0.00005</td>
+</tr>
+<tr>
+<td align="left">32</td>
+<td align="left">0.001</td>
+</tr>
+</tbody></table>
+<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>Qwer123@<br>Qwer123.<br>train-loss 和test-loss之间的关系<br>变化趋势分析：train loss 不断下降，test loss不断下降，说明网络仍在学习;</p>
+<p>（最好的）train loss 不断下降，test loss趋于不变，说明网络过拟合；</p>
+<p>train loss 趋于不变，test loss不断下降，说明数据集100%有问题;</p>
+<p>（检查dataset）train loss 趋于不变，test loss趋于不变，说明学习遇到瓶颈，需要减小学习率或批量数目;</p>
+<p>（减少学习率）train loss 不断上升，test loss不断上升，说明网络结构设计不当，训练超参数设置不当，数据集经过清洗等问题；（最不好的情况）train_loss 不断下降， test_loss 不断上升，和第2种情况类似说明网络过拟合了。</p>
 
                 
               </div>
