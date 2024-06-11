@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenli">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="psd-分解 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768import mneimport numpy as npimport osdef eeg_power_band(epochs):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PSD-公开数据集">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/06/11/paper-idear6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="psd-分解 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768import mneimport numpy as npimport osdef eeg_power_band(epochs):">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-11T05:10:58.000Z">
+<meta property="article:modified_time" content="2024-06-11T05:22:02.188Z">
+<meta property="article:author" content="chenli">
+<meta property="article:tag" content="论文思路">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>PSD-公开数据集 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenlidbk.xyz","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenli</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PSD-公开数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-11 13:10" pubdate>
+          2024年6月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">PSD-公开数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ol>
+<li><p>psd-分解</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import mne<br>import numpy as np<br>import os<br><br>def eeg_power_band(epochs):<br>    <span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">    根据epochs的特定频段中的相对功率来创建EEG特征。</span><br><span class="hljs-string">    &quot;</span><span class="hljs-string">&quot;&quot;</span><br>    FREQ_BANDS = &#123;<span class="hljs-string">&quot;delta&quot;</span>: [0.5, 4],<br>                  <span class="hljs-string">&quot;theta&quot;</span>: [4, 8],<br>                  <span class="hljs-string">&quot;alpha&quot;</span>: [8, 13],<br>                  <span class="hljs-string">&quot;sigma&quot;</span>: [13, 25],<br>                  <span class="hljs-string">&quot;beta&quot;</span>: [25, 45]&#125;<br>    <br>    spectrum = epochs.compute_psd(<span class="hljs-attribute">method</span>=<span class="hljs-string">&#x27;welch&#x27;</span>, <span class="hljs-attribute">fmin</span>=0.5, <span class="hljs-attribute">fmax</span>=45., <span class="hljs-attribute">n_fft</span>=256, <span class="hljs-attribute">n_overlap</span>=10)<br>    psds, freqs = spectrum.get_data(<span class="hljs-attribute">return_freqs</span>=<span class="hljs-literal">True</span>)<br>    <br>    psds /= np.sum(psds, <span class="hljs-attribute">axis</span>=-1, <span class="hljs-attribute">keepdims</span>=<span class="hljs-literal">True</span>)<br>    <br>    X = []<br>    <span class="hljs-keyword">for</span> fmin, fmax <span class="hljs-keyword">in</span> FREQ_BANDS.values():<br>        psds_band = psds[:, :, (freqs &gt;= fmin) &amp; (freqs &lt; fmax)].mean(<span class="hljs-attribute">axis</span>=-1)<br>        X.append(psds_band.reshape(len(psds), -1))<br>    <br>    return np.concatenate(X, <span class="hljs-attribute">axis</span>=1)<br><br>def process_eeg_data(input_folders, output_folders):<br>    <span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">    处理输入文件夹中的所有.set文件，并将提取的特征保存到输出文件夹中。</span><br><span class="hljs-string">    &quot;</span><span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> input_folder, output_folder <span class="hljs-keyword">in</span> zip(input_folders, output_folders):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(output_folder):<br>            os.makedirs(output_folder)<br><br>        <span class="hljs-keyword">for</span> filename <span class="hljs-keyword">in</span> os.listdir(input_folder):<br>            <span class="hljs-keyword">if</span> filename.endswith(<span class="hljs-string">&quot;.set&quot;</span>):<br>                set_file_path = os.path.join(input_folder, filename)<br>                <br>                # Load the .<span class="hljs-built_in">set</span> file using MNE<br>               <span class="hljs-built_in"> raw </span>= mne.io.read_raw_eeglab(set_file_path, <span class="hljs-attribute">preload</span>=<span class="hljs-literal">True</span>)<br>                <br>                # <span class="hljs-built_in">Set</span> EEG reference<br>                raw.set_eeg_reference(<span class="hljs-string">&#x27;average&#x27;</span>, <span class="hljs-attribute">projection</span>=<span class="hljs-literal">True</span>)<br>                <br>                #<span class="hljs-built_in"> Filter </span>the data<br>                raw.filter(1., 45., <span class="hljs-attribute">fir_design</span>=<span class="hljs-string">&#x27;firwin&#x27;</span>)<br>                <br>                # Create events (you may need <span class="hljs-keyword">to</span> modify this based on your data)<br>                events = mne.make_fixed_length_events(raw, <span class="hljs-attribute">start</span>=0, <span class="hljs-attribute">duration</span>=5.0)<br>                <br>                # Create Epochs object<br>                epochs = mne.Epochs(raw, events, <span class="hljs-attribute">tmin</span>=0, <span class="hljs-attribute">tmax</span>=4.0, <span class="hljs-attribute">baseline</span>=None, <span class="hljs-attribute">preload</span>=<span class="hljs-literal">True</span>)<br>                <br>                # Extract features<br>                features = eeg_power_band(epochs)<br>                <br>                # Save features <span class="hljs-keyword">to</span> output folder<br>                output_file_path = os.path.join(output_folder, filename.replace(<span class="hljs-string">&quot;.set&quot;</span>, <span class="hljs-string">&quot;_features.npy&quot;</span>))<br>                <span class="hljs-built_in">print</span>(features.shape)<br>                np.save(output_file_path, features)<br>                <br>                <span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;Processed &#123;filename&#125; and saved features to &#123;output_file_path&#125;&quot;</span>)<br><br><span class="hljs-comment"># Example usage</span><br>input_folders = [<span class="hljs-string">&quot;公开数据集/CN&quot;</span>, <span class="hljs-string">&quot;公开数据集/AD&quot;</span>,<span class="hljs-string">&#x27;公开数据集/FDT&#x27;</span>]<br>output_folders = [<span class="hljs-string">&quot;psd/CN&quot;</span>, <span class="hljs-string">&quot;psd/AD&quot;</span>,<span class="hljs-string">&#x27;psd/FDT&#x27;</span>]<br>process_eeg_data(input_folders, output_folders)<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>划分训练和测试</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> shutil<br><span class="hljs-keyword">import</span> random<br><br><span class="hljs-comment"># 指定包含数据文件的文件夹列表</span><br>data_folders = [<br>    <span class="hljs-string">&quot;psd/AD&quot;</span>,<br>    <span class="hljs-string">&quot;psd/CN&quot;</span>,<br>    <span class="hljs-string">&quot;psd/FDT&quot;</span><br>]<br><br><span class="hljs-comment"># 对应的保存训练集和测试集的文件夹路径</span><br>train_folders = [<br>    <span class="hljs-string">&quot;psd_data/train/AD&quot;</span>,<br>    <span class="hljs-string">&quot;psd_data/train/CN&quot;</span>,<br>    <span class="hljs-string">&quot;psd_data/train/FDT&quot;</span><br><br>]<br><br>test_folders = [<br>    <span class="hljs-string">&quot;psd_data/test/AD&quot;</span>,<br>    <span class="hljs-string">&quot;psd_data/test/CN&quot;</span>,<br>    <span class="hljs-string">&quot;psd_data/test/FDT&quot;</span><br>]<br><br><span class="hljs-comment"># 确保输入和目标文件夹数量匹配</span><br><span class="hljs-keyword">assert</span> <span class="hljs-built_in">len</span>(data_folders) == <span class="hljs-built_in">len</span>(train_folders) == <span class="hljs-built_in">len</span>(test_folders), <span class="hljs-string">&quot;输入文件夹和目标文件夹数量不匹配&quot;</span><br><br><span class="hljs-comment"># 遍历每个数据文件夹</span><br><span class="hljs-keyword">for</span> data_folder, train_folder, test_folder <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(data_folders, train_folders, test_folders):<br>    <span class="hljs-comment"># 创建保存训练集和测试集的文件夹</span><br>    os.makedirs(train_folder, exist_ok=<span class="hljs-literal">True</span>)<br>    os.makedirs(test_folder, exist_ok=<span class="hljs-literal">True</span>)<br><br>    <span class="hljs-comment"># 获取数据文件夹中的所有文件</span><br>    data_files = os.listdir(data_folder)<br><br>    <span class="hljs-comment"># 遍历数据文件夹中的文件</span><br>    <span class="hljs-keyword">for</span> file_name <span class="hljs-keyword">in</span> data_files:<br>        source_file = os.path.join(data_folder, file_name)<br>        <span class="hljs-keyword">try</span>:<br>            <span class="hljs-comment"># 以8:2的比例将文件分配到训练集或测试集</span><br>            <span class="hljs-keyword">if</span> random.random() &lt; <span class="hljs-number">0.7</span>:<br>                shutil.copy(source_file, train_folder)<br>            <span class="hljs-keyword">else</span>:<br>                shutil.copy(source_file, test_folder)<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;无法复制文件 <span class="hljs-subst">&#123;file_name&#125;</span>: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><br>    <span class="hljs-comment"># 打印训练集和测试集的文件数量</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;data_folder&#125;</span> -&gt; 训练集大小:&quot;</span>, <span class="hljs-built_in">len</span>(os.listdir(train_folder)))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;data_folder&#125;</span> -&gt; 测试集大小:&quot;</span>, <span class="hljs-built_in">len</span>(os.listdir(test_folder)))<br><br></code></pre></td></tr></table></figure>
+
+<p>3.建立列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 输入文件夹路径列表</span><br>input_folder_paths = [<span class="hljs-string">&#x27;psd_data/test/AD&#x27;</span>, <span class="hljs-string">&#x27;psd_data/test/CN&#x27;</span>, <span class="hljs-string">&#x27;psd_data/test/FDT&#x27;</span>,<span class="hljs-string">&#x27;psd_data/train/AD&#x27;</span>,<span class="hljs-string">&#x27;psd_data/train/CN&#x27;</span>,<span class="hljs-string">&#x27;psd_data/train/FDT&#x27;</span>]<br><br><span class="hljs-comment"># 输出文件夹路径列表</span><br>output_folder_paths = [<span class="hljs-string">&#x27;psd_data_cut/test/AD&#x27;</span>,<span class="hljs-string">&#x27;psd_data_cut/test/CN&#x27;</span>,<span class="hljs-string">&#x27;psd_data_cut/test/FDT&#x27;</span>,<span class="hljs-string">&#x27;psd_data_cut/train/AD&#x27;</span>, <span class="hljs-string">&#x27;psd_data_cut/train/CN&#x27;</span>,<span class="hljs-string">&#x27;psd_data_cut/train/FDT&#x27;</span>]<br><br><span class="hljs-comment"># 如果输出文件夹不存在，则创建它们</span><br><span class="hljs-keyword">for</span> output_folder_path <span class="hljs-keyword">in</span> output_folder_paths:<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(output_folder_path):<br>        os.makedirs(output_folder_path)<br><br><span class="hljs-comment"># 遍历每个输入文件夹</span><br><span class="hljs-keyword">for</span> input_folder_path, output_folder_path <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(input_folder_paths, output_folder_paths):<br>    <span class="hljs-comment"># 获取输入文件夹中的所有.npy文件</span><br>    npy_files = [f <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> os.listdir(input_folder_path) <span class="hljs-keyword">if</span> f.endswith(<span class="hljs-string">&#x27;.npy&#x27;</span>)]<br><br>    <span class="hljs-keyword">for</span> npy_file <span class="hljs-keyword">in</span> npy_files:<br>        <span class="hljs-comment"># 完整文件路径</span><br>        file_path = os.path.join(input_folder_path, npy_file)<br>        <br>        <span class="hljs-comment"># 加载数据</span><br>        data = np.load(file_path)<br>        <br>        <span class="hljs-comment"># 确保数据的第二个维度是95</span><br>        <span class="hljs-keyword">if</span> data.shape[<span class="hljs-number">1</span>] != <span class="hljs-number">95</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;文件 <span class="hljs-subst">&#123;npy_file&#125;</span> 不是期望的形状 <span class="hljs-subst">&#123;data.shape&#125;</span>&quot;</span>)<br>            <span class="hljs-keyword">continue</span><br>        <br>        <span class="hljs-comment"># 保存每个通道的数据到单独的.npy文件中</span><br>        base_filename = os.path.splitext(npy_file)[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(data.shape[<span class="hljs-number">0</span>]):<br>            output_filename = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;base_filename&#125;</span>_channel_<span class="hljs-subst">&#123;i&#125;</span>.npy&quot;</span><br>            output_path = os.path.join(output_folder_path, output_filename)<br>            np.save(output_path, data[i])<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;保存 <span class="hljs-subst">&#123;output_path&#125;</span> 成功!&quot;</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;所有文件处理完成!&quot;</span>)<br><br><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>建立列表</li>
+</ol>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> csv<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>train_path = &quot;train_data.csv&quot;<br>val_path = &quot;test_data.csv&quot;<br><br>def create_data_text(<span class="hljs-type">path</span>):<br>    &quot;&quot;&quot;建立数据data列表,划分数据集&quot;&quot;&quot;<br>    f_train = <span class="hljs-keyword">open</span>(train_path, &quot;w&quot;, newline=<span class="hljs-string">&#x27;&#x27;</span>) <br>    f_val = <span class="hljs-keyword">open</span>(val_path, &quot;w&quot;, newline=<span class="hljs-string">&#x27;&#x27;</span>)<br>    <br>    train_writer = csv.writer(f_train)<br>    val_writer = csv.writer(f_val)<br>    <br>    # 遍历 <span class="hljs-string">&#x27;train&#x27;</span> 文件夹<br>    train_dir = os.path.<span class="hljs-keyword">join</span>(<span class="hljs-type">path</span>, <span class="hljs-string">&#x27;train&#x27;</span>)<br>    <span class="hljs-keyword">for</span> cls, dirname <span class="hljs-keyword">in</span> enumerate(os.listdir(train_dir)):<br>        class_path = os.path.<span class="hljs-keyword">join</span>(train_dir, dirname)<br>        <span class="hljs-keyword">if</span> os.path.isdir(class_path):<br>            flist = os.listdir(class_path)<br>            np.random.shuffle(flist)<br>            fnum = len(flist)<br>            <span class="hljs-keyword">for</span> i, filename <span class="hljs-keyword">in</span> enumerate(flist):<br>                train_writer.writerow([os.path.<span class="hljs-keyword">join</span>(class_path, filename), str(cls)])<br>    <br>    # 遍历 <span class="hljs-string">&#x27;test&#x27;</span> 文件夹<br>    test_dir = os.path.<span class="hljs-keyword">join</span>(<span class="hljs-type">path</span>, <span class="hljs-string">&#x27;test&#x27;</span>)<br>    <span class="hljs-keyword">for</span> cls, dirname <span class="hljs-keyword">in</span> enumerate(os.listdir(test_dir)):<br>        class_path = os.path.<span class="hljs-keyword">join</span>(test_dir, dirname)<br>        <span class="hljs-keyword">if</span> os.path.isdir(class_path):<br>            flist = os.listdir(class_path)<br>            np.random.shuffle(flist)<br>            fnum = len(flist)<br>            <span class="hljs-keyword">for</span> i, filename <span class="hljs-keyword">in</span> enumerate(flist):<br>                val_writer.writerow([os.path.<span class="hljs-keyword">join</span>(class_path, filename), str(cls)])<br><br>    f_train.<span class="hljs-keyword">close</span>()<br>    f_val.<span class="hljs-keyword">close</span>()<br><br><span class="hljs-keyword">if</span> __name__ == &quot;__main__&quot;:<br>    create_data_text(&quot;psd_data_cut&quot;)<br><br><br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>训练模型</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.optim <span class="hljs-keyword">as</span> optim<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader, Dataset<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">StarReLU</span>(nn.Module):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    StarReLU: s * relu(x) ** 2 + b</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, scale_value=<span class="hljs-number">1.0</span>, bias_value=<span class="hljs-number">0.0</span>,</span><br><span class="hljs-params">        scale_learnable=<span class="hljs-literal">True</span>, bias_learnable=<span class="hljs-literal">True</span>, </span><br><span class="hljs-params">        mode=<span class="hljs-literal">None</span>, inplace=<span class="hljs-literal">False</span></span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.inplace = inplace<br>        self.relu = nn.ReLU(inplace=inplace)<br>        self.scale = nn.Parameter(scale_value * torch.ones(<span class="hljs-number">1</span>),<br>            requires_grad=scale_learnable)<br>        self.bias = nn.Parameter(bias_value * torch.ones(<span class="hljs-number">1</span>),<br>            requires_grad=bias_learnable)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-keyword">return</span> self.scale * self.relu(x)**<span class="hljs-number">2</span> + self.bias<br><br><span class="hljs-comment"># 自定义数据集类，从CSV文件中加载数据</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CsvDataset</span>(<span class="hljs-title class_ inherited__">Dataset</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, csv_file</span>):<br>        self.data = pd.read_csv(csv_file)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(self.data)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, idx</span>):<br>        file_path = self.data.iloc[idx, <span class="hljs-number">0</span>]<br>        label = self.data.iloc[idx, <span class="hljs-number">1</span>]<br>        data = np.load(file_path)<br>        <span class="hljs-keyword">return</span> torch.tensor(data, dtype=torch.float32), torch.tensor(label, dtype=torch.long)<br><br><br><span class="hljs-comment"># 定义简单的卷积神经网络模型</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CNN</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>(CNN, self).__init__()<br>        self.conv1 = nn.Conv1d(in_channels=<span class="hljs-number">1</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>)<br>        self.conv2 = nn.Conv1d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">32</span>, kernel_size=<span class="hljs-number">3</span>)<br>        self.pool = nn.MaxPool1d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>)<br>        self.fc1 = nn.Linear(<span class="hljs-number">32</span> * <span class="hljs-number">22</span>, <span class="hljs-number">128</span>)  <span class="hljs-comment"># 根据实际情况调整输入大小</span><br>        self.fc2 = nn.Linear(<span class="hljs-number">128</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment"># 假设有2个类别</span><br>        self.futool = StarReLU()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        x = self.conv1(x)<br>        <span class="hljs-comment"># print(&#x27;1&#x27;,x.shape)</span><br>        x = self.futool(x)<br>        x = self.pool(x)<br>        <span class="hljs-comment"># print(&#x27;2&#x27;,x.shape)</span><br>        x = self.conv2(x)<br>        <span class="hljs-comment"># print(&#x27;3&#x27;,x.shape)</span><br>        x = self.futool(x)<br>        x = self.pool(x)<br>        <span class="hljs-comment"># print(&#x27;4&#x27;,x.shape)</span><br>        x = x.view(-<span class="hljs-number">1</span>, <span class="hljs-number">32</span> * <span class="hljs-number">22</span>)<br>        <span class="hljs-comment"># print(&#x27;4-1&#x27;,x.shape)</span><br>        x = self.fc1(x)<br>        <span class="hljs-comment"># print(&#x27;5&#x27;,x.shape)</span><br>        x = self.futool(x)<br>        <span class="hljs-comment"># print(&#x27;6&#x27;,x.shape)</span><br>        x = self.fc2(x)<br>        <span class="hljs-comment"># print(&#x27;7&#x27;,x.shape)</span><br>        <span class="hljs-keyword">return</span> x<br><br><br><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">model, train_loader, val_loader, criterion, optimizer, num_epochs=<span class="hljs-number">5</span>, save_path=<span class="hljs-string">&#x27;best_model.pth&#x27;</span></span>):<br>    model.train()<br>    total_samples = <span class="hljs-built_in">len</span>(train_loader.dataset)<br>    best_val_acc = <span class="hljs-number">0.0</span><br><br>    <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_epochs):<br>        running_loss = <span class="hljs-number">0.0</span><br>        correct_predictions = <span class="hljs-number">0</span><br>        progress_bar = tqdm(train_loader, desc=<span class="hljs-string">f&#x27;Epoch <span class="hljs-subst">&#123;epoch + <span class="hljs-number">1</span>&#125;</span>/<span class="hljs-subst">&#123;num_epochs&#125;</span>&#x27;</span>, leave=<span class="hljs-literal">False</span>)<br><br>        <span class="hljs-keyword">for</span> data, labels <span class="hljs-keyword">in</span> progress_bar:<br>            optimizer.zero_grad()<br>            outputs = model(data.unsqueeze(<span class="hljs-number">1</span>))<br>            loss = criterion(outputs, labels)<br>            loss.backward()<br>            optimizer.step()<br>            running_loss += loss.item() * data.size(<span class="hljs-number">0</span>)<br>            _, predicted = torch.<span class="hljs-built_in">max</span>(outputs, <span class="hljs-number">1</span>)<br>            correct_predictions += (predicted == labels).<span class="hljs-built_in">sum</span>().item()<br>            progress_bar.set_postfix(&#123;<span class="hljs-string">&#x27;loss&#x27;</span>: running_loss / total_samples, <span class="hljs-string">&#x27;accuracy&#x27;</span>: correct_predictions / total_samples&#125;)<br><br>        epoch_loss = running_loss / total_samples<br>        epoch_accuracy = correct_predictions / total_samples<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Epoch <span class="hljs-subst">&#123;epoch + <span class="hljs-number">1</span>&#125;</span>/<span class="hljs-subst">&#123;num_epochs&#125;</span>, Loss: <span class="hljs-subst">&#123;epoch_loss:<span class="hljs-number">.4</span>f&#125;</span>, Accuracy: <span class="hljs-subst">&#123;epoch_accuracy:<span class="hljs-number">.4</span>f&#125;</span>&quot;</span>)<br><br>        <span class="hljs-comment"># Validate the model</span><br>        model.<span class="hljs-built_in">eval</span>()<br>        total_samples_val = <span class="hljs-built_in">len</span>(val_loader.dataset)<br>        running_loss_val = <span class="hljs-number">0.0</span><br>        correct_predictions_val = <span class="hljs-number">0</span><br><br>        <span class="hljs-keyword">with</span> torch.no_grad():<br>            <span class="hljs-keyword">for</span> data, labels <span class="hljs-keyword">in</span> val_loader:<br>                outputs = model(data.unsqueeze(<span class="hljs-number">1</span>))<br>                loss_val = criterion(outputs, labels)<br>                running_loss_val += loss_val.item() * data.size(<span class="hljs-number">0</span>)<br>                _, predicted = torch.<span class="hljs-built_in">max</span>(outputs.data, <span class="hljs-number">1</span>)<br>                correct_predictions_val += (predicted == labels).<span class="hljs-built_in">sum</span>().item()<br><br>            epoch_loss_val = running_loss_val / total_samples_val<br>            epoch_accuracy_val = correct_predictions_val / total_samples_val<br><br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Validation Loss: <span class="hljs-subst">&#123;epoch_loss_val:<span class="hljs-number">.4</span>f&#125;</span>, Accuracy: <span class="hljs-subst">&#123;epoch_accuracy_val:<span class="hljs-number">.4</span>f&#125;</span>&#x27;</span>)<br><br>            <span class="hljs-keyword">if</span> epoch_accuracy_val &gt; best_val_acc:<br>                best_val_acc = epoch_accuracy_val<br>                torch.save(model.state_dict(), save_path)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Saved the model with the best validation accuracy: <span class="hljs-subst">&#123;best_val_acc:<span class="hljs-number">.4</span>f&#125;</span>&#x27;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Training finished&#x27;</span>)<br><br><br><br><br><br><span class="hljs-comment"># CSV训练集文件路径</span><br>train_csv_file_path = <span class="hljs-string">&#x27;train_data.csv&#x27;</span><br><span class="hljs-comment"># CSV测试集文件路径</span><br>test_csv_file_path = <span class="hljs-string">&#x27;test_data.csv&#x27;</span><br><br><span class="hljs-comment"># 创建训练集和测试集数据集实例</span><br>train_dataset = CsvDataset(train_csv_file_path)<br>test_dataset = CsvDataset(test_csv_file_path)<br><br><span class="hljs-comment"># 创建训练集和测试集数据加载器</span><br>train_loader = DataLoader(train_dataset, batch_size=<span class="hljs-number">64</span>, shuffle=<span class="hljs-literal">True</span>,drop_last=<span class="hljs-literal">True</span>)<br>test_loader = DataLoader(test_dataset, batch_size=<span class="hljs-number">64</span>, shuffle=<span class="hljs-literal">False</span>,drop_last=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># 初始化模型、损失函数和优化器</span><br>model = CNN()<br>criterion = nn.CrossEntropyLoss()<br>optimizer = optim.RMSprop(model.parameters(), lr=<span class="hljs-number">0.0005</span>)<br><br><span class="hljs-comment"># 训练模型</span><br>train(model, train_loader, test_loader, criterion, optimizer, num_epochs=<span class="hljs-number">100</span>)<br><br></code></pre></td></tr></table></figure>
+
+
+<ol start="6">
+<li>测试代码</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.optim <span class="hljs-keyword">as</span> optim<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader, Dataset<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader<br><span class="hljs-keyword">from</span> torch <span class="hljs-keyword">import</span> nn<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> recall_score, f1_score, precision_score, confusion_matrix, accuracy_score<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> rcParams<br><span class="hljs-keyword">import</span> os<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">StarReLU</span>(nn.Module):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    StarReLU: s * relu(x) ** 2 + b</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, scale_value=<span class="hljs-number">1.0</span>, bias_value=<span class="hljs-number">0.0</span>,</span><br><span class="hljs-params">        scale_learnable=<span class="hljs-literal">True</span>, bias_learnable=<span class="hljs-literal">True</span>, </span><br><span class="hljs-params">        mode=<span class="hljs-literal">None</span>, inplace=<span class="hljs-literal">False</span></span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.inplace = inplace<br>        self.relu = nn.ReLU(inplace=inplace)<br>        self.scale = nn.Parameter(scale_value * torch.ones(<span class="hljs-number">1</span>),<br>            requires_grad=scale_learnable)<br>        self.bias = nn.Parameter(bias_value * torch.ones(<span class="hljs-number">1</span>),<br>            requires_grad=bias_learnable)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-keyword">return</span> self.scale * self.relu(x)**<span class="hljs-number">2</span> + self.bias<br><br><span class="hljs-comment"># 自定义数据集类，从CSV文件中加载数据</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CsvDataset</span>(<span class="hljs-title class_ inherited__">Dataset</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, csv_file</span>):<br>        self.data = pd.read_csv(csv_file)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(self.data)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, idx</span>):<br>        file_path = self.data.iloc[idx, <span class="hljs-number">0</span>]<br>        label = self.data.iloc[idx, <span class="hljs-number">1</span>]<br>        data = np.load(file_path)<br>        <span class="hljs-keyword">return</span> torch.tensor(data, dtype=torch.float32), torch.tensor(label, dtype=torch.long)<br><br><br><span class="hljs-comment"># 定义简单的卷积神经网络模型</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CNN</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,num_classes=<span class="hljs-number">2</span></span>):<br>        <span class="hljs-built_in">super</span>(CNN, self).__init__()<br>        self.conv1 = nn.Conv1d(in_channels=<span class="hljs-number">1</span>, out_channels=<span class="hljs-number">512</span>, kernel_size=<span class="hljs-number">3</span>)<br>        self.conv2 = nn.Conv1d(in_channels=<span class="hljs-number">512</span>, out_channels=<span class="hljs-number">32</span>, kernel_size=<span class="hljs-number">3</span>)<br>        self.pool = nn.MaxPool1d(kernel_size=<span class="hljs-number">2</span>, stride=<span class="hljs-number">2</span>)<br>        self.fc1 = nn.Linear(<span class="hljs-number">32</span> * <span class="hljs-number">22</span>, <span class="hljs-number">128</span>)  <span class="hljs-comment"># 根据实际情况调整输入大小</span><br>        self.fc2 = nn.Linear(<span class="hljs-number">128</span>, num_classes)  <span class="hljs-comment"># 假设有2个类别</span><br>        self.futool = StarReLU()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        x = self.conv1(x)<br>        <span class="hljs-comment"># print(&#x27;1&#x27;,x.shape)</span><br>        x = self.futool(x)<br>        x = self.pool(x)<br>        <span class="hljs-comment"># print(&#x27;2&#x27;,x.shape)</span><br>        x = self.conv2(x)<br>        <span class="hljs-comment"># print(&#x27;3&#x27;,x.shape)</span><br>        x = self.futool(x)<br>        x = self.pool(x)<br>        <span class="hljs-comment"># print(&#x27;4&#x27;,x.shape)</span><br>        x = x.view(-<span class="hljs-number">1</span>, <span class="hljs-number">32</span> * <span class="hljs-number">22</span>)<br>        <span class="hljs-comment"># print(&#x27;4-1&#x27;,x.shape)</span><br>        x = self.fc1(x)<br>        <span class="hljs-comment"># print(&#x27;5&#x27;,x.shape)</span><br>        x = self.futool(x)<br>        <span class="hljs-comment"># print(&#x27;6&#x27;,x.shape)</span><br>        x = self.fc2(x)<br>        <span class="hljs-comment"># print(&#x27;7&#x27;,x.shape)</span><br>        <span class="hljs-keyword">return</span> x<br><br><br><br><span class="hljs-comment"># 设置中文显示</span><br>rcParams[<span class="hljs-string">&#x27;font.family&#x27;</span>] = <span class="hljs-string">&#x27;SimHei&#x27;</span><br><br>labels = [<span class="hljs-string">&#x27;CN&#x27;</span>, <span class="hljs-string">&#x27;FDT&#x27;</span>]<br>softmax = nn.Softmax(dim=<span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">val</span>(<span class="hljs-params">batch_size=<span class="hljs-number">16</span></span>):<br>    <span class="hljs-comment"># 数据集和数据加载器</span><br>    val_dataset =  CsvDataset(csv_file=<span class="hljs-string">&#x27;test_data.csv&#x27;</span>)<br>    val_data_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=<span class="hljs-literal">True</span>, drop_last=<span class="hljs-literal">True</span>)<br><br>    device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)<br>    model = CNN(num_classes=<span class="hljs-number">2</span>).to(device)<br>    model.load_state_dict(torch.load(<span class="hljs-string">&quot;best_model.pth&quot;</span>))<br><br>    arr_y = []<br>    arr_y_pred = []<br>    <span class="hljs-keyword">for</span> val_x, val_y <span class="hljs-keyword">in</span> val_data_loader:<br>        val_x = val_x.to(device)<br>        val_y = val_y.to(device)<br>        val_x = val_x.unsqueeze(<span class="hljs-number">1</span>)<br>        val_y_pred = model(val_x)<br>        arr_y.extend(val_y.cpu().numpy())<br>        pred_result = softmax(val_y_pred).<span class="hljs-built_in">max</span>(dim=<span class="hljs-number">1</span>)[<span class="hljs-number">1</span>]<br>        arr_y_pred.extend(pred_result.cpu().numpy())<br><br>    accuracy = accuracy_score(arr_y, arr_y_pred)<br>    precision = precision_score(arr_y, arr_y_pred, average=<span class="hljs-string">&quot;macro&quot;</span>)<br>    recall = recall_score(arr_y, arr_y_pred, average=<span class="hljs-string">&quot;macro&quot;</span>)<br>    f1 = f1_score(arr_y, arr_y_pred, average=<span class="hljs-string">&quot;macro&quot;</span>)<br><br>    <span class="hljs-comment"># 计算特异度</span><br>    cm = confusion_matrix(arr_y, arr_y_pred)<br>    specificity = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(labels)):<br>        TN = cm.<span class="hljs-built_in">sum</span>() - (cm[i, :].<span class="hljs-built_in">sum</span>() + cm[:, i].<span class="hljs-built_in">sum</span>() - cm[i, i])<br>        FP = cm[:, i].<span class="hljs-built_in">sum</span>() - cm[i, i]<br>        specificity.append(TN / (TN + FP))<br>    avg_specificity = np.mean(specificity)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Accuracy: <span class="hljs-subst">&#123;accuracy:<span class="hljs-number">.5</span>f&#125;</span>, Precision: <span class="hljs-subst">&#123;precision:<span class="hljs-number">.5</span>f&#125;</span>, Recall: <span class="hljs-subst">&#123;recall:<span class="hljs-number">.5</span>f&#125;</span>, F1: <span class="hljs-subst">&#123;f1:<span class="hljs-number">.5</span>f&#125;</span>, Specificity: <span class="hljs-subst">&#123;avg_specificity:<span class="hljs-number">.5</span>f&#125;</span>&quot;</span>)<br><br>    plt.imshow(cm, cmap=<span class="hljs-string">&quot;Blues&quot;</span>)<br>    plt.xticks(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(labels)), labels=labels)<br>    plt.yticks(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(labels)), labels=labels)<br><br>    plt.colorbar()<br>    plt.xlabel(<span class="hljs-string">&quot;预测值&quot;</span>)<br>    plt.ylabel(<span class="hljs-string">&quot;真实值&quot;</span>)<br>    thresh = cm.mean()<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(labels)):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(labels)):<br>            info = cm[j, i]<br>            prob = info / np.<span class="hljs-built_in">sum</span>(cm[j])<br>            plt.text(i, j, <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;info&#125;</span>\n(<span class="hljs-subst">&#123;prob*<span class="hljs-number">100</span>:<span class="hljs-number">.2</span>f&#125;</span>%)&quot;</span>, color=<span class="hljs-string">&quot;white&quot;</span> <span class="hljs-keyword">if</span> info &gt; thresh <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;black&quot;</span>, ha=<span class="hljs-string">&#x27;center&#x27;</span>, va=<span class="hljs-string">&#x27;center&#x27;</span>)<br>    plt.savefig(<span class="hljs-string">&quot;confusion_matrix.jpg&quot;</span>)<br>    plt.show()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    val()<br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87%E6%80%9D%E8%B7%AF/" class="print-no-link">#论文思路</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PSD-公开数据集</div>
+      <div>https://chenlidbk.xyz/2024/06/11/paper-idear6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>chenli</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/11/clean/" title="clean">
+                        <span class="hidden-mobile">clean</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/changjingzhi/Blog/tree/main" target="_blank" rel="nofollow noopener"><span>联系方式</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
