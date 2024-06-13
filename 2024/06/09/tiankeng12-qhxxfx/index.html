@@ -25,6 +25,8 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx2.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx3.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-dg1.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-dg2.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-Sarsa.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-qlearning.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx4.png">
@@ -33,12 +35,18 @@
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx7.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx10.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx8.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxf-ppo1.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-ppo2.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-DDPG.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-DDPG2.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-sac.png">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-bemfc1.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-bemfc2.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-bemfc3.png">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/tk-qhxxfx-tiandati.png">
 <meta property="article:published_time" content="2024-06-09T09:50:57.000Z">
-<meta property="article:modified_time" content="2024-06-12T13:20:19.989Z">
+<meta property="article:modified_time" content="2024-06-13T12:53:07.137Z">
 <meta property="article:author" content="chenli">
 <meta property="article:tag" content="填坑">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.6k 字
+          7.3k 字
         
       </span>
     
@@ -251,7 +259,7 @@
         
         
         
-          56 分钟
+          61 分钟
         
       </span>
     
@@ -321,6 +329,19 @@
 <li>动态规划算法和时序差分算法</li>
 </ol>
 <p>动态规划算法，策略迭代和价值迭代。</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/tk-qhxxfx-dg1.png" srcset="/img/loading.gif" lazyload alt="策略迭代"></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/tk-qhxxfx-dg2.png" srcset="/img/loading.gif" lazyload alt="价值迭代"></td>
+</tr>
+</tbody></table>
 <p>在强化学习中，“模型”通常指与智能体交互的环境模型，即对环境的状态转移概率和奖励函数进行建模(有没有预先建立数学模型对真实环境进行抽象)。根据是否具有环境模型，强化学习算法分为两种：基于模型的强化学习（model-based reinforcement learning）和无模型的强化学习（model-free reinforcement learning）。无模型的强化学习根据智能体与环境交互采样到的数据直接进行策略提升或者价值估计，</p>
 <p>时序差分是一种用来估计一个策略的价值函数的方法，它结合了蒙特卡洛和动态规划算法的思想。时序差分方法和蒙特卡洛的相似之处在于可以从样本数据中学习，不需要事先知道环境；和动态规划的相似之处在于根据贝尔曼方程的思想，利用后续状态的价值估计来更新当前状态的价值估计。<br>时序差分算法Sarsa和Q-learning算法。</p>
 <table>
@@ -379,12 +400,27 @@
 </ol>
 <p>Actor 要做的是与环境交互，并在 Critic 价值函数的指导下用策略梯度学习一个更好的策略。<br>Critic 要做的是通过 Actor 与环境交互收集的数据学习一个价值函数，这个价值函数会用于判断在当前状态什么动作是好的，什么动作不是好的，进而帮助 Actor 进行策略更新。</p>
 <ol start="7">
-<li><p>TRPO 算法<br>策略梯度算法变体—— (离散动作)——（在线策略算法）在策略迭代过程中加了一个约束，确保新旧策略的差异在一个受控范围内。</p>
-</li>
-<li><p>PPO算法<br>策略梯度算法变体——（离散动作）——（在线策略算法）—— 基于TRPO提出，目标函数简单又高效，实现了TRPO类似的性能</p>
-</li>
-<li><p>DDPG算法<br>策略梯度算法变体——（连续动作）——（离线策略算法）——结合DQN的离线经验池和AC的连续动作空间。特点：经验回放，目标网络软更新，添加连续噪声，在动作输入前批标准化Q网络。 训练不稳定，收敛性差，对超参数敏感，难适应不同复杂环境。</p>
-</li>
+<li>TRPO 算法<br>策略梯度算法变体—— (离散动作)——（在线策略算法）在策略迭代过程中加了一个约束，确保新旧策略的差异在一个受控范围内。<br>在更新时找到一块信任区域（trust region），在这个区域上更新策略时能够得到某种策略性能的安全性保证，这就是信任区域策略优化（trust region policy optimization，TRPO）算法的主要思想。TRPO 算法在 2015 年被提出，它在理论上能够保证策略学习的性能单调性，并在实际应用中取得了比策略梯度算法更好的效果。</li>
+</ol>
+<p>TRPO 使用泰勒展开近似、共轭梯度、线性搜索等方法直接求解。</p>
+<ol start="8">
+<li>PPO算法-2017年<br>策略梯度算法变体——（离散动作）——（在线策略算法）—— 基于TRPO提出，目标函数简单又高效，实现了TRPO类似的性能<br>PPO 的优化目标与 TRPO 相同,PPO 用了一些相对简单的方法来求解。具体来说，PPO 有两种形式，一是 PPO-惩罚，二是 PPO-截断。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/tk-qhxxf-ppo1.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/tk-qhxxfx-ppo2.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<ol start="9">
+<li>深度确定性策略梯度（deep deterministic policy gradient，DDPG）算法<br>策略梯度算法变体——（连续动作）——（离线策略算法）——结合DQN的离线经验池和AC的连续动作空间。特点：经验回放，目标网络软更新，添加连续噪声，在动作输入前批标准化Q网络。 训练不稳定，收敛性差，对超参数敏感，难适应不同复杂环境。</li>
 </ol>
 <table>
 <thead>
@@ -545,10 +581,52 @@
 <p>虽然当前状态只与上一时刻的状态有关，但上一时刻的状态包含了之前所有状态的信息。</p>
 <p>最优策略是相对于MDP而言的，不同的MDP可能有不同的最优策略。（A、对）<br>A. 对<br>B. 错</p>
 <p>最优策略是针对特定的MDP而言的，不同的MDP环境下最优策略可能会有所不同。</p>
+<ol>
+<li>DQN的输出层用什么激活函数? (A)<br>A.不需要激活函数，因为Q值可正可负，没有限值范围<br>B.用sigmoid激活函数，因为Q值介于0和1之间<br>C.用ReLU激活函数，用为Q值非负<br>D.用softmax激活函数，因为DQN的输出是—个概率分布</li>
+</ol>
+<p>答案解析:DQN的输出表示回报的期望，它根据环境不同，值也不同，并没有限值范围，所以无需激活函数限制范围。</p>
+<ol start="2">
+<li>DQN的高估问题是由____引起的。(B)<br>A.DQN网络结构的缺陷。<br>B.Q学习算法的缺陷<br>C.更新频率<br>D.深度</li>
+</ol>
+<p>答案解析:Q学习算法会被当前学习样本所影响而导致高估</p>
+<ol start="3">
+<li>动作价值函数是_____的期望 (B)<br>A.奖励<br>B.回报<br>C.状态<br>D.动作</li>
+</ol>
+<p>答案解析:动作价值函数，一般称作Q函数，它是回报的期望，它的值的大小用来衡量未来回报的高与低。</p>
+<ol>
+<li><p>在策略学习过程中，往往需要进行新策略探索与旧策略的利用，其目的分别是什么? (A)<br>A.尝试不同策略，以进行策略提升&#x2F;提升对旧策略的评估能力<br>B.提高策略多样性&#x2F;让旧策略朝着最优策略的方向进行优化</p>
+</li>
+<li><p>(判断题)蒙特卡洛方法的好处是”无偏性”，所以在训练价值网络时使用它可以加速训练过程。 (A 对)<br>A.对<br>B.错</p>
+</li>
+</ol>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
 <li>基于模型和和无模型（Model Free）的算法分布有哪些？</li>
 </ol>
-<p>基于模型： 值</p>
+<p>基于模型（值迭代和策略迭代）的动态规划，Dyna-Q算法。</p>
+<p>无模型（Model-Free), 回合更新——蒙特卡洛方法。 时间差分，基于价值的在线策略Sarsa，离线策略Q-learning，由Q-learning改进的DQN。 基于策略，策略梯度的Actor-Critic，DDPG</p>
+<ol start="2">
+<li>贝尔曼方程的推导及应用，价值迭代算法和策略迭代算法的具体步骤和收敛性分析</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><img src="/pic/tk-qhxxfx-bemfc1.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/tk-qhxxfx-bemfc2.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td align="left"><img src="/pic/tk-qhxxfx-bemfc3.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>Q-;earning和Sarsa之间的区别</li>
+</ol>
+<p><img src="/pic/tk-qhxxfx-tiandati.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
