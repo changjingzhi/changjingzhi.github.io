@@ -16,13 +16,15 @@
   <meta name="author" content="chenchangqing">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode1">
+    <meta name="description" content="刷题链接 合并两个有序数组合并两个有序数组 解法一123456789101112131415class Solution &#123;public:    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;        while(m + n )&#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode1-数组&#x2F;字符串">
 <meta property="og:url" content="https://chenlidbk.xyz/2024/06/05/leetcode1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="刷题链接 合并两个有序数组合并两个有序数组 解法一123456789101112131415class Solution &#123;public:    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;        while(m + n )&#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-05T12:51:56.000Z">
-<meta property="article:modified_time" content="2024-06-05T13:20:00.120Z">
+<meta property="article:modified_time" content="2024-06-24T15:14:52.954Z">
 <meta property="article:author" content="chenchangqing">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
@@ -31,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>leetcode1 - Hexo</title>
+  <title>leetcode1-数组/字符串 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="leetcode1"></span>
+            <span id="subtitle" data-typed-text="leetcode1-数组/字符串"></span>
           
         </div>
 
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          98 字
         
       </span>
     
@@ -279,13 +281,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">leetcode1</h1>
+            <h1 id="seo-header">leetcode1-数组/字符串</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a target="_blank" rel="noopener" href="https://programmercarl.com/%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html"></a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/studyplan/top-interview-150/"></a></p>
+                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/studyplan/top-interview-150/">刷题链接</a><br><a target="_blank" rel="noopener" href="https://programmercarl.com/%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html"></a></p>
+<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150">合并两个有序数组</a></p>
+<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, <span class="hljs-type">int</span> m, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2, <span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span>(m + n )&#123;<br>            <span class="hljs-keyword">if</span> (m &amp;&amp; n)<br>                nums1[m+n] = nums1[m<span class="hljs-number">-1</span>] &gt; nums2[n<span class="hljs-number">-1</span>] ? nums1[m--<span class="hljs-number">-1</span>] : nums2[n--<span class="hljs-number">-1</span>];<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!m)<br>                nums1[m+n] = nums2[n--<span class="hljs-number">-1</span>];<br>            <span class="hljs-keyword">else</span><br>                <span class="hljs-keyword">return</span>;<br><br>        &#125;<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<p>将两个有序数组合并成一个有序数组的功能。</p>
 
                 
               </div>
@@ -310,7 +314,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>leetcode1</div>
+      <div>leetcode1-数组/字符串</div>
       <div>https://chenlidbk.xyz/2024/06/05/leetcode1/</div>
     </div>
     <div class="license-meta">
