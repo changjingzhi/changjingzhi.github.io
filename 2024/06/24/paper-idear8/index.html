@@ -16,26 +16,24 @@
   <meta name="author" content="chenchangqing">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据预处理 傅里叶变换 （时间域变换为频域） 归一化（零归一化，批归一化，层归一化） 数据增强操作。  激活函数 startRule ReLU  模型架构 编码器——解码器 残差连接（基于ResNet） MLP 双输入卷积神经网络。  损失函数 交叉熵损失函数  优化函数 SGD RMSprop  评估指标怎么进行评估，True Positives (TP)：正类别样本中被正确预测为正类别的数量。">
+    <meta name="description" content="写作论文，也是需要具体的格式的，在论文思路——论文阅读文献 大概描述了论文的结构，但是一个欠缺点是这只是一个架构，只是骨架，没有血肉，下面做的工作就是来填充论文内容过程的详细阐述。写论文，首先得想好自己的创新点是什么，然后验证自己的创新点是否有用，这里需要注意的是实验的完备性，不要给自己挖坑。 论文内容论文的标题 关于题目：题目的书写有三个方案，1.可以写的长并且有好的解释性：Linear-Tim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论文思路">
-<meta property="og:url" content="https://chenlidbk.xyz/2024/04/25/paper_idear/index.html">
+<meta property="og:title" content="论文写作解析">
+<meta property="og:url" content="https://chenlidbk.xyz/2024/06/24/paper-idear8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数据预处理 傅里叶变换 （时间域变换为频域） 归一化（零归一化，批归一化，层归一化） 数据增强操作。  激活函数 startRule ReLU  模型架构 编码器——解码器 残差连接（基于ResNet） MLP 双输入卷积神经网络。  损失函数 交叉熵损失函数  优化函数 SGD RMSprop  评估指标怎么进行评估，True Positives (TP)：正类别样本中被正确预测为正类别的数量。">
+<meta property="og:description" content="写作论文，也是需要具体的格式的，在论文思路——论文阅读文献 大概描述了论文的结构，但是一个欠缺点是这只是一个架构，只是骨架，没有血肉，下面做的工作就是来填充论文内容过程的详细阐述。写论文，首先得想好自己的创新点是什么，然后验证自己的创新点是否有用，这里需要注意的是实验的完备性，不要给自己挖坑。 论文内容论文的标题 关于题目：题目的书写有三个方案，1.可以写的长并且有好的解释性：Linear-Tim">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://chenlidbk.xyz/pic/predict.jpg">
-<meta property="article:published_time" content="2024-04-25T04:16:48.000Z">
-<meta property="article:modified_time" content="2024-06-24T07:52:54.642Z">
+<meta property="article:published_time" content="2024-06-24T03:21:16.000Z">
+<meta property="article:modified_time" content="2024-06-24T03:34:02.137Z">
 <meta property="article:author" content="chenchangqing">
 <meta property="article:tag" content="论文思路">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chenlidbk.xyz/pic/predict.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>论文思路 - Hexo</title>
+  <title>论文写作解析 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="论文思路"></span>
+            <span id="subtitle" data-typed-text="论文写作解析"></span>
           
         </div>
 
@@ -215,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-25 12:16" pubdate>
-          2024年4月25日 中午
+        <time datetime="2024-06-24 11:21" pubdate>
+          2024年6月24日 上午
         </time>
       </span>
     
@@ -227,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          440 字
+          671 字
         
       </span>
     
@@ -238,7 +236,7 @@
         
         
         
-          4 分钟
+          6 分钟
         
       </span>
     
@@ -283,59 +281,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">论文思路</h1>
+            <h1 id="seo-header">论文写作解析</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ol>
-<li>傅里叶变换 （时间域变换为频域）</li>
-<li>归一化（零归一化，批归一化，层归一化）</li>
-<li>数据增强操作。</li>
-</ol>
-<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><ol>
-<li>startRule</li>
-<li>ReLU</li>
-</ol>
-<h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><ol>
-<li>编码器——解码器</li>
-<li>残差连接（基于ResNet）</li>
-<li>MLP</li>
-<li>双输入卷积神经网络。</li>
-</ol>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><ol>
-<li>交叉熵损失函数</li>
-</ol>
-<h2 id="优化函数"><a href="#优化函数" class="headerlink" title="优化函数"></a>优化函数</h2><ol>
-<li>SGD</li>
-<li>RMSprop</li>
-</ol>
-<h2 id="评估指标"><a href="#评估指标" class="headerlink" title="评估指标"></a>评估指标</h2><p>怎么进行评估，<br><img src="/pic/predict.jpg" srcset="/img/loading.gif" lazyload alt="二分类示意图"><br>True Positives (TP)：正类别样本中被正确预测为正类别的数量。True Negatives (TN)：负类别样本中被正确预测为负类别的数量。False Positives (FP)：负类别样本中被错误预测为正类别的数量。False Negatives (FN)：正类别样本中被错误预测为负类别的数量。</p>
-<ol>
-<li>ACC （准确率） ( TP+TN )  &#x2F; (TP+TN+FP+FN)</li>
-<li>pression (精确率) (TP&#x2F;TP+FP) </li>
-<li>Recall (Sensitivity，灵敏度) (TP &#x2F; TP+FN )</li>
-<li>F1-score (F1 值) （2 x (precision x Recall)&#x2F;(precision + Recall )）</li>
-<li>Specificity (特异性) （TN &#x2F; (TN + FP )）</li>
-<li>混淆矩阵</li>
-</ol>
-<h2 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h2><ol>
-<li>双输入卷积神经网络 （傅里叶信号+归一化信号）</li>
-</ol>
-<h2 id="实验补充"><a href="#实验补充" class="headerlink" title="实验补充"></a>实验补充</h2><ol>
-<li>横向实验：按照8：2的数据划分来进行验证。</li>
-<li>做消融实验，三个（原模型，删去） </li>
-<li>验证不同的时间长度的正确性。</li>
-</ol>
-<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><ol>
-<li>双数据输入，对数据采用不同的数据预处理，比如FFT(傅里叶变换)，小波变换，零归一化.</li>
-<li>在公开数据集上验证处理不同的数据预处理方法对实验结果的好坏。</li>
-<li>对比私有数据集，验证自己模型的稳健性（鲁棒性）。</li>
-<li>使用图像处理的模型结构。</li>
-<li>公开数据集的二分类结果，对比论文。</li>
-<li>验证选取合适的数据预处理方法是合适的。(注：数据预处理+深度学习模型架构。)</li>
-</ol>
-
+                <p>写作论文，也是需要具体的格式的，在<a href="https://chenlidbk.xyz/2024/04/30/paper-idear3/#%E8%AE%BA%E6%96%87%E7%BB%93%E6%9E%84">论文思路——论文阅读文献</a> 大概描述了论文的结构，但是一个欠缺点是这只是一个架构，只是骨架，没有血肉，下面做的工作就是来填充论文内容过程的详细阐述。写论文，首先得想好自己的创新点是什么，然后验证自己的创新点是否有用，这里需要注意的是实验的完备性，不要给自己挖坑。</p>
+<h2 id="论文内容"><a href="#论文内容" class="headerlink" title="论文内容"></a>论文内容</h2><h3 id="论文的标题-关于题目：题目的书写有三个方案，"><a href="#论文的标题-关于题目：题目的书写有三个方案，" class="headerlink" title="论文的标题 关于题目：题目的书写有三个方案，"></a>论文的标题 关于题目：题目的书写有三个方案，</h3><p>1.可以写的长并且有好的解释性：Linear-Time External Multipass Sorting with Approximation Guarantees</p>
+<p>2.可以写的甜美小巧（ short and sweet）Approximate External Sort</p>
+<p>3.或者一种折中的思路，写一个俏皮幽默的小标题，去吸人眼球，直击人心（ plus a cute name that sticks in people’s minds）Floosh: A Linear-Time Algorithm for Approximate External Sort</p>
+<h3 id="论文的abstract"><a href="#论文的abstract" class="headerlink" title="论文的abstract"></a>论文的abstract</h3><p>abstract要陈述问题，你的方法和解决方案，以及论文的主要贡献。几乎不包括任何背景和动机。事实要真实，但要全面。摘要中的内容以后不得逐字重复。</p>
+<h3 id="The-Introduction"><a href="#The-Introduction" class="headerlink" title="The Introduction"></a>The Introduction</h3><p>强调写在前面：导言非常重要（crucially important），审稿人可能会在看完introduction之后产生了一个initial decision决定要不要接受paper，他们会阅读论文的其余部分，目的其实就是为了印证他们的看法</p>
+<p>关于写法紧跟在后：这是斯坦福InfoLab的五点介绍结构。除非有更好的，否则引言应该由五个段落组成，回答以下五个问题:</p>
+<p>What is the problem?<br>Why is it interesting and important?<br>Why is it hard? (E.g., why do naive approaches fail?)<br>Why hasn’t it been solved before? (Or, what’s wrong with previous proposed solutions? How does mine differ?)<br>What are the key components of my approach and results? Also include any specific limitations.</p>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><p>关于相关工作，（这个有一个说法（mentor说的），说是这个是最不重要的内容，然后一般就是长短可以自适应。）这里探讨的是，related work是应该放在文章开头还是结尾？</p>
+<p>放开头，如果内容简短又详细，或者是对前面的工作是一个防御立场，并且比较重要，在这种情况下，相关的工作可以是引言末尾的一个小节，或者是它自己的第2节。<br>Beginning, if it can be short yet detailed enough, or if it’s critical to take a strong defensive stance about previous work right away. In this case Related Work can be either a subsection at the end of the Introduction, or its own Section 2.</p>
+<p>放到末尾，如果introduction直接就能够把故事讲圆了，不是很需要放到前面，那就放到后面去</p>
+<p>End, if it can be summarized quickly early on (in the Introduction or Preliminaries), or if sufficient comparisons require the technical content of the paper. In this case Related Work should appear just before the Conclusions, possibly in a more general section “Discussion and Related Work”.</p>
+<p>我的一般做法是放在introduct中</p>
+<h2 id="主体"><a href="#主体" class="headerlink" title="主体"></a>主体</h2><p>1.文章里提到了一个重点，一个清晰的新的重要的技术贡献应该在读者完成第3页的时候表达出来</p>
+<p>2.另一个重点，文章每一部分都应该讲述一个完整的故事</p>
+<p>话不多说，让我开始写字吧</p>
+<h2 id="实操部分"><a href="#实操部分" class="headerlink" title="实操部分"></a>实操部分</h2>
                 
               </div>
             
@@ -359,8 +326,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>论文思路</div>
-      <div>https://chenlidbk.xyz/2024/04/25/paper_idear/</div>
+      <div>论文写作解析</div>
+      <div>https://chenlidbk.xyz/2024/06/24/paper-idear8/</div>
     </div>
     <div class="license-meta">
       
@@ -372,7 +339,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月25日</div>
+          <div>2024年6月24日</div>
         </div>
       
       
@@ -404,9 +371,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/25/ganwu11/" title="随笔11">
+                      <a href="/2024/06/24/ganwu20/" title="随笔20">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">随笔11</span>
+                        <span class="hidden-mobile">随笔20</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -414,8 +381,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/24/tiankeng3/" title="python自定义包的层级引用">
-                        <span class="hidden-mobile">python自定义包的层级引用</span>
+                      <a href="/2024/06/24/English2-14/" title="英语- 单词14">
+                        <span class="hidden-mobile">英语- 单词14</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
