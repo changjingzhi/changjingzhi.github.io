@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://chenlidbk.xyz/pic/predict.jpg">
 <meta property="article:published_time" content="2024-04-25T04:16:48.000Z">
-<meta property="article:modified_time" content="2024-06-24T07:52:54.642Z">
+<meta property="article:modified_time" content="2024-06-26T02:05:14.818Z">
 <meta property="article:author" content="chenchangqing">
 <meta property="article:tag" content="论文思路">
 <meta name="twitter:card" content="summary_large_image">
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          440 字
+          493 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -334,6 +334,11 @@
 <li>使用图像处理的模型结构。</li>
 <li>公开数据集的二分类结果，对比论文。</li>
 <li>验证选取合适的数据预处理方法是合适的。(注：数据预处理+深度学习模型架构。)</li>
+</ol>
+<h2 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h2><ol>
+<li>数据经过PSD处理，而后按照通道进行拼接，做一维卷积</li>
+<li>时间域做带通滤波，分离5个通道，然后使用卷积神经网络做分类。</li>
+<li></li>
 </ol>
 
                 
