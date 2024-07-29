@@ -16,18 +16,24 @@
   <meta name="author" content="chenchangqing">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第 4 章  网络层网络层提供的两种服务虚电路服务数据报服务概要: 虚电路服务与数据报服务的对比网际协议 IP网际协议 IP 是 TCP&#x2F;IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议： 地址解析协议 ARP (Address Resolution Protocol) 逆地址解析协议 RARP   (Reverse Address Resolution Proto">
+    <meta name="description" content="第 4 章  网络层网络层提供的两种服务分组转发和路由选择: 网络层中的主要任务就是将分组从多个源主机经过多个网络和多段链路传输到目的主机，可以将该任务划分为分组转发和路由选择两种主要的功能。 虚电路服务面向连接的虚电路服务，可靠通信应该由网络自身来保证，必须首先建立网络层连接—— 虚电路（VC）,以保证通信双方所需的一切网络资源。通信双方沿着已建立的虚电路发送分组。通信结束后需要释放之前所建立的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络——网络层">
 <meta property="og:url" content="https://chenlidbk.xyz/2024/06/24/jsjwl-3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第 4 章  网络层网络层提供的两种服务虚电路服务数据报服务概要: 虚电路服务与数据报服务的对比网际协议 IP网际协议 IP 是 TCP&#x2F;IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议： 地址解析协议 ARP (Address Resolution Protocol) 逆地址解析协议 RARP   (Reverse Address Resolution Proto">
+<meta property="og:description" content="第 4 章  网络层网络层提供的两种服务分组转发和路由选择: 网络层中的主要任务就是将分组从多个源主机经过多个网络和多段链路传输到目的主机，可以将该任务划分为分组转发和路由选择两种主要的功能。 虚电路服务面向连接的虚电路服务，可靠通信应该由网络自身来保证，必须首先建立网络层连接—— 虚电路（VC）,以保证通信双方所需的一切网络资源。通信双方沿着已建立的虚电路发送分组。通信结束后需要释放之前所建立的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/jsjwl-3-1.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/jsjwl-3-2.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/jsjwl-3-3.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/jsjwl-3-4.jpg">
+<meta property="og:image" content="https://chenlidbk.xyz/pic/jsjwl-3-5.jpg">
 <meta property="article:published_time" content="2024-06-24T14:21:03.000Z">
-<meta property="article:modified_time" content="2024-06-24T14:39:26.056Z">
+<meta property="article:modified_time" content="2024-07-29T07:27:48.901Z">
 <meta property="article:author" content="chenchangqing">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chenlidbk.xyz/pic/jsjwl-3-1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -225,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.3k 字
+          4.8k 字
         
       </span>
     
@@ -236,7 +242,7 @@
         
         
         
-          36 分钟
+          40 分钟
         
       </span>
     
@@ -286,7 +292,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="第-4-章-网络层"><a href="#第-4-章-网络层" class="headerlink" title="第 4 章  网络层"></a>第 4 章  网络层</h1><h2 id="网络层提供的两种服务"><a href="#网络层提供的两种服务" class="headerlink" title="网络层提供的两种服务"></a>网络层提供的两种服务</h2><h3 id="虚电路服务"><a href="#虚电路服务" class="headerlink" title="虚电路服务"></a>虚电路服务</h3><h3 id="数据报服务"><a href="#数据报服务" class="headerlink" title="数据报服务"></a>数据报服务</h3><h3 id="概要-虚电路服务与数据报服务的对比"><a href="#概要-虚电路服务与数据报服务的对比" class="headerlink" title="概要: 虚电路服务与数据报服务的对比"></a>概要: 虚电路服务与数据报服务的对比</h3><h2 id="网际协议-IP"><a href="#网际协议-IP" class="headerlink" title="网际协议 IP"></a>网际协议 IP</h2><h3 id="网际协议-IP-是-TCP-IP-体系中两个最主要的协议之一。与-IP-协议配套使用的还有四个协议："><a href="#网际协议-IP-是-TCP-IP-体系中两个最主要的协议之一。与-IP-协议配套使用的还有四个协议：" class="headerlink" title="网际协议 IP 是 TCP&#x2F;IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议："></a>网际协议 IP 是 TCP&#x2F;IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议：</h3><ul>
+                <h1 id="第-4-章-网络层"><a href="#第-4-章-网络层" class="headerlink" title="第 4 章  网络层"></a>第 4 章  网络层</h1><h2 id="网络层提供的两种服务"><a href="#网络层提供的两种服务" class="headerlink" title="网络层提供的两种服务"></a>网络层提供的两种服务</h2><p>分组转发和路由选择: 网络层中的主要任务就是将分组从多个源主机经过多个网络和多段链路传输到目的主机，可以将该任务划分为分组转发和路由选择两种主要的功能。</p>
+<h3 id="虚电路服务"><a href="#虚电路服务" class="headerlink" title="虚电路服务"></a>虚电路服务</h3><p>面向连接的虚电路服务，可靠通信应该由网络自身来保证，必须首先建立网络层连接—— 虚电路（VC）,以保证通信双方所需的一切网络资源。通信双方沿着已建立的虚电路发送分组。通信结束后需要释放之前所建立的虚电路。这种通信方式如果再使用可靠传输的网络协议，就可使所发送的分组最终正确（无差错按序到达，不丢失、不重复）到达接收方。需要注意的是： 虚电路表示这是一条逻辑上的连接，分组沿着这条逻辑连接按照存储转发的方式传送，而不是真正建立了一条物理连接。</p>
+<h3 id="数据报服务"><a href="#数据报服务" class="headerlink" title="数据报服务"></a>数据报服务</h3><p>可靠通信应该由用户主机来保证，不需要建立网络层连接&#x2F;每个分组可走不同的路径。因此，每个分组的首部都必须携带目的住址的完整地址，通行结束后，没有需要释放的连接。</p>
+<h3 id="概要-虚电路服务与数据报服务的对比"><a href="#概要-虚电路服务与数据报服务的对比" class="headerlink" title="概要: 虚电路服务与数据报服务的对比"></a>概要: 虚电路服务与数据报服务的对比</h3><p>在TCP&#x2F;IP体系结构中，网际层向上层提供的是简单灵活的、无连接的、不可靠的数据报服务。</p>
+<h2 id="网际协议-IP"><a href="#网际协议-IP" class="headerlink" title="网际协议 IP"></a>网际协议 IP</h2><h3 id="网际协议-IP-是-TCP-IP-体系中两个最主要的协议之一。与-IP-协议配套使用的还有四个协议："><a href="#网际协议-IP-是-TCP-IP-体系中两个最主要的协议之一。与-IP-协议配套使用的还有四个协议：" class="headerlink" title="网际协议 IP 是 TCP&#x2F;IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议："></a>网际协议 IP 是 TCP&#x2F;IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议：</h3><ul>
 <li>地址解析协议 ARP (Address Resolution Protocol)</li>
 <li>逆地址解析协议 RARP   (Reverse Address Resolution Protocol)</li>
 <li>网际控制报文协议 ICMP   (Internet Control Message Protocol)</li>
@@ -336,11 +346,9 @@
 <p>CIDR 的地址掩码可以继续称为子网掩码，子网掩码首 1 长度为网络前缀的长度。</p>
 <p>一个 CIDR 地址块中有很多地址，一个 CIDR 表示的网络就可以表示原来的很多个网络，并且在路由表中只需要一个路由就可以代替原来的多个路由，减少了路由表项的数量。把这种通过使用网络前缀来减少路由表项的方式称为路由聚合，也称为 构成超网 。</p>
 <p>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</p>
-<h3 id="IP-地址与硬件地址"><a href="#IP-地址与硬件地址" class="headerlink" title="IP 地址与硬件地址"></a>IP 地址与硬件地址</h3><ul>
-<li>IP层抽象的互联网屏蔽了下层很复杂的细节<br>在抽象的网络层上讨论问题，就能够使用<br>统一的、抽象的 IP 地址<br>研究主机和主机或主机和路由器之间的通信 <ul>
-<li>示意图</li>
-</ul>
-</li>
+<h3 id="IP-地址与MAC地址"><a href="#IP-地址与MAC地址" class="headerlink" title="IP 地址与MAC地址"></a>IP 地址与MAC地址</h3><p>MAC地址称为硬件地址或物理地址。MAC地址是数据链路层使用的地址，而IP地址是网络层和以上各层使用的地址，是一种逻辑地址。</p>
+<ul>
+<li>IP层抽象的互联网屏蔽了下层很复杂的细节<br>在抽象的网络层上讨论问题，就能够使用<br>统一的、抽象的 IP 地址<br>研究主机和主机或主机和路由器之间的通信<br><img src="/pic/jsjwl-3-1.jpg" srcset="/img/loading.gif" lazyload></li>
 </ul>
 <h3 id="地址解析协议-ARP-与逆地址解析协议RARP"><a href="#地址解析协议-ARP-与逆地址解析协议RARP" class="headerlink" title="地址解析协议 ARP 与逆地址解析协议RARP"></a>地址解析协议 ARP 与逆地址解析协议RARP</h3><ul>
 <li>缘由<ul>
@@ -355,7 +363,7 @@
 </ul>
 </li>
 </ul>
-<p>如果主机 A 知道主机 B 的 IP 地址，但是 ARP 高速缓存中没有该 IP 地址到 MAC 地址的映射，此时主机 A 通过广播的方式发送 ARP 请求分组，主机 B 收到该请求后会发送 ARP 响应分组给主机 A 告知其 MAC 地址，随后主机 A 向其高速缓存中写入主机 B 的 IP 地址到 MAC 地址的映射。<br>            * 示意图</p>
+<p>如果主机 A 知道主机 B 的 IP 地址，但是 ARP 高速缓存中没有该 IP 地址到 MAC 地址的映射，此时主机 A 通过广播的方式发送 ARP 请求分组，主机 B 收到该请求后会发送 ARP 响应分组给主机 A 告知其 MAC 地址，随后主机 A 向其高速缓存中写入主机 B 的 IP 地址到 MAC 地址的映射。<br><img src="/pic/jsjwl-3-2.jpg" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>逆地址解析协议 RARP<ul>
 <li>逆地址解析协议 RARP 使只知道自己硬件地址的主机能够知道其 IP 地址。<ul>
@@ -365,15 +373,17 @@
 </ul>
 </li>
 </ul>
-<h3 id="IP-层转发分组的流程"><a href="#IP-层转发分组的流程" class="headerlink" title="IP 层转发分组的流程"></a>IP 层转发分组的流程</h3><ul>
+<p><img src="/pic/jsjwl-3-3.jpg" srcset="/img/loading.gif" lazyload>        </p>
+<h3 id="IP数据报的格式"><a href="#IP数据报的格式" class="headerlink" title="IP数据报的格式"></a>IP数据报的格式</h3><p><img src="/pic/jsjwl-3-4.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="IP-层转发分组的流程"><a href="#IP-层转发分组的流程" class="headerlink" title="IP 层转发分组的流程"></a>IP 层转发分组的流程</h3><p>IP数据报的发送和转发过程包含以下两个过程： 主机发送IP数据报。 路由器转发IP数据报。</p>
+<ul>
 <li>分组转发算法 <ul>
 <li>(1)  从数据报的首部提取目的主机的 IP 地址 D, 得出目的网络地址为 N。</li>
 <li>(2)  若网络 N 与此路由器直接相连，则把数据报直接交付目的主机 D；否则是间接交付，执行(3)。</li>
 <li>(3)  若路由表中有目的地址为 D 的特定主机路由，则把数据报传送给路由表中所指明的下一跳路由器；否则，执行(4)。</li>
 <li>(4)  若路由表中有到达网络 N 的路由，则把数据报传送给路由表指明的下一跳路由器；否则，执行(5)。</li>
 <li>(5) 若路由表中有一个默认路由，则把数据报传送给路由表中所指明的默认路由器；否则，执行(6)。</li>
-<li>(6)  报告转发分组出错。 </li>
-<li>概要: 示意图</li>
+<li>(6)  报告转发分组出错。<br><img src="/pic/jsjwl-3-5.jpg" srcset="/img/loading.gif" lazyload></li>
 </ul>
 </li>
 </ul>
@@ -465,7 +475,7 @@
 </ul>
 <h3 id="在局域网上进行硬件多播"><a href="#在局域网上进行硬件多播" class="headerlink" title="在局域网上进行硬件多播"></a>在局域网上进行硬件多播</h3><p>* </p>
 <h3 id="因特网组管理协议-IGMP-和多播路由选择协议"><a href="#因特网组管理协议-IGMP-和多播路由选择协议" class="headerlink" title="因特网组管理协议 IGMP 和多播路由选择协议"></a>因特网组管理协议 IGMP 和多播路由选择协议</h3><ul>
-<li>IGMP 使多播路由器知道多播组成员信息 </li>
+<li>IGMP 使多播路由器知道多播组成员信息 </li>
 <li>多播转发必须动态地适应多播组成员的变化（这时网络拓扑并未发生变化）。请注意，单播路由选择通常是在网络拓扑发生变化时才需要更新路由。</li>
 </ul>
 <h2 id="虚拟专用网-VPN-和网络地址转换-NAT"><a href="#虚拟专用网-VPN-和网络地址转换-NAT" class="headerlink" title="虚拟专用网 VPN 和网络地址转换 NAT"></a>虚拟专用网 VPN 和网络地址转换 NAT</h2><h3 id="虚拟专用网-VPN"><a href="#虚拟专用网-VPN" class="headerlink" title="虚拟专用网 VPN"></a>虚拟专用网 VPN</h3><ul>
