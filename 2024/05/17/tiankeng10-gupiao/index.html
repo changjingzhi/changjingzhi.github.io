@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenchangqing">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="背景介绍Gym Trading EnvGym Trading Env is a Gymnasium environment for simulating stocks and training Reinforcement Learning (RL) trading agents. It was designed to be fast and customizable for easy RL tra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="填坑——强化学习——使用智能体来预测股票">
+<meta property="og:url" content="https://changjingzhi.github.io/2024/05/17/tiankeng10-gupiao/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="背景介绍Gym Trading EnvGym Trading Env is a Gymnasium environment for simulating stocks and training Reinforcement Learning (RL) trading agents. It was designed to be fast and customizable for easy RL tra">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://changjingzhi.github.io/pic/stmp.png">
+<meta property="article:published_time" content="2024-05-17T03:27:00.000Z">
+<meta property="article:modified_time" content="2026-11-18T03:07:58.628Z">
+<meta property="article:author" content="chenchangqing">
+<meta property="article:tag" content="填坑">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://changjingzhi.github.io/pic/stmp.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>填坑——强化学习——使用智能体来预测股票 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"changjingzhi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenchangqing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="填坑——强化学习——使用智能体来预测股票"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-17 11:27" pubdate>
+          2024年5月17日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">填坑——强化学习——使用智能体来预测股票</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p><a target="_blank" rel="noopener" href="https://gym-trading-env.readthedocs.io/en/latest/">Gym Trading Env</a>Gym Trading Env is a Gymnasium environment for simulating stocks and training Reinforcement Learning (RL) trading agents. It was designed to be fast and customizable for easy RL trading algorithms implementation.<br><a target="_blank" rel="noopener" href="https://github.com/wangshub/RL-Stock">如何用深度强化学习自动炒股</a><br><a target="_blank" rel="noopener" href="https://github.com/Jack-Cherish/quantitative?tab=readme-ov-file">量化交易</a><br><a target="_blank" rel="noopener" href="https://github.com/waditu/czsc">czsc</a></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>获取股票数据</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs dns"><br>import baostock as bs<br>import pandas as pd<br>import os<br><br><br>def mkdir<span class="hljs-punctuation">(</span>directory<span class="hljs-punctuation">)</span>:<br>    if not os.path.exists<span class="hljs-punctuation">(</span>directory<span class="hljs-punctuation">)</span>:<br>        os.makedirs<span class="hljs-punctuation">(</span>directory<span class="hljs-punctuation">)</span><br><br><br>class Downloader<span class="hljs-punctuation">(</span>object<span class="hljs-punctuation">)</span>:<br>    def __init__<span class="hljs-punctuation">(</span>self,<br>                 output_dir,<br>                 date_start=&#x27;<span class="hljs-number">1990</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>&#x27;,<br>                 date_end=&#x27;<span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">16</span>&#x27;<span class="hljs-punctuation">)</span>:<br>        self._bs = bs<br>        bs.login<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>        self.date_start = date_start<br>        # self.date_end = datetime.datetime.now<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>.strftime<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;%Y-%m-%d&quot;</span><span class="hljs-punctuation">)</span><br>        self.date_end = date_end<br>        self.output_dir = output_dir<br>        self.fields = <span class="hljs-string">&quot;date,open,high,low,close,amount,volume&quot;</span><br><br>    def exit<span class="hljs-punctuation">(</span>self<span class="hljs-punctuation">)</span>:<br>        bs.logout<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br><br>    def get_codes_by_date<span class="hljs-punctuation">(</span>self, date<span class="hljs-punctuation">)</span>:<br>        print<span class="hljs-punctuation">(</span>date<span class="hljs-punctuation">)</span><br>        stock_rs = bs.query_all_stock<span class="hljs-punctuation">(</span>date<span class="hljs-punctuation">)</span><br>        stock_df = stock_rs.get_data<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>        print<span class="hljs-punctuation">(</span>stock_df<span class="hljs-punctuation">)</span><br>        return stock_df<br><br>    def run<span class="hljs-punctuation">(</span>self<span class="hljs-punctuation">)</span>:<br>        stock_df = self.get_codes_by_date<span class="hljs-punctuation">(</span>self.date_end<span class="hljs-punctuation">)</span><br>        for index, row <span class="hljs-type">in</span> stock_df.iterrows<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>:<br>            print<span class="hljs-punctuation">(</span>f&#x27;processing &#123;row[<span class="hljs-string">&quot;code&quot;</span>]&#125; &#123;row[<span class="hljs-string">&quot;code_name&quot;</span>]&#125;&#x27;<span class="hljs-punctuation">)</span><br>            df_code = bs.query_history_k_data_plus<span class="hljs-punctuation">(</span>row[<span class="hljs-string">&quot;code&quot;</span>], self.fields,<br>                                               start_date=self.date_start,<br>                                               end_date=self.date_end<span class="hljs-punctuation">)</span>.get_data<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>        # 替换文件名中的*字符为_<br>            code_name = row[<span class="hljs-string">&quot;code_name&quot;</span>].replace<span class="hljs-punctuation">(</span>&#x27;*&#x27;, &#x27;_&#x27;<span class="hljs-punctuation">)</span><br>            df_code.to_csv<span class="hljs-punctuation">(</span>f&#x27;&#123;self.output_dir&#125;/&#123;row[<span class="hljs-string">&quot;code&quot;</span>]&#125;.&#123;code_name&#125;.csv&#x27;, index=False<span class="hljs-punctuation">)</span><br>        self.exit<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br><br><br><br>if __name__ == &#x27;__main__&#x27;:<br>    # 获取全部股票的日K线数据<br>    mkdir<span class="hljs-punctuation">(</span>&#x27;./data/train&#x27;<span class="hljs-punctuation">)</span><br>    downloader = Downloader<span class="hljs-punctuation">(</span>&#x27;./data/train&#x27;, date_start=&#x27;<span class="hljs-number">2000</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>&#x27;, date_end=&#x27;<span class="hljs-number">2024</span>-<span class="hljs-number">2</span>-<span class="hljs-number">29</span>&#x27;<span class="hljs-punctuation">)</span><br>    downloader.run<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br><br>    mkdir<span class="hljs-punctuation">(</span>&#x27;./data/test&#x27;<span class="hljs-punctuation">)</span><br>    downloader = Downloader<span class="hljs-punctuation">(</span>&#x27;./data/test&#x27;, date_start=&#x27;<span class="hljs-number">2024</span>-<span class="hljs-number">3</span>-<span class="hljs-number">1</span>&#x27;, date_end=&#x27;<span class="hljs-number">2024</span>-<span class="hljs-number">3</span>-<span class="hljs-number">15</span>&#x27;<span class="hljs-punctuation">)</span><br>    downloader.run<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://baostock.com/baostock/index.php/Python_API%E6%96%87%E6%A1%A3">Baostack的API文档</a></p>
+<h2 id="选股器"><a href="#选股器" class="headerlink" title="选股器"></a>选股器</h2><p>思路，股票是波动的，但是波动是现象，可能今天是下跌，但是明天就上升了。</p>
+<p>根据什么指标来构建筛选股票？，评价指标是什么?</p>
+<h3 id="聚宽平台"><a href="#聚宽平台" class="headerlink" title="聚宽平台"></a>聚宽平台</h3><p><a target="_blank" rel="noopener" href="https://www.joinquant.com/help/api/help#name:aboutData">聚宽数据</a><br><a href="">新手指引</a><a target="_blank" rel="noopener" href="https://www.joinquant.com/view/community/detail/7e4989804f4d3cd12532cafefeea1bcb">https://www.joinquant.com/view/community/detail/7e4989804f4d3cd12532cafefeea1bcb</a><br>关于聚宽数据<br>股票数据：我们拥有所有A股上市公司2005年以来的股票行情数据、财务数据、上市公司基本信息、融资融券信息等。为了避免幸存者偏差，我们包括了已经退市的股票数据。其中volume（成交量）字段单位是股。<br>商品期货：我们支持从2005年以来上海国际能源交易中心、上期所、郑商所、大商所的行情数据，并包含历史产品的数据。<br>基金数据：我们目前提供了600多种在交易所上市的基金的行情、净值等数据，包含ETF、LOF、分级A&#x2F;B基金以及货币基金的完整的行情、净值数据等，请点击基金数据查看。<br>金融期货数据：我们提供中金所推出的所有金融期货产品的行情数据，并包含历史产品的数据。<br>股票指数：我们支持近600种指数数据，包括指数的行情数据以及成分股数据。为了避免未来函数，我们支持获取历史任意时刻的指数成分股信息，具体见get_index_stocks。<br>行业板块：我们支持按行业、按板块选股，具体见get_industry_stocks<br>概念板块：我们支持按概念板块选股，具体见get_concept_stocks<br>宏观数据：我们提供全方位的宏观数据，为投资者决策提供有力数据支持。</p>
+<h3 id="本地化数据JQData"><a href="#本地化数据JQData" class="headerlink" title="本地化数据JQData"></a>本地化数据JQData</h3><p><a target="_blank" rel="noopener" href="https://www.joinquant.com/help/api/help#JQData:JQData">JQData</a><br>QData由聚宽团队专门维护清洗，为金融机构、学术团体和量化研究者们提供的本地量化金融数据服务。 数据产品不仅对外服务，同时服务于聚宽所有业务线，历经平台40万用户、基金百亿资产、每年万亿交易额的考验。本着推动量化行业快速发展的良好愿景，JQData现已开放注册。</p>
+<p>安装本地数据JQData<code>pip install jqdatasdk</code></p>
+<h3 id="代码解析工程"><a href="#代码解析工程" class="headerlink" title="代码解析工程"></a>代码解析工程</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br></pre></td><td class="code"><pre><code class="hljs dns">&#x27;&#x27;&#x27;<br>优化说明:<br>    <span class="hljs-number">1</span>.使用修正标准分<br>        rsrs_score的算法有：<br>            仅斜率slope，效果一般；<br>            仅标准分zscore，效果不错；<br>            修正标准分 = zscore * r2，效果最佳<span class="hljs-comment">;</span><br>            右偏标准分 = 修正标准分 * slope，效果不错。<br>    <span class="hljs-number">2</span>.将原策略的每次持有两只etf改成只买最优的一个，收益显著提高<br>    <span class="hljs-number">3</span>.将每周调仓换成每日调仓，收益显著提高<br>    <span class="hljs-number">4</span>.因为交易etf，所以手续费设为万分之三，印花税设为零，未设置滑点<br>    <span class="hljs-number">5</span>.修改股票池中候选etf，删除银行，红利等收益较弱品种，增加纳指etf以增加不同国家市场间轮动的可能性<br>    <span class="hljs-number">6</span>.根据研报，默认参数介已设定为最优<br>    <span class="hljs-number">7</span>.加入防未来函数<br>    <span class="hljs-number">8</span>.增加择时与选股模块的打印日志，方便观察每笔操作依据<br>&#x27;&#x27;&#x27;<br><br>#导入函数库<br>from jqdata import *<br>import numpy as np<br><br>#初始化函数 <br>def initialize<span class="hljs-punctuation">(</span>context<span class="hljs-punctuation">)</span>:<br>    # 设定沪深<span class="hljs-number">300</span>作为基准<br>    set_benchmark<span class="hljs-punctuation">(</span>&#x27;<span class="hljs-number">000300</span>.XSHG&#x27;<span class="hljs-punctuation">)</span><br>    # 用真实价格交易<br>    set_option<span class="hljs-punctuation">(</span>&#x27;use_real_price&#x27;, True<span class="hljs-punctuation">)</span><br>    # 打开防未来函数<br>    set_option<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;avoid_future_data&quot;</span>, True<span class="hljs-punctuation">)</span><br>    # 将滑点设置为<span class="hljs-number">0</span><br>    set_slippage<span class="hljs-punctuation">(</span>FixedSlippage<span class="hljs-punctuation">(</span><span class="hljs-number">0</span>.<span class="hljs-number">001</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    # 设置交易成本万分之三<br>    set_order_cost<span class="hljs-punctuation">(</span>OrderCost<span class="hljs-punctuation">(</span>open_tax=<span class="hljs-number">0</span>, close_tax=<span class="hljs-number">0</span>, open_commission=<span class="hljs-number">0</span>.<span class="hljs-number">0003</span>, close_commission=<span class="hljs-number">0</span>.<span class="hljs-number">0003</span>, close_today_commission=<span class="hljs-number">0</span>, min_commission=<span class="hljs-number">5</span><span class="hljs-punctuation">)</span>,<br>                   type=&#x27;fund&#x27;<span class="hljs-punctuation">)</span><br>    # 股票类每笔交易时的手续费是：买入时佣金万分之二，卖出时佣金万分之二，无印花税, 每笔交易佣金最低扣<span class="hljs-number">5</span>块钱<br>    # set_order_cost<span class="hljs-punctuation">(</span>OrderCost<span class="hljs-punctuation">(</span>close_tax=<span class="hljs-number">0</span>.<span class="hljs-number">000</span>, open_commission=<span class="hljs-number">0</span>.<span class="hljs-number">0002</span>, close_commission=<span class="hljs-number">0</span>.<span class="hljs-number">0002</span>, min_commission=<span class="hljs-number">5</span><span class="hljs-punctuation">)</span>, type=&#x27;fund&#x27;<span class="hljs-punctuation">)</span><br>    # 过滤order中低于error级别的日志<br>    log.set_level<span class="hljs-punctuation">(</span>&#x27;order&#x27;, &#x27;error&#x27;<span class="hljs-punctuation">)</span><br>    # 初始化各类全局变量<br>    #股票池<br>    g.stock_pool = [<br>        &#x27;<span class="hljs-number">159915</span>.XSHE&#x27;, # 易方达创业板ETF<br>        &#x27;<span class="hljs-number">510300</span>.XSHG&#x27;, # 华泰柏瑞沪深<span class="hljs-number">300</span>ETF<br>        &#x27;<span class="hljs-number">510500</span>.XSHG&#x27;, # 南方中证<span class="hljs-number">500</span>ETF<br>    ]<br>    #动量轮动参数<br>    g.stock_num = <span class="hljs-number">1</span> #买入评分最高的前stock_num只股票<br>    g.momentum_day = <span class="hljs-number">29</span> #最新动量参考最近momentum_day的<br>    #rsrs择时参数<br>    g.ref_stock = &#x27;<span class="hljs-number">000300</span>.XSHG&#x27; #用ref_stock做择时计算的基础数据<br>    g.N = <span class="hljs-number">18</span> # 计算最新斜率slope，拟合度r2参考最近N天<br>    g.M = <span class="hljs-number">600</span> # 计算最新标准分zscore，rsrs_score参考最近M天<br>    g.score_threshold = <span class="hljs-number">0</span>.<span class="hljs-number">7</span> # rsrs标准分指标阈值<br>    #ma择时参数<br>    g.mean_day = <span class="hljs-number">20</span> #计算结束ma收盘价，参考最近mean_day<br>    g.mean_diff_day = <span class="hljs-number">3</span> #计算初始ma收盘价，参考<span class="hljs-punctuation">(</span>mean_day + mean_diff_day<span class="hljs-punctuation">)</span>天前，窗口为mean_diff_day的一段时间<br>    g.slope_series = initial_slope_series<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>[:-<span class="hljs-number">1</span>] # 除去回测第一天的slope，避免运行时重复加入<br>    # 设置交易时间，每天运行<br>    run_daily<span class="hljs-punctuation">(</span>my_trade, time=&#x27;<span class="hljs-number">11</span>:<span class="hljs-number">30</span>&#x27;, reference_security=&#x27;<span class="hljs-number">000300</span>.XSHG&#x27;<span class="hljs-punctuation">)</span><br>    run_daily<span class="hljs-punctuation">(</span>check_lose, time=&#x27;open&#x27;, reference_security=&#x27;<span class="hljs-number">000300</span>.XSHG&#x27;<span class="hljs-punctuation">)</span><br>    run_daily<span class="hljs-punctuation">(</span>print_trade_info, time=&#x27;<span class="hljs-number">15</span>:<span class="hljs-number">30</span>&#x27;, reference_security=&#x27;<span class="hljs-number">000300</span>.XSHG&#x27;<span class="hljs-punctuation">)</span><br><br><br>#<span class="hljs-number">1</span>-<span class="hljs-number">1</span> 选股模块-动量因子轮动 <br>#基于股票年化收益和判定系数打分,并按照分数从大到小排名<br>def get_rank<span class="hljs-punctuation">(</span>stock_pool<span class="hljs-punctuation">)</span>:<br>    score_list = []<br>    for stock <span class="hljs-type">in</span> g.stock_pool:<br>        data = attribute_history<span class="hljs-punctuation">(</span>stock, g.momentum_day, &#x27;<span class="hljs-number">1d</span>&#x27;, [&#x27;close&#x27;]<span class="hljs-punctuation">)</span><br>        y = data[&#x27;log&#x27;] = np.log<span class="hljs-punctuation">(</span>data.close<span class="hljs-punctuation">)</span><br>        x = data[&#x27;num&#x27;] = np.arange<span class="hljs-punctuation">(</span>data.log.size<span class="hljs-punctuation">)</span><br>        slope, intercept = np.polyfit<span class="hljs-punctuation">(</span>x, y, <span class="hljs-number">1</span><span class="hljs-punctuation">)</span><br>        annualized_returns = math.pow<span class="hljs-punctuation">(</span>math.exp<span class="hljs-punctuation">(</span>slope<span class="hljs-punctuation">)</span>, <span class="hljs-number">250</span><span class="hljs-punctuation">)</span> - <span class="hljs-number">1</span><br>        r_squared = <span class="hljs-number">1</span> - <span class="hljs-punctuation">(</span>sum<span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>y - <span class="hljs-punctuation">(</span>slope * x + intercept<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>**<span class="hljs-number">2</span><span class="hljs-punctuation">)</span> / <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>len<span class="hljs-punctuation">(</span>y<span class="hljs-punctuation">)</span> - <span class="hljs-number">1</span><span class="hljs-punctuation">)</span> * np.var<span class="hljs-punctuation">(</span>y, ddof=<span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>        score = annualized_returns * r_squared<br>        score_list.append<span class="hljs-punctuation">(</span>score<span class="hljs-punctuation">)</span><br>    stock_dict=dict<span class="hljs-punctuation">(</span>zip<span class="hljs-punctuation">(</span>g.stock_pool, score_list<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    sort_list=sorted<span class="hljs-punctuation">(</span>stock_dict.items<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>, <span class="hljs-keyword">key</span>=lambda item:item[<span class="hljs-number">1</span>], reverse=True<span class="hljs-punctuation">)</span> #True为降序<br>    code_list=[]<br>    for i <span class="hljs-type">in</span> range<span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>len<span class="hljs-punctuation">(</span>g.stock_pool<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>:<br>        code_list.append<span class="hljs-punctuation">(</span>sort_list[i][<span class="hljs-number">0</span>]<span class="hljs-punctuation">)</span><br>    rank_stock = code_list[<span class="hljs-number">0</span>:g.stock_num]<br>    print<span class="hljs-punctuation">(</span>code_list[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>]<span class="hljs-punctuation">)</span><br>    return rank_stock<br><br><br><br>#<span class="hljs-number">2</span>-<span class="hljs-number">1</span> 择时模块-计算线性回归统计值<br>#对输入的自变量每日最低价x<span class="hljs-punctuation">(</span>series<span class="hljs-punctuation">)</span>和因变量每日最高价y<span class="hljs-punctuation">(</span>series<span class="hljs-punctuation">)</span>建立OLS回归模型,返回元组<span class="hljs-punctuation">(</span>截距,斜率,拟合度<span class="hljs-punctuation">)</span><br>def get_ols<span class="hljs-punctuation">(</span>x, y<span class="hljs-punctuation">)</span>:<br>    slope, intercept = np.polyfit<span class="hljs-punctuation">(</span>x, y, <span class="hljs-number">1</span><span class="hljs-punctuation">)</span><br>    r2 = <span class="hljs-number">1</span> - <span class="hljs-punctuation">(</span>sum<span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>y - <span class="hljs-punctuation">(</span>slope * x + intercept<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>**<span class="hljs-number">2</span><span class="hljs-punctuation">)</span> / <span class="hljs-punctuation">(</span><span class="hljs-punctuation">(</span>len<span class="hljs-punctuation">(</span>y<span class="hljs-punctuation">)</span> - <span class="hljs-number">1</span><span class="hljs-punctuation">)</span> * np.var<span class="hljs-punctuation">(</span>y, ddof=<span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    return <span class="hljs-punctuation">(</span>intercept, slope, r2<span class="hljs-punctuation">)</span><br><br>#<span class="hljs-number">2</span>-<span class="hljs-number">2</span> 择时模块-设定初始斜率序列<br>#通过前M日最高最低价的线性回归计算初始的斜率,返回斜率的列表<br>def initial_slope_series<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>:<br>    data = attribute_history<span class="hljs-punctuation">(</span>g.ref_stock, g.N + g.M, &#x27;<span class="hljs-number">1d</span>&#x27;, [&#x27;high&#x27;, &#x27;low&#x27;]<span class="hljs-punctuation">)</span><br>    return [get_ols<span class="hljs-punctuation">(</span>data.low[i:i+g.N], data.high[i:i+g.N]<span class="hljs-punctuation">)</span>[<span class="hljs-number">1</span>] for i <span class="hljs-type">in</span> range<span class="hljs-punctuation">(</span>g.M<span class="hljs-punctuation">)</span>]<br><br>#<span class="hljs-number">2</span>-<span class="hljs-number">3</span> 择时模块-计算标准分<br>#通过斜率列表计算并返回截至回测结束日的最新标准分<br>def get_zscore<span class="hljs-punctuation">(</span>slope_series<span class="hljs-punctuation">)</span>:<br>    mean = np.mean<span class="hljs-punctuation">(</span>slope_series<span class="hljs-punctuation">)</span><br>    std = np.std<span class="hljs-punctuation">(</span>slope_series<span class="hljs-punctuation">)</span><br>    return <span class="hljs-punctuation">(</span>slope_series[-<span class="hljs-number">1</span>] - mean<span class="hljs-punctuation">)</span> / std<br><br>#<span class="hljs-number">2</span>-<span class="hljs-number">4</span> 择时模块-计算综合信号<br>#<span class="hljs-number">1</span>.获得rsrs与MA信号,rsrs信号算法参考优化说明，MA信号为一段时间两个端点的MA数值比较大小<br>#<span class="hljs-number">2</span>.信号同时为True时返回买入信号，同为False时返回卖出信号，其余情况返回持仓不变信号<br>def get_timing_signal<span class="hljs-punctuation">(</span>stock<span class="hljs-punctuation">)</span>:<br>    #计算MA信号<br>    close_data = attribute_history<span class="hljs-punctuation">(</span>g.ref_stock, g.mean_day + g.mean_diff_day, &#x27;<span class="hljs-number">1d</span>&#x27;, [&#x27;close&#x27;]<span class="hljs-punctuation">)</span><br>    today_MA = close_data.close[g.mean_diff_day:].mean<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <br>    before_MA = close_data.close[:-g.mean_diff_day].mean<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>    #计算rsrs信号<br>    high_low_data = attribute_history<span class="hljs-punctuation">(</span>g.ref_stock, g.N, &#x27;<span class="hljs-number">1d</span>&#x27;, [&#x27;high&#x27;, &#x27;low&#x27;]<span class="hljs-punctuation">)</span><br>    intercept, slope, r2 = get_ols<span class="hljs-punctuation">(</span>high_low_data.low, high_low_data.high<span class="hljs-punctuation">)</span><br>    g.slope_series.append<span class="hljs-punctuation">(</span>slope<span class="hljs-punctuation">)</span><br>    rsrs_score = get_zscore<span class="hljs-punctuation">(</span>g.slope_series[-g.M:]<span class="hljs-punctuation">)</span> * r2<br>    #综合判断所有信号<br>    if rsrs_score &gt; g.score_threshold and today_MA &gt; before_MA:<br>        print<span class="hljs-punctuation">(</span>&#x27;BUY&#x27;<span class="hljs-punctuation">)</span><br>        return <span class="hljs-string">&quot;BUY&quot;</span><br>    elif rsrs_score &lt; -g.score_threshold and today_MA &lt; before_MA:<br>        print<span class="hljs-punctuation">(</span>&#x27;SELL&#x27;<span class="hljs-punctuation">)</span><br>        return <span class="hljs-string">&quot;SELL&quot;</span><br>    else:<br>        print<span class="hljs-punctuation">(</span>&#x27;KEEP&#x27;<span class="hljs-punctuation">)</span><br>        return <span class="hljs-string">&quot;KEEP&quot;</span><br><br><br>#<span class="hljs-number">3</span>-<span class="hljs-number">1</span> 过滤模块-过滤停牌股票<br>#输入选股列表，返回剔除停牌股票后的列表<br>def filter_paused_stock<span class="hljs-punctuation">(</span>stock_list<span class="hljs-punctuation">)</span>:<br>	current_data = get_current_data<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>	return [stock for stock <span class="hljs-type">in</span> stock_list if not current_data[stock].paused]<br><br>#<span class="hljs-number">3</span>-<span class="hljs-number">2</span> 过滤模块-过滤ST及其他具有退市标签的股票<br>#输入选股列表，返回剔除ST及其他具有退市标签股票后的列表<br>def filter_st_stock<span class="hljs-punctuation">(</span>stock_list<span class="hljs-punctuation">)</span>:<br>	current_data = get_current_data<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>	return [stock for stock <span class="hljs-type">in</span> stock_list<br>			if not current_data[stock].is_st<br>			and &#x27;ST&#x27; not <span class="hljs-type">in</span> current_data[stock].name<br>			and &#x27;*&#x27; not <span class="hljs-type">in</span> current_data[stock].name<br>			and &#x27;退&#x27; not <span class="hljs-type">in</span> current_data[stock].name]<br><br>#<span class="hljs-number">3</span>-<span class="hljs-number">3</span> 过滤模块-过滤涨停的股票<br>#输入选股列表，返回剔除未持有且已涨停股票后的列表<br>def filter_limitup_stock<span class="hljs-punctuation">(</span>context, stock_list<span class="hljs-punctuation">)</span>:<br>	last_prices = history<span class="hljs-punctuation">(</span><span class="hljs-number">1</span>, unit=&#x27;<span class="hljs-number">1m</span>&#x27;, field=&#x27;close&#x27;, security_list=stock_list<span class="hljs-punctuation">)</span><br>	current_data = get_current_data<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>	# 已存在于持仓的股票即使涨停也不过滤，避免此股票再次可买，但因被过滤而导致选择别的股票<br>	return [stock for stock <span class="hljs-type">in</span> stock_list if stock <span class="hljs-type">in</span> context.portfolio.positions.keys<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>			or last_prices[stock][-<span class="hljs-number">1</span>] &lt; current_data[stock].high_limit]<br><br>#<span class="hljs-number">3</span>-<span class="hljs-number">4</span> 过滤模块-过滤跌停的股票<br>#输入股票列表，返回剔除已跌停股票后的列表<br>def filter_limitdown_stock<span class="hljs-punctuation">(</span>context, stock_list<span class="hljs-punctuation">)</span>:<br>	last_prices = history<span class="hljs-punctuation">(</span><span class="hljs-number">1</span>, unit=&#x27;<span class="hljs-number">1m</span>&#x27;, field=&#x27;close&#x27;, security_list=stock_list<span class="hljs-punctuation">)</span><br>	current_data = get_current_data<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>	return [stock for stock <span class="hljs-type">in</span> stock_list if stock <span class="hljs-type">in</span> context.portfolio.positions.keys<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>			or last_prices[stock][-<span class="hljs-number">1</span>] &gt; current_data[stock].low_limit]<br><br><br><br>#<span class="hljs-number">4</span>-<span class="hljs-number">1</span> 交易模块-自定义下单<br>#报单成功返回报单<span class="hljs-punctuation">(</span>不代表一定会成交<span class="hljs-punctuation">)</span>,否则返回None,应用于<br>def order_target_value_<span class="hljs-punctuation">(</span>security, value<span class="hljs-punctuation">)</span>:<br>	if value == <span class="hljs-number">0</span>:<br>		log.debug<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Selling out %s&quot;</span> % <span class="hljs-punctuation">(</span>security<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>	else:<br>		log.debug<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Order %s to value %f&quot;</span> % <span class="hljs-punctuation">(</span>security, value<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>	# 如果股票停牌，创建报单会失败，order_target_value 返回None<br>	# 如果股票涨跌停，创建报单会成功，order_target_value 返回Order，但是报单会取消<br>	# 部成部撤的报单，聚宽状态是已撤，此时成交量&gt;<span class="hljs-number">0</span>，可通过成交量判断是否有成交<br>	return order_target_value<span class="hljs-punctuation">(</span>security, value<span class="hljs-punctuation">)</span><br><br>#<span class="hljs-number">4</span>-<span class="hljs-number">2</span> 交易模块-开仓<br>#买入指定价值的证券,报单成功并成交<span class="hljs-punctuation">(</span>包括全部成交或部分成交,此时成交量大于<span class="hljs-number">0</span><span class="hljs-punctuation">)</span>返回True,报单失败或者报单成功但被取消<span class="hljs-punctuation">(</span>此时成交量等于<span class="hljs-number">0</span><span class="hljs-punctuation">)</span>,返回False<br>def open_position<span class="hljs-punctuation">(</span>security, value<span class="hljs-punctuation">)</span>:<br>	order = order_target_value_<span class="hljs-punctuation">(</span>security, value<span class="hljs-punctuation">)</span><br>	if order != None and order.filled &gt; <span class="hljs-number">0</span>:<br>		return True<br>	return False<br><br>#<span class="hljs-number">4</span>-<span class="hljs-number">3</span> 交易模块-平仓<br>#卖出指定持仓,报单成功并全部成交返回True，报单失败或者报单成功但被取消<span class="hljs-punctuation">(</span>此时成交量等于<span class="hljs-number">0</span><span class="hljs-punctuation">)</span>,或者报单非全部成交,返回False<br>def close_position<span class="hljs-punctuation">(</span>position<span class="hljs-punctuation">)</span>:<br>	security = position.security<br>	order = order_target_value_<span class="hljs-punctuation">(</span>security, <span class="hljs-number">0</span><span class="hljs-punctuation">)</span>  # 可能会因停牌失败<br>	if order != None:<br>		if order.status == OrderStatus.held and order.filled == order.amount:<br>			return True<br>	return False<br><br>#<span class="hljs-number">4</span>-<span class="hljs-number">4</span> 交易模块-调仓<br>#当择时信号为买入时开始调仓，输入过滤模块处理后的股票列表，执行交易模块中的开平仓操作<br>def adjust_position<span class="hljs-punctuation">(</span>context, buy_stocks<span class="hljs-punctuation">)</span>:<br>	for stock <span class="hljs-type">in</span> context.portfolio.positions:<br>		if stock not <span class="hljs-type">in</span> buy_stocks:<br>			log.info<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;[%s]已不在应买入列表中&quot;</span> % <span class="hljs-punctuation">(</span>stock<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>			position = context.portfolio.positions[stock]<br>			close_position<span class="hljs-punctuation">(</span>position<span class="hljs-punctuation">)</span><br>		else:<br>			log.info<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;[%s]已经持有无需重复买入&quot;</span> % <span class="hljs-punctuation">(</span>stock<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>	# 根据股票数量分仓<br>	# 此处只根据可用金额平均分配购买，不能保证每个仓位平均分配<br>	position_count = len<span class="hljs-punctuation">(</span>context.portfolio.positions<span class="hljs-punctuation">)</span><br>	if g.stock_num &gt; position_count:<br>		value = context.portfolio.cash / <span class="hljs-punctuation">(</span>g.stock_num - position_count<span class="hljs-punctuation">)</span><br>		for stock <span class="hljs-type">in</span> buy_stocks:<br>			if context.portfolio.positions[stock].total_amount == <span class="hljs-number">0</span>:<br>				if open_position<span class="hljs-punctuation">(</span>stock, value<span class="hljs-punctuation">)</span>:<br>					if len<span class="hljs-punctuation">(</span>context.portfolio.positions<span class="hljs-punctuation">)</span> == g.stock_num:<br>						break<br><br>#<span class="hljs-number">4</span>-<span class="hljs-number">5</span> 交易模块-择时交易<br>#结合择时模块综合信号进行交易<br>def my_trade<span class="hljs-punctuation">(</span>context<span class="hljs-punctuation">)</span>:<br>    #获取选股列表并过滤掉:st,st*,退市,涨停,跌停,停牌<br>    check_out_list = get_rank<span class="hljs-punctuation">(</span>g.stock_pool<span class="hljs-punctuation">)</span><br>    check_out_list = filter_st_stock<span class="hljs-punctuation">(</span>check_out_list<span class="hljs-punctuation">)</span><br>    check_out_list = filter_limitup_stock<span class="hljs-punctuation">(</span>context, check_out_list<span class="hljs-punctuation">)</span><br>    check_out_list = filter_limitdown_stock<span class="hljs-punctuation">(</span>context, check_out_list<span class="hljs-punctuation">)</span><br>    check_out_list = filter_paused_stock<span class="hljs-punctuation">(</span>check_out_list<span class="hljs-punctuation">)</span><br>    print<span class="hljs-punctuation">(</span>&#x27;今日自选股:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>check_out_list<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    #获取综合择时信号<br>    timing_signal = get_timing_signal<span class="hljs-punctuation">(</span>g.ref_stock<span class="hljs-punctuation">)</span><br>    print<span class="hljs-punctuation">(</span>&#x27;今日择时信号:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>timing_signal<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    #开始交易<br>    if timing_signal == &#x27;SELL&#x27;:<br>        for stock <span class="hljs-type">in</span> context.portfolio.positions:<br>            position = context.portfolio.positions[stock]<br>            close_position<span class="hljs-punctuation">(</span>position<span class="hljs-punctuation">)</span><br>    elif timing_signal == &#x27;BUY&#x27; or timing_signal == &#x27;KEEP&#x27;:<br>        adjust_position<span class="hljs-punctuation">(</span>context, check_out_list<span class="hljs-punctuation">)</span><br>    else:<br>        pass<br><br>#<span class="hljs-number">4</span>-<span class="hljs-number">6</span> 交易模块-止损<br>#检查持仓并进行必要的止损操作<br>def check_lose<span class="hljs-punctuation">(</span>context<span class="hljs-punctuation">)</span>:<br>    for position <span class="hljs-type">in</span> list<span class="hljs-punctuation">(</span>context.portfolio.positions.values<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>:<br>        securities=position.security<br>        cost=position.avg_cost<br>        price=position.price<br>        ret=<span class="hljs-number">100</span>*<span class="hljs-punctuation">(</span>price/cost-<span class="hljs-number">1</span><span class="hljs-punctuation">)</span><br>        value=position.value<br>        amount=position.total_amount<br>        #这里设定<span class="hljs-number">80</span>%止损几乎等同不止损，因为止损在指数etf策略中影响不大<br>        if ret &lt;=-<span class="hljs-number">20</span>:<br>            order_target_value<span class="hljs-punctuation">(</span>position.security, <span class="hljs-number">0</span><span class="hljs-punctuation">)</span><br>            print<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;！！！！！！触发止损信号: 标的=&#123;&#125;,标的价值=&#123;&#125;,浮动盈亏=&#123;&#125;% ！！！！！！&quot;</span><br>                .format<span class="hljs-punctuation">(</span>securities,format<span class="hljs-punctuation">(</span>value,&#x27;.<span class="hljs-number">2</span>f&#x27;<span class="hljs-punctuation">)</span>,format<span class="hljs-punctuation">(</span>ret,&#x27;.<span class="hljs-number">2</span>f&#x27;<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><br>#<span class="hljs-number">5</span>-<span class="hljs-number">1</span> 复盘模块-打印<br>#打印每日持仓信息<br>def print_trade_info<span class="hljs-punctuation">(</span>context<span class="hljs-punctuation">)</span>:<br>    #打印当天成交记录<br>    trades = get_trades<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>    for _trade <span class="hljs-type">in</span> trades.values<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>:<br>        print<span class="hljs-punctuation">(</span>&#x27;成交记录：&#x27;+str<span class="hljs-punctuation">(</span>_trade<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    #打印账户信息<br>    for position <span class="hljs-type">in</span> list<span class="hljs-punctuation">(</span>context.portfolio.positions.values<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>:<br>        securities=position.security<br>        cost=position.avg_cost<br>        price=position.price<br>        ret=<span class="hljs-number">100</span>*<span class="hljs-punctuation">(</span>price/cost-<span class="hljs-number">1</span><span class="hljs-punctuation">)</span><br>        value=position.value<br>        amount=position.total_amount    <br>        print<span class="hljs-punctuation">(</span>&#x27;代码:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>securities<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>        print<span class="hljs-punctuation">(</span>&#x27;成本价:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>format<span class="hljs-punctuation">(</span>cost,&#x27;.<span class="hljs-number">2</span>f&#x27;<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>        print<span class="hljs-punctuation">(</span>&#x27;现价:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>price<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>        print<span class="hljs-punctuation">(</span>&#x27;收益率:&#123;&#125;%&#x27;.format<span class="hljs-punctuation">(</span>format<span class="hljs-punctuation">(</span>ret,&#x27;.<span class="hljs-number">2</span>f&#x27;<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>        print<span class="hljs-punctuation">(</span>&#x27;持仓<span class="hljs-punctuation">(</span>股<span class="hljs-punctuation">)</span>:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>amount<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>        print<span class="hljs-punctuation">(</span>&#x27;市值:&#123;&#125;&#x27;.format<span class="hljs-punctuation">(</span>format<span class="hljs-punctuation">(</span>value,&#x27;.<span class="hljs-number">2</span>f&#x27;<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>    print<span class="hljs-punctuation">(</span>&#x27;一天结束&#x27;<span class="hljs-punctuation">)</span><br>    print<span class="hljs-punctuation">(</span>&#x27;———————————————————————————————————————分割线————————————————————————————————————————&#x27;<span class="hljs-punctuation">)</span><br><br><br></code></pre></td></tr></table></figure>
+
+<p>有一个功能非常有意思，发送消息通过，stmp发送到qq邮箱。<br>email库是 Python 标准库中用于处理电子邮件的模块。它提供了一组类和方法，用于创建、解析、格式化和发送电子邮件。<br>smtaplib库 smtplib 是 Python 标准库中的一个模块，用于发送邮件。它提供了一个简单的接口，允许您连接到 SMTP 服务器并发送电子邮件。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs dart">#!/usr/bin/python<br># -*- coding: UTF-<span class="hljs-number">8</span> -*-<br><br><span class="hljs-keyword">import</span> smtplib<br>from email.mime.text <span class="hljs-keyword">import</span> <span class="hljs-title class_">MIMEText</span><br>from email.utils <span class="hljs-keyword">import</span> formataddr<br>from datetime <span class="hljs-keyword">import</span> datetime<br><span class="hljs-keyword">import</span> time<br><br>my_sender = <span class="hljs-string">&#x27;&#x27;</span>    # 发件人邮箱账号<br>my_pass = <span class="hljs-string">&#x27;&#x27;</span>              # 发件人邮箱密码<br>my_user = <span class="hljs-string">&#x27;&#x27;</span>              # 收件人邮箱账号(这里发自己)<br><br>def <span class="hljs-title function_">mail</span>(message):<br>    ret = <span class="hljs-title class_">True</span><br>    <span class="hljs-keyword">try</span>:<br>        current_dt = time.<span class="hljs-title function_">strftime</span>(<span class="hljs-string">&quot;%Y-%m-%d&quot;</span>, time.<span class="hljs-title function_">localtime</span>()) <br>        # current_dt = time.<span class="hljs-title function_">strftime</span>(<span class="hljs-string">&quot;%Y-%m-%d&quot;</span>, time.<span class="hljs-title function_">localtime</span>())：获取当前日期，并按照<span class="hljs-string">&quot;%Y-%m-%d&quot;</span>的格式转换为字符串形式。<br>        <br>        # current_dt = datetime.<span class="hljs-title function_">strptime</span>(current_dt, <span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>)<br>        title = current_dt.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;投资操作&quot;</span><br>        msg = <span class="hljs-title class_">MIMEText</span>(message,<span class="hljs-string">&#x27;plain&#x27;</span>,<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        msg[<span class="hljs-string">&#x27;From&#x27;</span>] = <span class="hljs-title function_">formataddr</span>([<span class="hljs-string">&quot;**&quot;</span>, my_sender])         # 发件人昵称<br>        msg[<span class="hljs-string">&#x27;To&#x27;</span>] = <span class="hljs-title function_">formataddr</span>([<span class="hljs-string">&quot;**&quot;</span>, my_user])             # 接收人昵称<br>        msg[<span class="hljs-string">&#x27;Subject&#x27;</span>] = title                              # 邮件的主题<br><br>        server = smtplib.SMTP_SSL(<span class="hljs-string">&quot;smtp.qq.com&quot;</span>, <span class="hljs-number">465</span>)       # 发件人邮箱中的SMTP服务器，端口是<span class="hljs-number">465</span><br>        server.<span class="hljs-title function_">login</span>(my_sender, my_pass)  # 发件人邮箱账号、邮箱密码<br>        server.<span class="hljs-title function_">sendmail</span>(my_sender, [my_user,], msg.<span class="hljs-title function_">as_string</span>())  # 发件人邮箱账号、收件人邮箱账号、发送邮件<br>        server.<span class="hljs-title function_">quit</span>()  # 关闭连接<br>    except <span class="hljs-title class_">Exception</span> <span class="hljs-keyword">as</span> e:  # 如果 <span class="hljs-keyword">try</span> 中的语句没有执行，则会执行下面的 ret = <span class="hljs-title class_">False</span><br>        ret = <span class="hljs-title class_">False</span><br>        <span class="hljs-title function_">print</span>(e)<br>    <span class="hljs-keyword">return</span> ret<br><br># 用mail函数发送测试邮件，并根据返回值打印相应的提示信息。<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    ret = <span class="hljs-title function_">mail</span>(<span class="hljs-string">&quot;Test&quot;</span>)<br>    <span class="hljs-keyword">if</span> ret:<br>        <span class="hljs-title function_">print</span>(<span class="hljs-string">&quot;邮件发送成功&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-title function_">print</span>(<span class="hljs-string">&quot;邮件发送失败&quot;</span>)<br><br><br></code></pre></td></tr></table></figure>
+<p><img src="/pic/stmp.png" srcset="/img/loading.gif" lazyload alt="stmp"></p>
+<p>框架建立对于一名极客是必须的，错误复现对于一名极客也是必须的。</p>
+<h2 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h2><p><a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/1b5325907159cacc1b5e0e1">股票大作手回忆录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/547896059/answer/2916981222">量化交易的指标</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/558902211">关于高频量化交易的代码项目</a></p>
+<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><p>炒股就是和自己修炼的过程，在整个过程中需要对抗自己的贪，疑，痴，慢。是使用一个自己来战胜另一个自己的过程。时机，多层次的关系。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A1%AB%E5%9D%91/" class="print-no-link">#填坑</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>填坑——强化学习——使用智能体来预测股票</div>
+      <div>https://changjingzhi.github.io/2024/05/17/tiankeng10-gupiao/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>chenchangqing</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/18/gaodengshuxue5/" title="高等数学 —— 常微分方程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">高等数学 —— 常微分方程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/16/tiankeng9/" title="填坑-AIGC和数字化新时代">
+                        <span class="hidden-mobile">填坑-AIGC和数字化新时代</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://chenlidbk.xyz/2024/04/02/hello-world/" target="_blank" rel="nofollow noopener"><span>contact information</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

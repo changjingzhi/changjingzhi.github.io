@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenchangqing">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="github工作流程代码解释 背景介绍GitHub是一个代码托管平台。一个共享和开源软件的流行平台  软件开源，即编写软件的代码对所有人公开，所有人可以在现有代码的基础上进行二次开发，减少不必要的重复劳动（ IT 行话简称不要重复「造轮子」） 方便团队协作。这个过程有点像是我们把文档放在石墨或语雀这类支持团队协作的平台上，而 GitHub 上存放的是代码，参与编写软件的人可以通过 Git（版本控制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github">
+<meta property="og:url" content="https://changjingzhi.github.io/2024/05/13/tiankeng8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="github工作流程代码解释 背景介绍GitHub是一个代码托管平台。一个共享和开源软件的流行平台  软件开源，即编写软件的代码对所有人公开，所有人可以在现有代码的基础上进行二次开发，减少不必要的重复劳动（ IT 行话简称不要重复「造轮子」） 方便团队协作。这个过程有点像是我们把文档放在石墨或语雀这类支持团队协作的平台上，而 GitHub 上存放的是代码，参与编写软件的人可以通过 Git（版本控制">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-13T06:00:52.000Z">
+<meta property="article:modified_time" content="2026-11-18T03:07:58.639Z">
+<meta property="article:author" content="chenchangqing">
+<meta property="article:tag" content="填坑">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>github - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"changjingzhi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenchangqing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="github"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-13 14:00" pubdate>
+          2024年5月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          978 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">github</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><a target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">github工作流程代码解释</a></p>
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>GitHub是一个代码托管平台。一个共享和开源软件的流行平台</p>
+<ol>
+<li>软件开源，即编写软件的代码对所有人公开，所有人可以在现有代码的基础上进行二次开发，减少不必要的重复劳动（ IT 行话简称不要重复「造轮子」）</li>
+<li>方便团队协作。这个过程有点像是我们把文档放在石墨或语雀这类支持团队协作的平台上，而 GitHub 上存放的是代码，参与编写软件的人可以通过 Git（版本控制工具）从 GitHub 拉取或往 GitHub 上传代码</li>
+</ol>
+<p>类似的代码托管平台还有gitee，开源中国。</p>
+<p>仓库（Repository） 仓库 是 GitHub 最基本的元素。 它们很容易被想象为项目的文件夹。 仓库包含所有项目文件（包括文档），并存储每个文件的修改历史记录。 仓库可以有多个协作者，仓库可以是公开的，也可以设置为私有的。更详细的请看<a target="_blank" rel="noopener" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories">参考文档</a><br>分支（Branch） 分支是仓库的并行版本。默认情况下，您的仓库具有一个名为 main 的主分支。我们可以复制主分支创建其他分支，您安全地进行任何更改而不会影响”线上“主分支。 完成所需更改后，可以将分支合并回主分支以发布你的更改。<br>README：GitHub 个人主页资料上 “关于我” 的介绍。 内容一般包含：介绍您的工作和兴趣，您引以为豪的贡献以及这些贡献的背景信息，在您参与的社区获得帮助的指南</p>
+<h2 id="配套软件"><a href="#配套软件" class="headerlink" title="配套软件"></a>配套软件</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git for windown </a><br><a target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=local_repo;">git cheatsheet</a></p>
+<h2 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h2><p>初始命令，建立.git文件</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">git <span class="hljs-keyword">init</span> <br></code></pre></td></tr></table></figure>
+
+<p>选取上传文件，如果需要选取所有则使用<code>git add .</code></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-built_in">add</span> README.md<br>git <span class="hljs-built_in">add</span> .<br></code></pre></td></tr></table></figure>
+
+<p>书写提交信息</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot; first commit &quot;</span>           <br></code></pre></td></tr></table></figure>
+
+<p>选取分支</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git branch -M <span class="hljs-selector-tag">main</span><br></code></pre></td></tr></table></figure>
+<p>添加目标位置，</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">git remote <span class="hljs-keyword">add</span><span class="language-bash"> origin git@github.com:changjingzhi/test.git</span><br></code></pre></td></tr></table></figure>
+
+<p>(origin 表示名字)<br>git push 提交文件到远端仓库</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> -u <span class="hljs-built_in">origin</span> main<br></code></pre></td></tr></table></figure>
+
+<p>git clone 克隆远端仓库。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">远端仓库地址</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="创建开发分支（dev）和-主分支-master"><a href="#创建开发分支（dev）和-主分支-master" class="headerlink" title="创建开发分支（dev）和 主分支(master)"></a>创建开发分支（dev）和 主分支(master)</h2><p>创建分支dev</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git branch dev</span><br></code></pre></td></tr></table></figure>
+
+<p>切换到dev分支</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git checkout dev</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="保存本地与远端仓库相同"><a href="#保存本地与远端仓库相同" class="headerlink" title="保存本地与远端仓库相同"></a>保存本地与远端仓库相同</h2><p>(1) 更新远程仓库的代码为最新的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">git <span class="hljs-keyword">fetch</span> <span class="hljs-comment">--all </span><br></code></pre></td></tr></table></figure>
+
+<p>(2) 让本地代码与origin &#x2F; master完全相同</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">reset</span> --hard <span class="hljs-built_in">origin</span>/master<br></code></pre></td></tr></table></figure>
+
+<p>(3) git pull拉取远程代码</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git pull origin <span class="hljs-literal">master</span><br></code></pre></td></tr></table></figure>
+
+<p>(4) git merge将暂存区代码更新到本地工作区</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git merge <span class="hljs-keyword">master</span><br><span class="hljs-title"></span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>使用pip freeze命令生成requirements.txt文件：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">pip <span class="hljs-keyword">freeze</span> &gt; requirements.txt<br><br></code></pre></td></tr></table></figure>
+
+
+<p>MateFormer 配置model环境</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-attr">absl-py</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.0.0<br><span class="hljs-attr">addict</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.4.0<br><span class="hljs-attr">asttokens</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.4.1<br><span class="hljs-attr">backcall</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.2.0<br><span class="hljs-attr">cachetools</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>5.3.2<br><span class="hljs-attr">certifi</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2023.7.22<br><span class="hljs-attr">chardet</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>5.2.0<br><span class="hljs-attr">charset-normalizer</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.3.2<br><span class="hljs-attr">click</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>8.1.7<br><span class="hljs-attr">colorama</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.4.6<br><span class="hljs-attr">comm</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.2.0<br><span class="hljs-attr">contourpy</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.1.1<br><span class="hljs-attr">cycler</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.12.1<br><span class="hljs-attr">debugpy</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.8.0<br><span class="hljs-attr">decorator</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>5.1.1<br><span class="hljs-attr">defusedxml</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.7.1<br><span class="hljs-attr">executing</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.0.1<br><span class="hljs-attr">filelock</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.13.1<br><span class="hljs-attr">fonttools</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.45.1<br><span class="hljs-attr">fsspec</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2023.10.0<br><span class="hljs-attr">google-auth</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.23.4<br><span class="hljs-attr">google-auth-oauthlib</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.0.0<br><span class="hljs-attr">graphviz</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.20.1<br><span class="hljs-attr">grpcio</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.59.3<br><span class="hljs-attr">huggingface-hub</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.19.4<br><span class="hljs-attr">idna</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.4<br><span class="hljs-attr">imageio</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.33.0<br><span class="hljs-attr">importlib-metadata</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>6.8.0<br><span class="hljs-attr">importlib-resources</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>6.1.1<br><span class="hljs-attr">ipykernel</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>6.26.0<br><span class="hljs-attr">ipython</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>8.12.3<br><span class="hljs-attr">jedi</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.19.1<br><span class="hljs-attr">Jinja2</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.1.2<br><span class="hljs-attr">joblib</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.3.2<br><span class="hljs-attr">jupyter_client</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>8.6.0<br><span class="hljs-attr">jupyter_core</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>5.5.0<br><span class="hljs-attr">kiwisolver</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.4.5<br><span class="hljs-attr">lazy_loader</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.3<br><span class="hljs-attr">lxml</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.9.3<br><span class="hljs-attr">Markdown</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.5.1<br><span class="hljs-attr">MarkupSafe</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.1.3<br><span class="hljs-attr">matplotlib</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.7.4<br><span class="hljs-attr">matplotlib-inline</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.1.6<br><span class="hljs-attr">mne</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.6.0<br><span class="hljs-attr">nest-asyncio</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.5.8<br><span class="hljs-attr">netron</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>7.2.9<br><span class="hljs-attr">networkx</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.1<br><span class="hljs-attr">nltk</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.8.1<br><span class="hljs-attr">numpy</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.24.4<br><span class="hljs-attr">oauthlib</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.2.2<br><span class="hljs-attr">opencv-python</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.2.0.32<br><span class="hljs-attr">packaging</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>23.2<br><span class="hljs-attr">pandas</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.0.3<br><span class="hljs-attr">parso</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.8.3<br><span class="hljs-attr">pickleshare</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.7.5<br><span class="hljs-attr">Pillow</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>10.1.0<br><span class="hljs-attr">platformdirs</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.0.0<br><span class="hljs-attr">pooch</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.8.0<br><span class="hljs-attr">prompt-toolkit</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.0.41<br><span class="hljs-attr">protobuf</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.25.1<br><span class="hljs-attr">psutil</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>5.9.6<br><span class="hljs-attr">pure-eval</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.2.2<br><span class="hljs-attr">pyasn1</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.5.1<br><span class="hljs-attr">pyasn1-modules</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.3.0<br><span class="hljs-attr">pycocotools</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.0.7<br><span class="hljs-attr">pygame</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.5.2<br><span class="hljs-attr">Pygments</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.16.1<br><span class="hljs-attr">pyparsing</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.1.1<br><span class="hljs-attr">python-dateutil</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.8.2<br><span class="hljs-attr">pytz</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2024.1<br><span class="hljs-attr">PyWavelets</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.4.1<br><span class="hljs-attr">pywin32</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>306<br><span class="hljs-attr">PyYAML</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>6.0.1<br><span class="hljs-attr">pyzmq</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>25.1.1<br><span class="hljs-attr">regex</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2023.10.3<br><span class="hljs-attr">requests</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.31.0<br><span class="hljs-attr">requests-oauthlib</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.3.1<br><span class="hljs-attr">rsa</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.9<br><span class="hljs-attr">safetensors</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.4.0<br><span class="hljs-attr">scikit-image</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.21.0<br><span class="hljs-attr">scikit-learn</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.3.2<br><span class="hljs-attr">scipy</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.10.1<br><span class="hljs-attr">seaborn</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.13.2<br><span class="hljs-attr">six</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.16.0<br><span class="hljs-attr">stack-data</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.6.3<br><span class="hljs-attr">summary</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.2.0<br><span class="hljs-attr">tensorboard</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.14.0<br><span class="hljs-attr">tensorboard-data-server</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.7.2<br><span class="hljs-attr">thop</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.1.1.post2209072238<br><span class="hljs-attr">threadpoolctl</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.2.0<br><span class="hljs-attr">tifffile</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2023.7.10<br><span class="hljs-attr">timm</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.6.13<br><span class="hljs-attr">torch</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.12.1+cu116<br><span class="hljs-attr">torch-tb-profiler</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.4.3<br><span class="hljs-attr">torchaudio</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.12.1+cu116<br><span class="hljs-attr">torchsummary</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>1.5.1<br><span class="hljs-attr">torchvision</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.13.1+cu116<br><span class="hljs-attr">torchviz</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.0.2<br><span class="hljs-attr">tornado</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>6.3.3<br><span class="hljs-attr">tqdm</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.66.1<br><span class="hljs-attr">traitlets</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>5.13.0<br><span class="hljs-attr">typing_extensions</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>4.8.0<br><span class="hljs-attr">tzdata</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2024.1<br><span class="hljs-attr">urllib3</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>2.1.0<br><span class="hljs-attr">wcwidth</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>0.2.10<br><span class="hljs-attr">Werkzeug</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.0.1<br><span class="hljs-attr">zipp</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>3.17.0<br><br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A1%AB%E5%9D%91/" class="print-no-link">#填坑</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>github</div>
+      <div>https://changjingzhi.github.io/2024/05/13/tiankeng8/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>chenchangqing</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/14/English/" title="英语-作文">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">英语-作文</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/11/paper-idear5/" title="论文思路——论文结构">
+                        <span class="hidden-mobile">论文思路——论文结构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://chenlidbk.xyz/2024/04/02/hello-world/" target="_blank" rel="nofollow noopener"><span>contact information</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

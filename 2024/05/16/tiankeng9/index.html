@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenchangqing">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="开篇2022年在集群式和聚变式的科技革命中，人工智能生成内容（AIGC， AI Generated Content）后来居上，以OpenAI的chatgpt（Chat Generative Pre-trained Transformer）为例，实现了自然语言与人工智能的融合，更进一步的通过大规模训练模型预训练模型，形成人工智能技术理解自然语言和文本生成能力，可以生成文字，语音、代码、图像、视频、而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="填坑-AIGC和数字化新时代">
+<meta property="og:url" content="https://changjingzhi.github.io/2024/05/16/tiankeng9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="开篇2022年在集群式和聚变式的科技革命中，人工智能生成内容（AIGC， AI Generated Content）后来居上，以OpenAI的chatgpt（Chat Generative Pre-trained Transformer）为例，实现了自然语言与人工智能的融合，更进一步的通过大规模训练模型预训练模型，形成人工智能技术理解自然语言和文本生成能力，可以生成文字，语音、代码、图像、视频、而">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-16T13:36:07.000Z">
+<meta property="article:modified_time" content="2026-11-18T03:07:58.639Z">
+<meta property="article:author" content="chenchangqing">
+<meta property="article:tag" content="填坑">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>填坑-AIGC和数字化新时代 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"changjingzhi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenchangqing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="填坑-AIGC和数字化新时代"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-16 21:36" pubdate>
+          2024年5月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">填坑-AIGC和数字化新时代</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>2022年在集群式和聚变式的科技革命中，人工智能生成内容（AIGC， AI Generated Content）后来居上，以OpenAI的chatgpt（Chat Generative Pre-trained Transformer）为例，实现了自然语言与人工智能的融合，更进一步的通过大规模训练模型预训练模型，形成人工智能技术理解自然语言和文本生成能力，可以生成文字，语音、代码、图像、视频、而且能完成脚本编写、文案撰写、翻译等任务。GAN（生成对抗网络）的出现加快了AIGC的实现，Transformer在2021年8月被斯坦福大学的众多学者撰写论文，将Transformer架构的模型称为’基础模型’(Foundation model) 又译为大模型。<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2108.07258">论文链接</a>,人类大脑皮层有140亿个神经元，触突总数有100万亿个，GPT-3 最大模型有1750个参数，最近chat-gpt-4o出现，融合了多模态的模型。</p>
+<p>1913年埃米尔.博雷尔发表《静力学与不可逆性》论文中提出： 假设猴子学会了任意按下打字机，当无限只猴子在无限台打字机上乱敲，并持续无限长的时间，在某个片刻，将会有猴子能打出莎士比亚的全部著作。其中的条件是无穷的时间量度和随机性。人工智能或许能够缩短这整个的时间量度。<br>万物的智能成本无限降低，人类生产力与创造力得到解放。 AIGC的生成能力极大的解放了人类的内容生产力，从PGC（专业生产，专家创作时代，专业人士来生产高质量内容，在wed1.0时代互联网内容大多是专家生产的。）、UGC（用户生产，用户创作，用户不仅是内容的创作消费者，也是内容的创作者。比如贴吧，豆瓣，微博，微信，抖音，快手）到AIGC（AI生产，人工智能创建文本，音频，图像，视频等各种模态的信息。最初的AIGC通常基于小模型展开，这类模型的一般需要特殊的标注数据，解决特定的问题，通用性较差。后来，大数据量，大参数量，强算法的大模型（Foundation Model）取代，这种形式的AIGC只需要经过微调或经过少量微调（Fine-tuning）就可以迁移到多种生成任务）。生产力是推进社会变革的根本动力，而生产工具则是衡量生产力发展水平的客观尺度，也是划分经济时代的物质标志。<br>2022年美国科罗拉多州博览会上数字艺术类冠军<a href="pic/space_opera_house.jpg">Spaec Opera House</a></p>
+<p>人工智能赋能内容的创作的四大模态——文本、音频、图像、视频四大模态</p>
+<ol>
+<li>文本（Natural Language Processing ， 简称NLP）例子： AI结构化写作 GPT2——NewsTitle， 2017年，微软小冰 人类史上第一部AI编写的诗集《阳光失了玻璃窗》。  故事、剧本和小说， 2016年 人类史上第一部由AI撰写的剧本的电影《阳春》（sunspring）<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dx411879x/?spm_id_from=333.337.search-card.all.click">链接</a>.（看了之后觉得有点抽象。）2021年Netfix 发布了AI创作的电影《谜题先生希望你少活一点》（Mr Puzzles Wants You to Be Less Alive）<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1s44y1x742/?vd_source=9814cf6702c46a0b906cb31de22baa58">链接</a>还是抽象，金句 他醉了，但被清醒所困扰。 文字类游戏，《AI 地下城2》 chatgpt </li>
+<li>音频（Audio1） 文本转语音（Test to Speech， 简称：TTS） 短视频配音， AI歌曲生成， 比如腾讯在2020年推出的AI歌姬‘艾灵’ </li>
+<li>图像生成，两种方向 图像编辑工具与图像自主生成。 图像编辑工具的功能包括去除水印、提高分辨率、特定滤镜等。 图像自主生成即 AI绘画，包括创意图像生成（时机或按照特定属性生成画作）与功能性图像生成（生成logo、模特图、营销海报） AI绘画大致可以分为三类： 借助文字描述（Prompt）生成图像、借助已有图像生成新图像，以及两者结合版。 AI绘画工具 Stable DIffusion , Midjourney，文心一格、意间AI绘画、AICreator等  </li>
+<li>AI视频生成， AI技术不仅可以生成图片，也可以生成序列帧，组成一个完整的视频。 2022年10月 AI重置版《幻觉东京》发布， 2022年9月 Meta推出Make-A-video,根据文本描述生成相应短视频的能力。 AI换脸</li>
+</ol>
+<p>AIGC+ 元宇宙 2022年谷歌发布了文本生成3D文本模型DreamFUsion，可以通过生成3D物品模型，AIGC生成制作NFT，绘画风格确权，NFT+AIGC。HiiImeta就是这样一个集艺术风格的确权、授权和使用为一体的AI艺术生态。 </p>
+<p>人们总喜欢活在舒适区内，用出粗暴的断言来安慰自己，例如机器永远无法模仿人类的某些特征。但我给不了这样的安慰，因为我认为并不存在无法模仿的人类特性。——艾伦.图灵 人工智能技术经历了漫长的演进过程，见证了基于规则、机器学习、深度学习、强化学习等领域的兴起。1950年，图灵在《计算机器与智能》提出了图灵测试，为人工智能的实现提供。人工智能于1956年达特茅斯学院举行的人工智能夏季研讨会，人工智能的名字和任务被真正界定下来。<br>符号主义、联结主义和行为主义。机器学习，感知器与神经网络，强化学习<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1701.07274">Deep Reinforcement Learning: An Overview</a></p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eU411o71r/?spm_id_from=333.337.search-card.all.click">Stable Diffusion</a><br>动漫 [瑞克和莫迪] [爱， 死亡机器人]</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A1%AB%E5%9D%91/" class="print-no-link">#填坑</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>填坑-AIGC和数字化新时代</div>
+      <div>https://changjingzhi.github.io/2024/05/16/tiankeng9/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>chenchangqing</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/17/tiankeng10-gupiao/" title="填坑——强化学习——使用智能体来预测股票">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">填坑——强化学习——使用智能体来预测股票</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/16/gaodengshuxue4/" title="高等数学 —— 多元函数微分学。">
+                        <span class="hidden-mobile">高等数学 —— 多元函数微分学。</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://chenlidbk.xyz/2024/04/02/hello-world/" target="_blank" rel="nofollow noopener"><span>contact information</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
